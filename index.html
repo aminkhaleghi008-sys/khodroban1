@@ -155,10 +155,10 @@ $('advisorForm').addEventListener('submit',e=>{
   const budget=Math.max(0,(Number($('budget').value)||0)/1000);
   const use=$('useType').value;
   const body=$('carType').value;
-  const minBudget=budget*0.8;
+const minBudget=budget*0.8;
 const inBudget=cars.filter(c=>c.price>=minBudget&&c.price<=budget);
-  const bodyMatches=inBudget.filter(c=>body==='any'||c.body===body);
-  let pool=bodyMatches.length?bodyMatches:inBudget;
+const bodyMatches=inBudget.filter(c=>body==='any'||c.body===body);
+let pool=bodyMatches.length?bodyMatches:inBudget;
   const ranked=pool.map(c=>{
     const within=c.price<=budget;
     const bodyMatch=body==='any'||c.body===body;
@@ -167,9 +167,23 @@ const inBudget=cars.filter(c=>c.price>=minBudget&&c.price<=budget);
     const useFit=(c.score[use]||0)*8;
     return {...c,fit:priceFit+bodyFit+useFit,within,bodyMatch};
   }).sort((a,b)=>b.fit-a.fit).slice(0,3);
+    if (!inBudget.length) {
+  resultBox.innerHTML = `
+    <h3>خودرویی در این بازه پیدا نشد</h3>
+    <p style="color:var(--muted)">
+      بازهٔ قیمت انتخابی از ${(budget*800).toLocaleString('fa-IR')}
+      تا ${(budget*1000).toLocaleString('fa-IR')} میلیون تومان است.
+      بودجه را تغییر بده یا بعداً دوباره بررسی کن.
+    </p>`;
+  return;
+}
   const bodyText=body==='any'?'همه‌ی بدنه‌ها':body;
   const useNames={city:'رفت‌وآمد شهری',family:'خانواده و سفر',fun:'شتاب و رانندگی',economy:'هزینه نگهداری اقتصادی'};
-  const note=!inBudget.length?'در فهرست فعلی خودرویی با قیمت نمونه در بودجه‌ات نبود؛ نزدیک‌ترین گزینه‌ها از نظر قیمت نمایش داده شده‌اند.':(!bodyMatches.length&&body!=='any'?'در بودجه‌ی انتخابی خودرویی با این نوع بدنه پیدا نشد؛ گزینه‌های داخل بودجه نمایش داده شده‌اند.':'نتایج بر اساس بودجه، نوع بدنه و نوع استفاده دوباره رتبه‌بندی شده‌اند.');
+  const note=!inBudget.length
+  ? 'در فهرست فعلی خودرویی در بازهٔ ۲۰ درصد پایین‌تر تا سقف بودجه پیدا نشد. بودجه را تغییر بده یا بعداً دوباره بررسی کن.'
+  : (!bodyMatches.length&&body!=='any'
+    ? 'در بازهٔ قیمت انتخابی خودرویی با این نوع بدنه پیدا نشد؛ خودروهای داخل بازه با بدنه‌های دیگر نمایش داده شده‌اند.'
+    : 'نتایج بر اساس بازهٔ قیمت، نوع بدنه و نوع استفاده رتبه‌بندی شده‌اند.');
   resultBox.innerHTML=`<h3>سه پیشنهاد اولیه برای تو</h3><p style="color:var(--muted);margin-top:-5px">بودجه: ${escapeHtml((budget*1000).toLocaleString('fa-IR'))} میلیون · بدنه: ${escapeHtml(bodyText)} · استفاده: ${escapeHtml(useNames[use])}</p><div class="result-list">${ranked.map((c,i)=>`<div class="result-item"><img loading="lazy" src="${c.image}" alt="${escapeHtml(c.name)}" onerror="useCarFallback(this)"><div style="flex:1"><b>${i+1}. ${escapeHtml(c.name)}</b><small>${escapeHtml(c.origin)} · ${escapeHtml(c.body)} · قیمت نمونه: ${money(c.price)}${c.within?' · در محدوده بودجه':' · بالاتر از بودجه'}</small><button class="btn ghost small" style="margin-top:6px" data-result-car="${c.id}">دیدن مشخصات</button></div></div>`).join('')}</div><p class="disclaimer">${escapeHtml(note)} این فهرست هنوز همه‌ی خودروهای پلاک‌شده‌ی ایران را شامل نمی‌شود و قیمت‌ها فقط برای آزمایش منطق پیشنهاددهنده هستند؛ قیمت روز نیستند.</p>`;
   resultBox.scrollIntoView({behavior:'smooth',block:'nearest'});
   } catch(error) {
