@@ -25,8 +25,60 @@
   </button>
 </div>
 <div class="compare-panel hidden" id="comparePanel"><div class="section-top"><div><div class="kicker">مقایسه کنار هم</div><h2>کدوم انتخاب بهتریه؟</h2><p>تا سه خودرو انتخاب کن تا مشخصات اصلی آن‌ها کنار هم نمایش داده شود.</p></div><button class="btn secondary small" id="clearCompare">پاک کردن</button></div><div class="compare-scroll" id="compareTable"></div></div></div></section>
-<section id="guide"><div class="container"><div class="section-top"><div><div class="kicker">راهنمای فنی</div><h2>زیر کاپوت چه خبره؟</h2><p>چند بخش مهم خودرو که بهتره قبل از خرید بشناسی.</p></div></div><div class="tech-grid"><article class="tech-card"><img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80" alt="موتور خودرو" loading="lazy" onerror="useCarFallback(this)"><div><h3>موتور</h3><p>حجم موتور، تنفس طبیعی یا توربو، تعداد سیلندر و توان خروجی روی عملکرد خودرو اثر می‌گذارند.</p></div></article><article class="tech-card"><img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c7c3c5?auto=format&fit=crop&w=900&q=80" alt="بخش فنی خودرو" loading="lazy" onerror="useCarFallback(this)"><div><h3>گیربکس و انتقال نیرو</h3><p>دنده دستی، اتوماتیک یا CVT هرکدام تجربه رانندگی و هزینه نگهداری متفاوتی دارند.</p></div></article><article class="tech-card"><img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=900&q=80" alt="تعمیر و بررسی خودرو" loading="lazy" onerror="useCarFallback(this)"><div><h3>شاسی، ترمز و ایمنی</h3><p>در بررسی خودرو، سلامت بدنه و شاسی، تجهیزات ایمنی و وضعیت ترمزها را جدی بگیر.</p></div></article></div></div></section>
-<section id="advisor"><div class="container"><div class="section-top"><div><div class="kicker">انتخاب‌گر خودرو</div><h2>خودروی مناسب تو کدومه؟</h2><p>بودجه، نوع بدنه و نوع استفاده را تغییر بده؛ پیشنهادها با هر بار تأیید دوباره محاسبه می‌شوند.</p></div></div><div class="quiz-layout"><form class="quiz-panel" id="advisorForm"><h3>شرایطت رو مشخص کن</h3><div class="field"><label for="budget">حداکثر بودجه (میلیون تومان)</label><input id="budget" type="number" min="100" step="50" value="1500" required></div><div class="field"><label for="useType">بیشتر برای چی می‌خوای؟</label><select id="useType"><option value="city">رفت‌وآمد شهری</option><option value="family">خانواده و سفر</option><option value="fun">شتاب و رانندگی</option><option value="economy">هزینه نگهداری اقتصادی</option></select></div><div class="field"><label for="carType">نوع بدنه موردعلاقه</label><select id="carType"><option value="any">فرقی نمی‌کنه</option><option value="سدان">سدان</option><option value="هاچ‌بک">هاچ‌بک</option><option value="کراس‌اوور">کراس‌اوور</option><option value="شاسی‌بلند">شاسی‌بلند</option><option value="پیکاپ">پیکاپ</option><option value="کوپه">کوپه</option></select></div><button class="btn" type="submit">پیشنهاد خودروها ←</button><p class="disclaimer">قیمت‌ها در این نسخه صرفاً نمونه و غیرزنده‌اند. نتیجه، پیشنهاد اولیه است نه مشاوره قطعی خرید.</p></form><div class="quiz-result" id="quizResult" aria-live="polite"><h3>پیشنهادهای تو اینجا میاد</h3><p style="color:var(--muted)">بودجه و نوع استفاده رو وارد کن و روی «پیشنهاد خودروها» بزن.</p></div></div></div></section>
+
+<section id="guide">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <div class="kicker">راهنمای فنی</div>
+        <h2>زیر کاپوت چه خبره؟</h2>
+        <p>چند بخش مهم خودرو که بهتره قبل از خرید بشناسی.</p>
+      </div>
+    </div>
+
+    <div class="tech-grid">
+      <article class="tech-card">
+        <img
+          src="https://images.unsplash.com/photo-1527383418406-f85a3b146499?auto=format&fit=crop&w=900&q=80"
+          alt="موتور خودرو"
+          loading="lazy"
+          onerror="useCarFallback(this)"
+        >
+        <div>
+          <h3>موتور</h3>
+          <p>حجم موتور، تنفس طبیعی یا توربو، تعداد سیلندر و توان خروجی روی عملکرد خودرو اثر می‌گذارند.</p>
+        </div>
+      </article>
+
+      <article class="tech-card">
+        <img
+          src="https://images.unsplash.com/photo-1740098460497-5cb59a671e11?auto=format&fit=crop&w=900&q=80"
+          alt="گیربکس خودرو"
+          loading="lazy"
+          onerror="useCarFallback(this)"
+        >
+        <div>
+          <h3>گیربکس و انتقال نیرو</h3>
+          <p>دنده دستی، اتوماتیک یا CVT هرکدام تجربه رانندگی و هزینه نگهداری متفاوتی دارند.</p>
+        </div>
+      </article>
+
+      <article class="tech-card">
+        <img
+          src="https://images.unsplash.com/photo-1760317890314-e964ffd7e6a6?auto=format&fit=crop&w=900&q=80"
+          alt="دیسک و کالیپر ترمز خودرو"
+          loading="lazy"
+          onerror="useCarFallback(this)"
+        >
+        <div>
+          <h3>شاسی، ترمز و ایمنی</h3>
+          <p>در بررسی خودرو، سلامت بدنه و شاسی، تجهیزات ایمنی و وضعیت ترمزها را جدی بگیر.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 </main>
   
 <footer><div class="container footer-inner"><div><a class="brand" href="#home"><span class="brand-mark">خ</span>خودرو<span>بان</span></a><div>دانشنامه خودرو برای انتخاب آگاهانه‌تر.</div></div><div>نسخه‌ی در حال توسعه · این فهرست هنوز جامع نیست و داده‌ها و قیمت‌ها نیازمند بررسی و به‌روزرسانی‌اند.</div></div></footer>
