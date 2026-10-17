@@ -4,98 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#071713">
-<title>خودروبان | مقایسه و تخمین قیمت خودرو</title>
+<title>خودروبان | قیمت بازار و مقایسه خودرو</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-
-:root{
-  --bg:#071713;--panel:#10231d;--panel2:#142b23;--line:#274438;
-  --green:#80f0b2;--green2:#2bb879;--text:#f2f8f4;
-  --muted:#9bb2a6;--red:#ff8e8e;--gold:#ffd783;
-}
+:root{--bg:#071713;--panel:#10231d;--panel2:#142b23;--line:#274438;--green:#80f0b2;--green2:#2bb879;--text:#f2f8f4;--muted:#9bb2a6;--red:#ff8e8e}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif}
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{color:var(--green);text-decoration:none}
+button,input,select{font:inherit}button{cursor:pointer}a{color:var(--green);text-decoration:none}
 .container{width:min(1250px,94%);margin:auto}
 header{position:sticky;top:0;z-index:20;background:#071713ed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
 .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:900}
-.logo-mark{width:43px;height:43px;border-radius:14px;background:var(--green);color:#062017;display:grid;place-items:center;font-size:25px}
-.logo span{color:var(--green)}
-.navlinks{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.navlinks a{color:var(--muted)}
-.navlinks a:hover{color:var(--green)}
+.logo{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:900}.logo-mark{width:43px;height:43px;border-radius:14px;background:var(--green);color:#062017;display:grid;place-items:center;font-size:25px}.logo span{color:var(--green)}
+.navlinks{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.navlinks a{color:var(--muted)}
 .hero{padding:54px 0 28px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:35px}
-.tag{display:inline-flex;align-items:center;gap:8px;border:1px solid #315c46;color:var(--green);padding:7px 13px;border-radius:30px;font-size:12px}
-h1{font-size:clamp(30px,4.3vw,54px);line-height:1.5;margin:18px 0}
-h1 em{font-style:normal;color:var(--green)}
+.tag{display:inline-flex;border:1px solid #315c46;color:var(--green);padding:7px 13px;border-radius:30px;font-size:12px}
+h1{font-size:clamp(30px,4.3vw,54px);line-height:1.5;margin:18px 0}h1 em{font-style:normal;color:var(--green)}
 .hero p{color:var(--muted);line-height:2.1;max-width:620px}
 .hero-art{min-height:250px;display:grid;place-items:center;border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 50% 50%,#24533b 0,#10271e 48%,#0b1b15 80%);overflow:hidden;position:relative}
-.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #80f0b21a;border-radius:50%;width:280px;height:280px}
-.hero-art:after{width:390px;height:390px}
-.hero-car{font-size:115px;filter:drop-shadow(0 20px 15px #0008);z-index:1}
-.hero-caption{position:absolute;bottom:17px;right:20px;color:#c1ddce;font-size:12px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 34px}
-.stat{background:var(--panel);border:1px solid var(--line);padding:17px;border-radius:17px}
-.stat strong{display:block;font-size:22px;color:var(--green)}
-.stat span{font-size:12px;color:var(--muted)}
-.section{padding:24px 0 42px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}
-h2{font-size:25px;margin:0 0 8px}
-.sub{color:var(--muted);font-size:13px;line-height:1.9}
+.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #80f0b21a;border-radius:50%;width:280px;height:280px}.hero-art:after{width:390px;height:390px}
+.hero-car{font-size:115px;filter:drop-shadow(0 20px 15px #0008);z-index:1}.hero-caption{position:absolute;bottom:17px;right:20px;color:#c1ddce;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 34px}.stat{background:var(--panel);border:1px solid var(--line);padding:17px;border-radius:17px}.stat strong{display:block;font-size:22px;color:var(--green)}.stat span{font-size:12px;color:var(--muted)}
+.section{padding:24px 0 42px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}
+h2{font-size:25px;margin:0 0 8px}.sub{color:var(--muted);font-size:13px;line-height:1.9}
 .toolbar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:13px}
-.field{width:100%;background:#091b14;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px 13px;outline:none;min-width:0}
-.field:focus{border-color:var(--green2)}
-select option{background:#10231d}
+.field{width:100%;background:#091b14;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px 13px;outline:none;min-width:0}.field:focus{border-color:var(--green2)}select option{background:#10231d}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}
 .chip,.btn{border:1px solid var(--line);border-radius:11px;padding:10px 14px;background:var(--panel);color:var(--text)}
-.chip.active,.btn.primary{background:var(--green);color:#082017;border-color:var(--green);font-weight:800}
-.btn.secondary{background:transparent;color:var(--green);border-color:#3a7054}
-.btn.danger{color:var(--red)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
+.chip.active,.btn.primary{background:var(--green);color:#082017;border-color:var(--green);font-weight:800}.btn.secondary{background:transparent;color:var(--green);border-color:#3a7054}.btn.danger{color:var(--red)}
 .car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.car-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s;min-width:0}
-.car-card:hover{transform:translateY(-3px);border-color:#4d8868}
-.car-photo{height:175px;position:relative;background:#152b22;overflow:hidden}
-.car-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.car-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s;min-width:0}.car-card:hover{transform:translateY(-3px);border-color:#4d8868}
+.car-photo{height:175px;position:relative;background:#152b22;overflow:hidden}.car-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .photo-badge{position:absolute;top:12px;right:12px;background:#071713d9;color:var(--green);border:1px solid #80f0b24a;border-radius:8px;padding:5px 9px;font-size:11px}
-.compare-check{position:absolute;left:12px;top:12px;display:flex;gap:5px;align-items:center;background:#071713df;padding:6px 9px;border-radius:9px;font-size:11px}
-.compare-check input{accent-color:var(--green)}
-.car-content{padding:15px}
-.car-title{font-size:17px;font-weight:800;margin:0 0 4px}
-.car-trim{font-size:12px;color:var(--muted);margin-bottom:13px}
-.price{font-size:20px;color:var(--green);font-weight:900}
-.price small{font-size:11px;color:var(--muted);font-weight:400}
-.price-range{font-size:11px;color:var(--muted);margin:3px 0 12px}
-.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
-.spec{background:#091b14;border-radius:9px;padding:9px}
-.spec span{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}
-.spec strong{font-size:12px}
-.card-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.card-controls select{font-size:12px;padding:9px}
-.card-actions{display:flex;gap:8px;margin-top:10px}
-.card-actions .btn{flex:1;font-size:12px;padding:10px 6px}
-.more-wrap{text-align:center;padding-top:25px}
-.empty{padding:35px;text-align:center;border:1px dashed var(--line);border-radius:17px;color:var(--muted)}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:23px;margin-bottom:20px}
-.compare-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.compare-table-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:650px}
-th,td{padding:13px 12px;text-align:right;border-bottom:1px solid var(--line);font-size:13px}
-th{color:var(--muted);font-weight:600}
-td.best{color:var(--green);font-weight:900;background:#80f0b20b}
-.winner{color:var(--green);font-size:10px;display:block;margin-top:3px}
-.forms-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}
-.form-item{min-width:0}
-.result{margin-top:15px;padding:16px;border:1px solid #386c4e;background:#102b20;border-radius:13px;display:none}
-.result strong{color:var(--green);font-size:22px;display:block;margin:7px 0}
-.notice{font-size:11px;line-height:1.9;color:var(--muted);margin-top:13px}
-.source-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.source-links a{border:1px solid var(--line);padding:9px 12px;border-radius:10px;font-size:12px}
+.compare-check{position:absolute;left:12px;top:12px;display:flex;gap:5px;align-items:center;background:#071713df;padding:6px 9px;border-radius:9px;font-size:11px}.compare-check input{accent-color:var(--green)}
+.car-content{padding:15px}.car-title{font-size:17px;font-weight:800;margin:0 0 4px}.car-trim{font-size:12px;color:var(--muted);margin-bottom:13px}
+.price{font-size:20px;color:var(--green);font-weight:900}.price small{font-size:11px;color:var(--muted);font-weight:400}.price-range{font-size:11px;color:var(--muted);margin:3px 0 12px}
+.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.spec{background:#091b14;border-radius:9px;padding:9px}.spec span{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}.spec strong{font-size:12px}
+.card-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.card-controls select{font-size:12px;padding:9px}.card-actions{display:flex;gap:8px;margin-top:10px}.card-actions .btn{flex:1;font-size:12px;padding:10px 6px}
+.more-wrap{text-align:center;padding-top:25px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:23px;margin-bottom:20px}
+.compare-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.compare-table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:650px}th,td{padding:13px 12px;text-align:right;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--muted);font-weight:600}td.best{color:var(--green);font-weight:900;background:#80f0b20b}.winner{color:var(--green);font-size:10px;display:block;margin-top:3px}
+.forms-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}.form-item{min-width:0}
+.result{margin-top:15px;padding:16px;border:1px solid #386c4e;background:#102b20;border-radius:13px;display:none}.result strong{color:var(--green);font-size:22px;display:block;margin:7px 0}
+.notice{font-size:11px;line-height:1.9;color:var(--muted);margin-top:13px}.source-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.source-links a{border:1px solid var(--line);padding:9px 12px;border-radius:10px;font-size:12px}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:12px;line-height:2}
 .toast{position:fixed;bottom:20px;right:50%;transform:translateX(50%);background:var(--green);color:#071713;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:800;z-index:50;display:none;box-shadow:0 8px 30px #0008}
 @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{min-height:200px}.car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{display:none}}
@@ -104,123 +55,93 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 </head>
 <body>
 <header>
-  <div class="container nav">
-    <a class="logo" href="#"><div class="logo-mark">خ</div>خودرو<span>بان</span></a>
-    <nav class="navlinks">
-      <a href="#cars">خودروها</a><a href="#compare">مقایسه فنی</a>
-      <a href="#estimate">تخمین قیمت</a><a href="#sources">منابع قیمت</a>
-    </nav>
-    <a class="btn primary" href="#compare">مقایسه خودروها</a>
-  </div>
+<div class="container nav">
+<a class="logo" href="#"><div class="logo-mark">خ</div>خودرو<span>بان</span></a>
+<nav class="navlinks"><a href="#cars">خودروها</a><a href="#compare">مقایسه فنی</a><a href="#estimate">تخمین قیمت</a><a href="#sources">منابع قیمت</a></nav>
+<a class="btn primary" href="#compare">مقایسه خودروها</a>
+</div>
 </header>
 
 <main class="container">
 <section class="hero">
-  <div>
-    <div class="tag">● راهنمای خرید و بررسی خودرو</div>
-    <h1>قبل از خرید،<br><em>هوشمندانه مقایسه کن.</em></h1>
-    <p>مشخصات فنی خودروها را کنار هم ببین، تیپ و سال ساخت را انتخاب کن و برای خودروی کارکرده‌ات یک تخمین قیمت بگیر.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
-      <a class="btn primary" href="#cars">دیدن خودروها ←</a>
-      <a class="btn secondary" href="#estimate">خودروی من چند؟</a>
-    </div>
-  </div>
-  <div class="hero-art">
-    <div class="hero-car">🚘</div>
-    <div class="hero-caption">خودروبان؛ مقایسه قبل از تصمیم</div>
-  </div>
+<div>
+<div class="tag">● راهنمای خرید و بررسی خودرو</div>
+<h1>قبل از خرید،<br><em>هوشمندانه مقایسه کن.</em></h1>
+<p>قیمت مصرف‌کننده در بازار آزاد، مشخصات فنی، سال ساخت و تیپ خودرو را بررسی کن. خودروها را کنار هم مقایسه کن و برای ماشین کارکرده‌ات تخمین قیمت بگیر.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+<a class="btn primary" href="#cars">دیدن خودروها ←</a>
+<a class="btn secondary" href="#estimate">خودروی من چند؟</a>
+</div>
+</div>
+<div class="hero-art"><div class="hero-car">🚘</div><div class="hero-caption">خودروبان؛ مقایسه قبل از تصمیم</div></div>
 </section>
 
 <div class="stats">
-  <div class="stat"><strong id="totalCount">۱۳۰+</strong><span>مدل و تیپ خودرو</span></div>
-  <div class="stat"><strong>۳ خودرو</strong><span>مقایسه هم‌زمان</span></div>
-  <div class="stat"><strong>۱۴۰۵</strong><span>سال مرجع انتخاب</span></div>
+<div class="stat"><strong id="totalCount">۱۳۰+</strong><span>مدل و تیپ خودرو</span></div>
+<div class="stat"><strong>۳ خودرو</strong><span>مقایسه هم‌زمان</span></div>
+<div class="stat"><strong>۱۴۰۵</strong><span>سال مرجع انتخاب</span></div>
 </div>
 
 <section class="section" id="cars">
-  <div class="section-head">
-    <div><h2>کاتالوگ خودروها</h2><div class="sub">خودرو را پیدا کن، سال ساخت را تغییر بده و مشخصات فنی را بررسی کن.</div></div>
-    <div class="sub" id="shownCount"></div>
-  </div>
-
-  <div class="toolbar">
-    <input class="field" id="search" placeholder="جست‌وجو: پراید ۱۳۱، پژو ۴۰۵، دنا..." />
-    <select class="field" id="brandFilter"><option value="">همه برندها</option></select>
-    <select class="field" id="sortFilter">
-      <option value="default">ترتیب پیشنهادی</option>
-      <option value="low">قیمت: کم به زیاد</option>
-      <option value="high">قیمت: زیاد به کم</option>
-      <option value="power">قدرت موتور: زیاد به کم</option>
-    </select>
-  </div>
-
-  <div class="filters" id="categoryFilters">
-    <button class="chip active" data-cat="">همه</button>
-    <button class="chip" data-cat="داخلی">داخلی</button>
-    <button class="chip" data-cat="چینی">چینی</button>
-    <button class="chip" data-cat="وارداتی">وارداتی</button>
-    <button class="chip" data-cat="وانت">وانت</button>
-  </div>
-
-  <div class="car-grid" id="carGrid"></div>
-  <div class="more-wrap">
-    <button class="btn secondary" id="moreBtn">خودروهای بیشتر +</button>
-  </div>
-  <p class="notice">تصاویر از سرویس عکس خارجی بارگیری می‌شوند و در صورت در دسترس نبودن اینترنت یا عکس، تصویر جایگزین نمایش داده می‌شود. برای نمایش عکس دقیق تک‌تک تیپ‌ها، باید تصاویر اختصاصی یا سرویس عکس خودرو به سایت متصل شود.</p>
+<div class="section-head"><div><h2>کاتالوگ خودروها</h2><div class="sub">سال ساخت و تیپ را انتخاب کن؛ قیمت تخمینی بازار مصرف‌کننده را ببین.</div></div><div class="sub" id="shownCount"></div></div>
+<div class="toolbar">
+<input class="field" id="search" placeholder="جست‌وجو: پراید ۱۳۱، پژو ۴۰۵، دنا...">
+<select class="field" id="brandFilter"><option value="">همه برندها</option></select>
+<select class="field" id="sortFilter"><option value="default">ترتیب پیشنهادی</option><option value="low">قیمت بازار: کم به زیاد</option><option value="high">قیمت بازار: زیاد به کم</option><option value="power">قدرت موتور: زیاد به کم</option></select>
+</div>
+<div class="filters" id="categoryFilters">
+<button class="chip active" data-cat="">همه</button><button class="chip" data-cat="داخلی">داخلی</button><button class="chip" data-cat="چینی">چینی</button><button class="chip" data-cat="وارداتی">وارداتی</button><button class="chip" data-cat="وانت">وانت</button>
+</div>
+<div class="car-grid" id="carGrid"></div>
+<div class="more-wrap"><button class="btn secondary" id="moreBtn">خودروهای بیشتر +</button></div>
+<p class="notice">**قیمت مصرف‌کننده در این سایت یعنی قیمت تقریبی قابل معامله در بازار آزاد برای خریدار نهایی، نه قیمت کارخانه و نه قیمت فروش ویژه شرکت.** اعداد این نسخه نمونه‌اند و هنوز به منبع قیمت روز متصل نیستند؛ قبل از معامله، قیمت روز همان تیپ و مدل را بررسی کن.</p>
 </section>
 
 <section class="section" id="compare">
-  <div class="panel">
-    <div class="compare-top">
-      <div><h2>مقایسه فنی خودروها</h2><div class="sub">حداکثر ۳ خودرو انتخاب کن؛ در هر معیار، نتیجه بهتر مشخص می‌شود.</div></div>
-      <button class="btn danger" id="clearCompare">پاک کردن مقایسه</button>
-    </div>
-    <div id="compareContent" class="sub">از کارت خودروها گزینه «مقایسه» را انتخاب کن.</div>
-  </div>
+<div class="panel">
+<div class="compare-top"><div><h2>مقایسه فنی خودروها</h2><div class="sub">حداکثر ۳ خودرو انتخاب کن؛ در هر معیار، نتیجه بهتر مشخص می‌شود.</div></div><button class="btn danger" id="clearCompare">پاک کردن مقایسه</button></div>
+<div id="compareContent" class="sub">از کارت خودروها گزینه «مقایسه فنی» را انتخاب کن.</div>
+</div>
 </section>
 
 <section class="section" id="estimate">
-  <div class="section-head"><div><h2>خودروی من چند؟</h2><div class="sub">اطلاعات خودروی کارکرده را وارد کن تا یک بازه تقریبی ببینی.</div></div></div>
-  <div class="forms-grid">
-    <div class="panel">
-      <h3 style="margin-top:0">مشخصات خودرو</h3>
-      <div class="form-grid">
-        <div class="form-item"><label for="estModel">مدل خودرو</label><select class="field" id="estModel"></select></div>
-        <div class="form-item"><label for="estYear">سال ساخت</label><select class="field" id="estYear"></select></div>
-        <div class="form-item"><label for="estKm">کارکرد (کیلومتر)</label><input class="field" id="estKm" type="number" min="0" value="80000"></div>
-        <div class="form-item"><label for="estPaint">وضعیت رنگ بدنه</label><select class="field" id="estPaint"><option value="1">بدون رنگ</option><option value=".96">یک لکه رنگ</option><option value=".91">چند لکه رنگ</option><option value=".84">رنگ‌شدگی گسترده</option></select></div>
-        <div class="form-item"><label for="estBody">وضعیت شاسی و بدنه</label><select class="field" id="estBody"><option value="1">سالم</option><option value=".90">ضربه جزئی بدون آسیب شاسی</option><option value=".72">آسیب شاسی یا تصادف جدی</option></select></div>
-        <div class="form-item"><label for="estTech">وضعیت فنی</label><select class="field" id="estTech"><option value="1">سالم</option><option value=".93">نیازمند تعمیر جزئی</option><option value=".82">نیازمند تعمیر اساسی</option></select></div>
-      </div>
-      <button class="btn primary" style="width:100%;margin-top:16px" id="estimateBtn">تخمین قیمت خودرو</button>
-      <div class="result" id="estimateResult"></div>
-      <div class="notice">این محاسبه صرفاً تخمینی و بر اساس قیمت پایه نمونه داخل سایت است؛ کارشناسی حضوری و قیمت روز آگهی‌ها ممکن است نتیجه متفاوتی داشته باشد.</div>
-    </div>
-    <div class="panel">
-      <h3 style="margin-top:0">عوامل مؤثر بر قیمت</h3>
-      <div class="specs">
-        <div class="spec"><span>سال ساخت</span><strong>مدل جدیدتر معمولاً گران‌تر</strong></div>
-        <div class="spec"><span>کارکرد</span><strong>کارکرد بیشتر معمولاً کاهنده قیمت</strong></div>
-        <div class="spec"><span>بدنه</span><strong>رنگ و تصادف مؤثرند</strong></div>
-        <div class="spec"><span>فنی</span><strong>موتور و گیربکس مهم‌اند</strong></div>
-      </div>
-      <p class="sub" style="line-height:2;margin-top:15px">قیمت نهایی به تیپ دقیق، وضعیت بیمه و معاینه فنی، شهر، عرضه و تقاضا و شرایط معامله نیز وابسته است. قیمت درج‌شده در آگهی الزاماً قیمت نهایی معامله نیست.</p>
-      <div class="source-links" id="sources">
-        <a href="https://nemuda.com/car" target="_blank" rel="noopener">قیمت خودروهای کارکرده</a>
-        <a href="https://carbank.info/prices" target="_blank" rel="noopener">بانک قیمت خودرو</a>
-        <a href="https://divar.ir/" target="_blank" rel="noopener">آگهی‌های دیوار</a>
-      </div>
-    </div>
-  </div>
+<div class="section-head"><div><h2>خودروی من چند؟</h2><div class="sub">اطلاعات خودروی کارکرده را وارد کن تا یک بازه تخمینی قیمت بازار آزاد ببینی.</div></div></div>
+<div class="forms-grid">
+<div class="panel">
+<h3 style="margin-top:0">مشخصات خودرو</h3>
+<div class="form-grid">
+<div class="form-item"><label for="estModel">مدل خودرو</label><select class="field" id="estModel"></select></div>
+<div class="form-item"><label for="estYear">سال ساخت</label><select class="field" id="estYear"></select></div>
+<div class="form-item"><label for="estKm">کارکرد (کیلومتر)</label><input class="field" id="estKm" type="number" min="0" value="80000"></div>
+<div class="form-item"><label for="estPaint">وضعیت رنگ بدنه</label><select class="field" id="estPaint"><option value="1">بدون رنگ</option><option value=".96">یک لکه رنگ</option><option value=".91">چند لکه رنگ</option><option value=".84">رنگ‌شدگی گسترده</option></select></div>
+<div class="form-item"><label for="estBody">وضعیت شاسی و بدنه</label><select class="field" id="estBody"><option value="1">سالم</option><option value=".90">ضربه جزئی بدون آسیب شاسی</option><option value=".72">آسیب شاسی یا تصادف جدی</option></select></div>
+<div class="form-item"><label for="estTech">وضعیت فنی</label><select class="field" id="estTech"><option value="1">سالم</option><option value=".93">نیازمند تعمیر جزئی</option><option value=".82">نیازمند تعمیر اساسی</option></select></div>
+</div>
+<button class="btn primary" style="width:100%;margin-top:16px" id="estimateBtn">تخمین قیمت بازار آزاد</button>
+<div class="result" id="estimateResult"></div>
+<div class="notice">تخمین تقریبی است؛ قیمت واقعی به تیپ دقیق، بیمه، شهر، وضعیت فنی و شرایط بازار وابسته است.</div>
+</div>
+<div class="panel">
+<h3 style="margin-top:0">منابع بررسی قیمت بازار</h3>
+<div class="specs">
+<div class="spec"><span>قیمت بازار</span><strong>قیمت آگهی‌های فروش</strong></div>
+<div class="spec"><span>سال ساخت</span><strong>مدل خودرو</strong></div>
+<div class="spec"><span>بدنه</span><strong>رنگ و تصادف</strong></div>
+<div class="spec"><span>فنی</span><strong>موتور و گیربکس</strong></div>
+</div>
+<p class="sub" style="line-height:2;margin-top:15px">در این سایت نباید قیمت کارخانه یا قیمت فروش فوری شرکت به‌عنوان قیمت خودرو به مصرف‌کننده نمایش داده شود. مبنای قیمت باید قیمت بازار آزاد و آگهی‌های خودروهای مشابه با همان تیپ و سال باشد.</p>
+<div class="source-links" id="sources">
+<a href="https://nemuda.com/car" target="_blank" rel="noopener">قیمت خودروهای کارکرده</a>
+<a href="https://carbank.info/prices" target="_blank" rel="noopener">بررسی قیمت خودرو</a>
+<a href="https://divar.ir/" target="_blank" rel="noopener">آگهی‌های بازار آزاد</a>
+<a href="https://asbe-bokhar.com/car-price/daily-car-price/" target="_blank" rel="noopener">جدول قیمت روز خودرو</a>
+</div>
+</div>
+</div>
 </section>
 </main>
 
-<footer>
-  <div class="container">
-    <strong style="color:var(--green)">خودروبان</strong> — راهنمای مقایسه و بررسی خودرو<br>
-    مشخصات فنی و قیمت‌های این نسخه نمونه‌اند و به‌صورت زنده به بازار متصل نیستند. پیش از معامله، قیمت روز و مشخصات تیپ دقیق را از منابع معتبر بررسی کنید.
-  </div>
-</footer>
+<footer><div class="container"><strong style="color:var(--green)">خودروبان</strong> — مقایسه خودرو و بررسی قیمت مصرف‌کننده در بازار آزاد.<br>قیمت‌های این نسخه برای نمایش ساختار سایت هستند و به‌صورت زنده دریافت نمی‌شوند. پیش از خرید، قیمت روز همان تیپ و سال ساخت را از منابع بازار بررسی کنید.</div></footer>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -438,144 +359,52 @@ const carSeedsExtra = [
 ["فوتون تونلند G7","فوتون","وانت","Foton Tunland",2000,2500,4000,174,360,12,9,"اتوماتیک","دیزل"]
 ];
 
-const years = Array.from({length:26},(_,i)=>1405-i);
-const photoIds = [
-"photo-1492144534655-ae79c964c9d7",
-"photo-1503376780353-7e6692767b70",
-"photo-1503736334956-4c8f8e92946d",
-"photo-1549317661-bd32c8ce0db2",
-"photo-1552519507-da3b142c6e3d",
-"photo-1502877338535-766e1452684a",
-"photo-1511919884226-fd3cad34687c",
-"photo-1494976388531-d1058494cdd8",
-"photo-1533473359331-0135ef1b58bf",
-"photo-1489824904134-891ab64532f1"
-];
-const cars = [...carSeeds,...carSeedsExtra].map((r,i)=>({
- id:i,name:r[0],brand:r[1],category:r[2],imageModel:r[3],baseYear:r[4],
- min:r[5],max:r[6],hp:r[7],torque:r[8],accel:r[9],fuelUse:r[10],
- gearbox:r[11],fuel:r[12]
-}));
-const fmt = n => Math.round(n).toLocaleString('fa-IR');
-const money = n => n>=1000 ? (n/1000).toLocaleString('fa-IR',{maximumFractionDigits:2})+' میلیارد تومان' : fmt(n)+' میلیون تومان';
-const safe = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const photoUrl = c => `https://images.unsplash.com/${photoIds[c.id%photoIds.length]}?auto=format&fit=crop&w=900&q=80`;
-function fallbackSvg(name){
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="#10271e"/><circle cx="400" cy="200" r="160" fill="#173c2c"/><path d="M135 250 L190 250 L250 165 Q270 145 310 145 L480 145 Q520 145 550 185 L610 225 L660 240 L660 290 L135 290 Z" fill="#80f0b2"/><path d="M275 170 L475 170 Q500 170 520 200 L245 200 Z" fill="#163a2b"/><circle cx="250" cy="290" r="39" fill="#071713" stroke="#9bb2a6" stroke-width="9"/><circle cx="550" cy="290" r="39" fill="#071713" stroke="#9bb2a6" stroke-width="9"/><text x="400" y="90" text-anchor="middle" font-size="27" font-family="sans-serif" fill="#c6e6d3">${safe(name)}</text><text x="400" y="360" text-anchor="middle" font-size="18" font-family="sans-serif" fill="#9bb2a6">KHODROBAN</text></svg>`;
- return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
-}
+const years=Array.from({length:26},(_,i)=>1405-i);
+const photoIds=["photo-1492144534655-ae79c964c9d7","photo-1503376780353-7e6692767b70","photo-1503736334956-4c8f8e92946d","photo-1549317661-bd32c8ce0db2","photo-1552519507-da3b142c6e3d","photo-1502877338535-766e1452684a","photo-1511919884226-fd3cad34687c","photo-1494976388531-d1058494cdd8","photo-1533473359331-0135ef1b58bf","photo-1489824904134-891ab64532f1"];
+const cars=[...carSeeds,...carSeedsExtra].map((r,i)=>({id:i,name:r[0],brand:r[1],category:r[2],imageModel:r[3],baseYear:r[4],min:r[5],max:r[6],hp:r[7],torque:r[8],accel:r[9],fuelUse:r[10],gearbox:r[11],fuel:r[12]}));
+const fmt=n=>Math.round(n).toLocaleString('fa-IR');
+const money=n=>n>=1000?(n/1000).toLocaleString('fa-IR',{maximumFractionDigits:2})+' میلیارد تومان':fmt(n)+' میلیون تومان';
+const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const photoUrl=c=>`https://images.unsplash.com/${photoIds[c.id%photoIds.length]}?auto=format&fit=crop&w=900&q=80`;
+function fallbackSvg(name){const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="#10271e"/><circle cx="400" cy="200" r="160" fill="#173c2c"/><path d="M135 250 L190 250 L250 165 Q270 145 310 145 L480 145 Q520 145 550 185 L610 225 L660 240 L660 290 L135 290 Z" fill="#80f0b2"/><path d="M275 170 L475 170 Q500 170 520 200 L245 200 Z" fill="#163a2b"/><circle cx="250" cy="290" r="39" fill="#071713" stroke="#9bb2a6" stroke-width="9"/><circle cx="550" cy="290" r="39" fill="#071713" stroke="#9bb2a6" stroke-width="9"/><text x="400" y="90" text-anchor="middle" font-size="27" font-family="sans-serif" fill="#c6e6d3">${safe(name)}</text><text x="400" y="360" text-anchor="middle" font-size="18" font-family="sans-serif" fill="#9bb2a6">KHODROBAN</text></svg>`;return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
 function yearFactor(year){return Math.max(.32,1-(1405-year)*.035)}
-function priceAt(c,year){const f=yearFactor(year);return {min:c.min*f,max:c.max*f}}
+function priceAt(c,year){const f=yearFactor(year);return{min:c.min*f,max:c.max*f}}
 function selectedYear(c){const el=document.getElementById('year-'+c.id);return el?Number(el.value):1405}
-function selectedTrim(c){const el=document.getElementById('trim-'+c.id);return el?el.value:c.name}
+function trimOptions(c){const key=c.name.split(' ')[0];const options=cars.filter(x=>x.name.startsWith(key)).map(x=>x.name);return[...new Set([c.name,...options])]}
+let compareIds=[],activeCategory='',visibleLimit=12;
 function cardHTML(c){
- const year=1405, p=priceAt(c,year);
- return `<article class="car-card">
- <div class="car-photo">
- <img src="${photoUrl(c)}" alt="${safe(c.name)}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackSvg(c.name)}'">
- <span class="photo-badge">${safe(c.category)}</span>
- <label class="compare-check"><input type="checkbox" data-compare="${c.id}" ${compareIds.includes(c.id)?'checked':''}> مقایسه</label>
- </div>
- <div class="car-content">
- <h3 class="car-title">${safe(c.name)}</h3>
- <div class="car-trim">${safe(c.brand)} · ${safe(c.gearbox)} · ${safe(c.fuel)}</div>
- <div class="price" id="price-${c.id}">${money((p.min+p.max)/2)} <small>حدودی</small></div>
- <div class="price-range" id="range-${c.id}">بازه تخمینی: ${money(p.min)} تا ${money(p.max)}</div>
- <div class="specs">
- <div class="spec"><span>قدرت موتور</span><strong>${fmt(c.hp)} اسب‌بخار</strong></div>
- <div class="spec"><span>گشتاور</span><strong>${fmt(c.torque)} نیوتن‌متر</strong></div>
- <div class="spec"><span>شتاب ۰ تا ۱۰۰</span><strong>${String(c.accel).replace('.', '٫')} ثانیه</strong></div>
- <div class="spec"><span>مصرف ترکیبی</span><strong>${String(c.fuelUse).replace('.', '٫')} لیتر</strong></div>
- </div>
- <div class="card-controls">
- <select class="field" id="year-${c.id}" aria-label="سال ساخت" onchange="updatePrice(${c.id})">${years.map(y=>`<option value="${y}" ${y===1405?'selected':''}>مدل ${fmt(y)}</option>`).join('')}</select>
- <select class="field" id="trim-${c.id}" aria-label="تیپ خودرو" onchange="updateTrim(${c.id})">${trimOptions(c).map(t=>`<option value="${safe(t)}" ${t===c.name?'selected':''}>${safe(t)}</option>`).join('')}</select>
- </div>
- <div class="card-actions">
- <button class="btn secondary" onclick="toggleCompare(${c.id})">${compareIds.includes(c.id)?'حذف از مقایسه':'مقایسه فنی'}</button>
- <button class="btn" onclick="useForEstimate(${c.id})">تخمین قیمت</button>
- </div>
- </div></article>`;
+ const p=priceAt(c,1405);
+ return `<article class="car-card"><div class="car-photo"><img src="${photoUrl(c)}" alt="${safe(c.name)}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackSvg(c.name)}'"><span class="photo-badge">${safe(c.category)}</span><label class="compare-check"><input type="checkbox" data-compare="${c.id}" ${compareIds.includes(c.id)?'checked':''}> مقایسه</label></div>
+ <div class="car-content"><h3 class="car-title">${safe(c.name)}</h3><div class="car-trim">${safe(c.brand)} · ${safe(c.gearbox)} · ${safe(c.fuel)}</div>
+ <div class="price" id="price-${c.id}">${money((p.min+p.max)/2)} <small>قیمت بازار آزاد</small></div><div class="price-range" id="range-${c.id}">بازه تخمینی: ${money(p.min)} تا ${money(p.max)}</div>
+ <div class="specs"><div class="spec"><span>قدرت موتور</span><strong>${fmt(c.hp)} اسب‌بخار</strong></div><div class="spec"><span>گشتاور</span><strong>${fmt(c.torque)} نیوتن‌متر</strong></div><div class="spec"><span>شتاب ۰ تا ۱۰۰</span><strong>${String(c.accel).replace('.', '٫')} ثانیه</strong></div><div class="spec"><span>مصرف ترکیبی</span><strong>${String(c.fuelUse).replace('.', '٫')} لیتر</strong></div></div>
+ <div class="card-controls"><select class="field" id="year-${c.id}" aria-label="سال ساخت" onchange="updatePrice(${c.id})">${years.map(y=>`<option value="${y}" ${y===1405?'selected':''}>مدل ${fmt(y)}</option>`).join('')}</select><select class="field" id="trim-${c.id}" aria-label="تیپ خودرو" onchange="updateTrim(${c.id})">${trimOptions(c).map(t=>`<option value="${safe(t)}" ${t===c.name?'selected':''}>${safe(t)}</option>`).join('')}</select></div>
+ <div class="card-actions"><button class="btn secondary" onclick="toggleCompare(${c.id})">${compareIds.includes(c.id)?'حذف از مقایسه':'مقایسه فنی'}</button><button class="btn" onclick="useForEstimate(${c.id})">تخمین قیمت</button></div></div></article>`;
 }
-function familyKey(name){
- return name.replace(/(?:\s+(?:SL|SX|SE|EX|EL|ELX|LX|GLX|GL|TU3|TU5P?|XU7P?|V\d+|دوگانه‌سوز|اتوماتیک|دستی|پانوراما|آپشنال|ارتقایافته|سقف فلزی|نیوفیس|پلاس|توربو|مونتاژی|هیبرید|۵ نفره|۷ نفره|GXR|S|G|R|E|V\d+).*)$/,'').trim();
-}
-function trimOptions(c){
- const fam=familyKey(c.name);
- const options=cars.filter(x=>familyKey(x.name)===fam).map(x=>x.name);
- return [...new Set([c.name,...options])];
-}
-let compareIds=[];
-let activeCategory='';
-let visibleLimit=12;
 function renderCars(){
- let list=cars.filter(c=>{
-  const q=document.getElementById('search').value.trim().toLowerCase();
-  const matches=!q||(c.name+' '+c.brand+' '+c.category).toLowerCase().includes(q);
-  return matches&&(!activeCategory||c.category===activeCategory);
- });
+ let list=cars.filter(c=>{const q=document.getElementById('search').value.trim().toLowerCase();return(!q||(c.name+' '+c.brand+' '+c.category).toLowerCase().includes(q))&&(!activeCategory||c.category===activeCategory)});
+ const brand=document.getElementById('brandFilter').value;if(brand)list=list.filter(c=>c.brand===brand);
  const sort=document.getElementById('sortFilter').value;
  if(sort==='low')list.sort((a,b)=>(a.min+a.max)-(b.min+b.max));
  if(sort==='high')list.sort((a,b)=>(b.min+b.max)-(a.min+a.max));
  if(sort==='power')list.sort((a,b)=>b.hp-a.hp);
  document.getElementById('shownCount').textContent=`نمایش ${fmt(Math.min(visibleLimit,list.length))} از ${fmt(list.length)} خودرو`;
- document.getElementById('carGrid').innerHTML=list.slice(0,visibleLimit).map(cardHTML).join('')||'<div class="empty">خودرویی با این مشخصات پیدا نشد.</div>';
+ document.getElementById('carGrid').innerHTML=list.slice(0,visibleLimit).map(cardHTML).join('')||'<div class="sub">خودرویی با این مشخصات پیدا نشد.</div>';
  document.getElementById('moreBtn').style.display=visibleLimit>=list.length?'none':'inline-block';
 }
-function updatePrice(id){
- const c=cars.find(x=>x.id===id);if(!c)return;
- const year=selectedYear(c),p=priceAt(c,year);
- document.getElementById('price-'+id).innerHTML=money((p.min+p.max)/2)+' <small>حدودی</small>';
- document.getElementById('range-'+id).textContent='بازه تخمینی: '+money(p.min)+' تا '+money(p.max);
-}
-function updateTrim(id){
- const chosen=document.getElementById('trim-'+id).value;
- const match=cars.find(c=>c.name===chosen);
- if(match){
-  const old=cars.find(c=>c.id===id);
-  if(old&&match.id!==id){
-   document.getElementById('price-'+id).innerHTML=money((match.min+match.max)/2)+' <small>حدودی</small>';
-   document.getElementById('range-'+id).textContent='مشخصات و قیمت نمایشی تیپ انتخاب‌شده: '+chosen;
-  }
- }
-}
-function toast(msg){
- const el=document.getElementById('toast');el.textContent=msg;el.style.display='block';
- clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2300);
-}
-function toggleCompare(id){
- if(compareIds.includes(id))compareIds=compareIds.filter(x=>x!==id);
- else if(compareIds.length>=3){toast('حداکثر ۳ خودرو را می‌توانی مقایسه کنی.');return}
- else compareIds.push(id);
- renderCars();renderCompare();
-}
+function updatePrice(id){const c=cars.find(x=>x.id===id);if(!c)return;const p=priceAt(c,selectedYear(c));document.getElementById('price-'+id).innerHTML=money((p.min+p.max)/2)+' <small>قیمت بازار آزاد</small>';document.getElementById('range-'+id).textContent='بازه تخمینی بازار: '+money(p.min)+' تا '+money(p.max)}
+function updateTrim(id){const name=document.getElementById('trim-'+id).value;const match=cars.find(c=>c.name===name);if(!match)return;const p=priceAt(match,selectedYear(cars.find(c=>c.id===id)));document.getElementById('price-'+id).innerHTML=money((p.min+p.max)/2)+' <small>قیمت بازار آزاد</small>';document.getElementById('range-'+id).textContent='بازه تخمینی تیپ انتخاب‌شده: '+money(p.min)+' تا '+money(p.max)}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2300)}
+function toggleCompare(id){if(compareIds.includes(id))compareIds=compareIds.filter(x=>x!==id);else if(compareIds.length>=3){toast('حداکثر ۳ خودرو را می‌توانی مقایسه کنی.');return}else compareIds.push(id);renderCars();renderCompare()}
 function renderCompare(){
- const box=document.getElementById('compareContent');
- const list=compareIds.map(id=>cars.find(c=>c.id===id)).filter(Boolean);
+ const box=document.getElementById('compareContent'),list=compareIds.map(id=>cars.find(c=>c.id===id)).filter(Boolean);
  if(!list.length){box.innerHTML='از کارت خودروها گزینه «مقایسه فنی» را انتخاب کن.';return}
- const rows=[
-  ['قیمت تقریبی',c=>{const p=priceAt(c,1405);return (p.min+p.max)/2},'low',v=>money(v)],
-  ['قدرت موتور (اسب‌بخار)',c=>c.hp,'high',v=>fmt(v)],
-  ['گشتاور (نیوتن‌متر)',c=>c.torque,'high',v=>fmt(v)],
-  ['شتاب صفر تا ۱۰۰ (ثانیه)',c=>c.accel,'low',v=>String(v).replace('.', '٫')],
-  ['مصرف ترکیبی (لیتر/۱۰۰ کیلومتر)',c=>c.fuelUse,'low',v=>String(v).replace('.', '٫')]
- ];
+ const rows=[['قیمت بازار آزاد',c=>(priceAt(c,1405).min+priceAt(c,1405).max)/2,'low',money],['قدرت موتور (اسب‌بخار)',c=>c.hp,'high',fmt],['گشتاور (نیوتن‌متر)',c=>c.torque,'high',fmt],['شتاب صفر تا ۱۰۰ (ثانیه)',c=>c.accel,'low',v=>String(v).replace('.', '٫')],['مصرف ترکیبی (لیتر/۱۰۰ کیلومتر)',c=>c.fuelUse,'low',v=>String(v).replace('.', '٫')]];
  let html='<div class="compare-table-wrap"><table><thead><tr><th>معیار</th>'+list.map(c=>`<th>${safe(c.name)}</th>`).join('')+'</tr></thead><tbody>';
- rows.forEach(([label,get,better,format])=>{
-  const vals=list.map(get),best=better==='high'?Math.max(...vals):Math.min(...vals);
-  html+=`<tr><th>${label}</th>`+list.map((c,i)=>`<td class="${vals[i]===best?'best':''}">${format(vals[i])}${vals.filter(v=>v===best).length===1&&vals[i]===best?'<span class="winner">بهترین در این معیار</span>':''}</td>`).join('')+'</tr>';
- });
- html+='<tr><th>گیربکس</th>'+list.map(c=>`<td>${safe(c.gearbox)}</td>`).join('')+'</tr>';
- html+='<tr><th>نوع سوخت</th>'+list.map(c=>`<td>${safe(c.fuel)}</td>`).join('')+'</tr>';
- html+='</tbody></table></div><p class="notice">نتیجه بهتر در معیارهای عددی، با توجه به مقدار ثبت‌شده در همین کاتالوگ مشخص می‌شود. مشخصات ممکن است با تیپ و سال ساخت فرق کند.</p>';
- box.innerHTML=html;
+ rows.forEach(([label,get,better,format])=>{const vals=list.map(get),best=better==='high'?Math.max(...vals):Math.min(...vals);html+=`<tr><th>${label}</th>`+list.map((c,i)=>`<td class="${vals[i]===best?'best':''}">${format(vals[i])}${vals.filter(v=>v===best).length===1&&vals[i]===best?'<span class="winner">بهترین در این معیار</span>':''}</td>`).join('')+'</tr>'});
+ html+='<tr><th>گیربکس</th>'+list.map(c=>`<td>${safe(c.gearbox)}</td>`).join('')+'</tr><tr><th>نوع سوخت</th>'+list.map(c=>`<td>${safe(c.fuel)}</td>`).join('')+'</tr></tbody></table></div><p class="notice">قیمت‌ها تخمینی‌اند. مشخصات واقعی می‌تواند با تیپ و سال ساخت تفاوت داشته باشد.</p>';box.innerHTML=html;
 }
-function useForEstimate(id){
- const c=cars.find(x=>x.id===id);if(!c)return;
- document.getElementById('estModel').value=String(id);
- document.getElementById('estYear').value=String(selectedYear(c));
- document.getElementById('estimate').scrollIntoView({behavior:'smooth'});
-}
+function useForEstimate(id){const c=cars.find(x=>x.id===id);if(!c)return;document.getElementById('estModel').value=String(id);document.getElementById('estYear').value=String(selectedYear(c));document.getElementById('estimate').scrollIntoView({behavior:'smooth'})}
 function init(){
  const brands=[...new Set(cars.map(c=>c.brand))].sort((a,b)=>a.localeCompare(b,'fa'));
  document.getElementById('brandFilter').innerHTML='<option value="">همه برندها</option>'+brands.map(b=>`<option value="${safe(b)}">${safe(b)}</option>`).join('');
@@ -585,36 +414,18 @@ function init(){
  renderCars();renderCompare();
 }
 document.getElementById('search').addEventListener('input',()=>{visibleLimit=12;renderCars()});
-document.getElementById('brandFilter').addEventListener('change',()=>{
- const brand=document.getElementById('brandFilter').value;
- if(brand)document.getElementById('search').value=brand;
- else document.getElementById('search').value='';
- visibleLimit=12;renderCars();
-});
+document.getElementById('brandFilter').addEventListener('change',()=>{visibleLimit=12;renderCars()});
 document.getElementById('sortFilter').addEventListener('change',renderCars);
-document.getElementById('categoryFilters').addEventListener('click',e=>{
- const b=e.target.closest('button[data-cat]');if(!b)return;
- activeCategory=b.dataset.cat;
- document.querySelectorAll('#categoryFilters .chip').forEach(x=>x.classList.toggle('active',x===b));
- visibleLimit=12;renderCars();
-});
+document.getElementById('categoryFilters').addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(!b)return;activeCategory=b.dataset.cat;document.querySelectorAll('#categoryFilters .chip').forEach(x=>x.classList.toggle('active',x===b));visibleLimit=12;renderCars()});
 document.getElementById('moreBtn').addEventListener('click',()=>{visibleLimit+=12;renderCars()});
 document.getElementById('clearCompare').addEventListener('click',()=>{compareIds=[];renderCars();renderCompare()});
 document.getElementById('estimateBtn').addEventListener('click',()=>{
- const id=Number(document.getElementById('estModel').value);
- const c=cars.find(x=>x.id===id);if(!c)return;
- const year=Number(document.getElementById('estYear').value);
- const km=Math.max(0,Number(document.getElementById('estKm').value)||0);
- const paint=Number(document.getElementById('estPaint').value);
- const body=Number(document.getElementById('estBody').value);
- const tech=Number(document.getElementById('estTech').value);
- const base=priceAt(c,year);
- const kmFactor=Math.max(.65,1-Math.max(0,km-30000)/1000000);
- const factor=paint*body*tech*kmFactor;
- const low=base.min*factor,high=base.max*factor;
- const result=document.getElementById('estimateResult');
- result.style.display='block';
- result.innerHTML=`تخمین تقریبی قیمت <b>${safe(c.name)}</b><strong>${money(low)} تا ${money(high)}</strong><span class="sub">قیمت میانی تخمینی: ${money((low+high)/2)}</span>`;
+ const c=cars.find(x=>x.id===Number(document.getElementById('estModel').value));if(!c)return;
+ const year=Number(document.getElementById('estYear').value),km=Math.max(0,Number(document.getElementById('estKm').value)||0);
+ const paint=Number(document.getElementById('estPaint').value),body=Number(document.getElementById('estBody').value),tech=Number(document.getElementById('estTech').value);
+ const base=priceAt(c,year),kmFactor=Math.max(.65,1-Math.max(0,km-30000)/1000000),factor=paint*body*tech*kmFactor;
+ const low=base.min*factor,high=base.max*factor,result=document.getElementById('estimateResult');
+ result.style.display='block';result.innerHTML=`تخمین قیمت بازار آزاد <b>${safe(c.name)}</b><strong>${money(low)} تا ${money(high)}</strong><span class="sub">قیمت میانی تخمینی: ${money((low+high)/2)}</span>`;
 });
 init();
 </script>
