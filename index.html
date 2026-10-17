@@ -155,9 +155,10 @@ $('advisorForm').addEventListener('submit',e=>{
   const budget=Math.max(0,(Number($('budget').value)||0)/1000);
   const use=$('useType').value;
   const body=$('carType').value;
-  const inBudget=cars.filter(c=>c.price<=budget);
+  const minBudget=budget*0.8;
+const inBudget=cars.filter(c=>c.price>=minBudget&&c.price<=budget);
   const bodyMatches=inBudget.filter(c=>body==='any'||c.body===body);
-  let pool=bodyMatches.length?bodyMatches:(inBudget.length?inBudget:cars);
+  let pool=bodyMatches.length?bodyMatches:inBudget;
   const ranked=pool.map(c=>{
     const within=c.price<=budget;
     const bodyMatch=body==='any'||c.body===body;
