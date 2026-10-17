@@ -3,432 +3,939 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071713">
-<title>خودروبان | قیمت بازار و مقایسه خودرو</title>
+<meta name="theme-color" content="#08120f">
+<meta name="description" content="خودروبان؛ جست‌وجو، بررسی قیمت بازار، مشخصات فنی و مقایسه خودروهای ایرانی و خارجی">
+<title>خودروبان | هوشمندانه‌تر انتخاب کن</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-:root{--bg:#071713;--panel:#10231d;--panel2:#142b23;--line:#274438;--green:#80f0b2;--green2:#2bb879;--text:#f2f8f4;--muted:#9bb2a6;--red:#ff8e8e}
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#08120f;
+  --panel:#101d19;
+  --panel2:#15251f;
+  --border:#263a31;
+  --green:#b5f36d;
+  --green2:#8bdc48;
+  --text:#f4f8f5;
+  --muted:#91a49a;
+  --red:#ff8585;
+  --radius:20px;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif}
-button,input,select{font:inherit}button{cursor:pointer}a{color:var(--green);text-decoration:none}
-.container{width:min(1250px,94%);margin:auto}
-header{position:sticky;top:0;z-index:20;background:#071713ed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:11px;font-size:23px;font-weight:900}.logo-mark{width:43px;height:43px;border-radius:14px;background:var(--green);color:#062017;display:grid;place-items:center;font-size:25px}.logo span{color:var(--green)}
-.navlinks{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted)}.navlinks a{color:var(--muted)}
-.hero{padding:54px 0 28px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:35px}
-.tag{display:inline-flex;border:1px solid #315c46;color:var(--green);padding:7px 13px;border-radius:30px;font-size:12px}
-h1{font-size:clamp(30px,4.3vw,54px);line-height:1.5;margin:18px 0}h1 em{font-style:normal;color:var(--green)}
-.hero p{color:var(--muted);line-height:2.1;max-width:620px}
-.hero-art{min-height:250px;display:grid;place-items:center;border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 50% 50%,#24533b 0,#10271e 48%,#0b1b15 80%);overflow:hidden;position:relative}
-.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #80f0b21a;border-radius:50%;width:280px;height:280px}.hero-art:after{width:390px;height:390px}
-.hero-car{font-size:115px;filter:drop-shadow(0 20px 15px #0008);z-index:1}.hero-caption{position:absolute;bottom:17px;right:20px;color:#c1ddce;font-size:12px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 34px}.stat{background:var(--panel);border:1px solid var(--line);padding:17px;border-radius:17px}.stat strong{display:block;font-size:22px;color:var(--green)}.stat span{font-size:12px;color:var(--muted)}
-.section{padding:24px 0 42px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:20px}
-h2{font-size:25px;margin:0 0 8px}.sub{color:var(--muted);font-size:13px;line-height:1.9}
-.toolbar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:13px}
-.field{width:100%;background:#091b14;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px 13px;outline:none;min-width:0}.field:focus{border-color:var(--green2)}select option{background:#10231d}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}
-.chip,.btn{border:1px solid var(--line);border-radius:11px;padding:10px 14px;background:var(--panel);color:var(--text)}
-.chip.active,.btn.primary{background:var(--green);color:#082017;border-color:var(--green);font-weight:800}.btn.secondary{background:transparent;color:var(--green);border-color:#3a7054}.btn.danger{color:var(--red)}
-.car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.car-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.2s;min-width:0}.car-card:hover{transform:translateY(-3px);border-color:#4d8868}
-.car-photo{height:175px;position:relative;background:#152b22;overflow:hidden}.car-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo-badge{position:absolute;top:12px;right:12px;background:#071713d9;color:var(--green);border:1px solid #80f0b24a;border-radius:8px;padding:5px 9px;font-size:11px}
-.compare-check{position:absolute;left:12px;top:12px;display:flex;gap:5px;align-items:center;background:#071713df;padding:6px 9px;border-radius:9px;font-size:11px}.compare-check input{accent-color:var(--green)}
-.car-content{padding:15px}.car-title{font-size:17px;font-weight:800;margin:0 0 4px}.car-trim{font-size:12px;color:var(--muted);margin-bottom:13px}
-.price{font-size:20px;color:var(--green);font-weight:900}.price small{font-size:11px;color:var(--muted);font-weight:400}.price-range{font-size:11px;color:var(--muted);margin:3px 0 12px}
-.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.spec{background:#091b14;border-radius:9px;padding:9px}.spec span{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}.spec strong{font-size:12px}
-.card-controls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.card-controls select{font-size:12px;padding:9px}.card-actions{display:flex;gap:8px;margin-top:10px}.card-actions .btn{flex:1;font-size:12px;padding:10px 6px}
-.more-wrap{text-align:center;padding-top:25px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:23px;margin-bottom:20px}
-.compare-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}.compare-table-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:650px}th,td{padding:13px 12px;text-align:right;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--muted);font-weight:600}td.best{color:var(--green);font-weight:900;background:#80f0b20b}.winner{color:var(--green);font-size:10px;display:block;margin-top:3px}
-.forms-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}.form-item{min-width:0}
-.result{margin-top:15px;padding:16px;border:1px solid #386c4e;background:#102b20;border-radius:13px;display:none}.result strong{color:var(--green);font-size:22px;display:block;margin:7px 0}
-.notice{font-size:11px;line-height:1.9;color:var(--muted);margin-top:13px}.source-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.source-links a{border:1px solid var(--line);padding:9px 12px;border-radius:10px;font-size:12px}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:12px;line-height:2}
-.toast{position:fixed;bottom:20px;right:50%;transform:translateX(50%);background:var(--green);color:#071713;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:800;z-index:50;display:none;box-shadow:0 8px 30px #0008}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{min-height:200px}.car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.navlinks{display:none}}
-@media(max-width:600px){.car-grid{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.forms-grid{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:18px}.hero{padding-top:30px}.hero-art{min-height:170px}.hero-car{font-size:85px}.section-head{align-items:start;flex-direction:column}.panel{padding:15px}.form-grid{grid-template-columns:1fr 1fr}}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Vazirmatn",Tahoma,sans-serif;
+  line-height:1.8;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{width:min(1240px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,18,15,.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;min-height:76px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:900}
+.logo-icon{
+  width:43px;height:43px;border-radius:14px;
+  display:grid;place-items:center;
+  background:var(--green);color:#102016;font-size:24px;
+}
+.logo span{color:var(--green)}
+.nav-links{display:flex;gap:24px;align-items:center;color:#c1cec6;font-size:14px}
+.nav-links a:hover{color:var(--green)}
+.btn{
+  border:0;border-radius:12px;padding:11px 17px;
+  background:var(--green);color:#112015;font-weight:800;
+  transition:.2s;
+}
+.btn:hover{background:#d1ffa0;transform:translateY(-1px)}
+.btn-secondary{
+  background:#1a2a22;color:var(--text);
+  border:1px solid var(--border);
+}
+.btn-secondary:hover{background:#24392d}
+.btn-small{padding:8px 12px;font-size:13px}
+.hero{padding:72px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:35px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--green);font-size:13px;font-weight:700;
+  border:1px solid #3b5438;border-radius:100px;padding:6px 13px;
+  background:#122018;
+}
+.hero h1{font-size:clamp(36px,5.2vw,67px);line-height:1.4;margin:18px 0;font-weight:900;letter-spacing:-1.5px}
+.hero h1 span{color:var(--green)}
+.hero p{color:var(--muted);max-width:560px;font-size:16px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.hero-art{
+  min-height:330px;position:relative;display:grid;place-items:center;
+  border:1px solid var(--border);border-radius:30px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 50%,#264333 0%,#12221a 45%,#0c1712 75%);
+}
+.hero-art:before,.hero-art:after{
+  content:"";position:absolute;border:1px solid #45644a;border-radius:50%;
+  width:340px;height:340px;opacity:.3;
+}
+.hero-art:after{width:440px;height:440px}
+.hero-car{position:relative;z-index:2;width:100%;max-width:570px;filter:drop-shadow(0 24px 25px #0009)}
+.hero-stat{
+  position:absolute;z-index:3;bottom:20px;right:20px;
+  background:#0b1712e8;border:1px solid var(--border);
+  border-radius:15px;padding:12px 16px;font-size:12px;color:var(--muted);
+}
+.hero-stat strong{display:block;color:var(--green);font-size:17px}
+.section{padding:38px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}
+.section-head h2{font-size:27px;margin:0;font-weight:900}
+.section-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.tag{font-size:11px;padding:4px 9px;border-radius:8px;background:#21362a;color:var(--green)}
+.search-panel{
+  display:grid;grid-template-columns:1.3fr 1fr 1fr auto;
+  gap:12px;background:var(--panel);border:1px solid var(--border);
+  border-radius:20px;padding:16px;margin:22px 0;
+}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font-size:12px;color:var(--muted)}
+.field input,.field select,.search-input{
+  width:100%;min-width:0;background:#0b1712;color:var(--text);
+  border:1px solid var(--border);border-radius:11px;padding:11px 12px;outline:none;
+}
+.field input:focus,.field select:focus,.search-input:focus{border-color:var(--green)}
+select option{background:#101d19}
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 20px}
+.filter-pill{
+  border:1px solid var(--border);border-radius:100px;padding:7px 14px;
+  background:transparent;color:#c7d3cc;font-size:13px;
+}
+.filter-pill.active{background:var(--green);color:#132016;border-color:var(--green);font-weight:800}
+.car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.car-card{
+  min-width:0;background:var(--panel);border:1px solid var(--border);
+  border-radius:20px;overflow:hidden;transition:.25s;
+}
+.car-card:hover{transform:translateY(-4px);border-color:#58764f}
+.car-photo{height:195px;background:#17271f;position:relative;overflow:hidden}
+.car-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-label{
+  position:absolute;top:12px;right:12px;background:#08120fe6;
+  border:1px solid #ffffff1c;border-radius:9px;padding:4px 9px;font-size:11px;
+}
+.car-body{padding:16px}
+.car-title-row{display:flex;align-items:start;justify-content:space-between;gap:8px}
+.car-title{font-weight:800;font-size:17px;margin:0}
+.car-subtitle{font-size:12px;color:var(--muted);margin-top:3px}
+.car-price{color:var(--green);font-weight:900;font-size:17px;margin:13px 0 2px}
+.car-price small{font-size:11px;color:var(--muted);font-weight:400}
+.spec-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:14px 0}
+.spec-mini div{background:#0b1712;border-radius:10px;padding:8px 5px;text-align:center}
+.spec-mini strong{display:block;font-size:13px}
+.spec-mini span{font-size:10px;color:var(--muted)}
+.card-actions{display:flex;gap:8px}
+.card-actions button{flex:1}
+.compare-check{display:flex;align-items:center;gap:6px;font-size:12px;color:#c5d0c8}
+.compare-check input{accent-color:var(--green)}
+.empty-state{padding:40px;text-align:center;color:var(--muted);grid-column:1/-1}
+.notice{
+  border:1px solid #394b37;background:#111e16;color:#b6c7b8;
+  border-radius:13px;padding:12px 15px;font-size:12px;margin-top:18px;
+}
+.notice strong{color:var(--green)}
+.selector-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--radius);padding:22px;min-width:0;
+}
+.panel h3{margin:0 0 14px;font-size:19px}
+.select-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.selected-car{
+  margin-top:15px;padding:15px;border-radius:14px;background:#0b1712;
+  border:1px solid var(--border);display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+.selected-car strong{display:block}
+.selected-car small{color:var(--muted)}
+.selected-price{color:var(--green);font-weight:900;text-align:left}
+.price-big{font-size:24px}
+.compare-wrap{overflow-x:auto;margin-top:18px;border:1px solid var(--border);border-radius:14px}
+.compare-table{width:100%;border-collapse:collapse;min-width:680px}
+.compare-table th,.compare-table td{padding:13px 14px;border-bottom:1px solid var(--border);text-align:center;font-size:13px}
+.compare-table th{background:#17271f}
+.compare-table th:first-child,.compare-table td:first-child{text-align:right;color:#bdcbc2}
+.compare-table tr:last-child td{border-bottom:0}
+.best{color:var(--green)!important;font-weight:900;background:#1a3221}
+.not-best{color:#dce5df}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.estimate-result{
+  background:#0b1712;border:1px solid #3c5d38;border-radius:15px;
+  padding:18px;margin-top:16px;
+}
+.estimate-result strong{color:var(--green);font-size:25px;display:block}
+.estimate-result p{color:var(--muted);font-size:12px;margin:4px 0 0}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.feature{
+  padding:19px;background:var(--panel);border:1px solid var(--border);
+  border-radius:17px;
+}
+.feature-icon{font-size:25px;margin-bottom:8px}
+.feature h3{font-size:15px;margin:0 0 5px}
+.feature p{font-size:12px;color:var(--muted);margin:0}
+.source-links{display:flex;gap:10px;flex-wrap:wrap}
+.source-links a{
+  display:inline-block;border:1px solid var(--border);border-radius:10px;
+  padding:8px 12px;color:#d1ded5;font-size:12px;
+}
+.source-links a:hover{border-color:var(--green);color:var(--green)}
+footer{border-top:1px solid var(--border);padding:30px 0;margin-top:30px;color:var(--muted);font-size:12px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.toast{
+  position:fixed;bottom:20px;left:20px;z-index:999;
+  background:var(--green);color:#122015;padding:12px 18px;
+  border-radius:12px;font-size:13px;font-weight:800;
+  box-shadow:0 10px 30px #0005;display:none;
+}
+.toast.show{display:block}
+.mobile-menu{display:none}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{min-height:260px}
+  .car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .search-panel{grid-template-columns:1fr 1fr}
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .nav{min-height:65px}
+  .nav-links{gap:10px;font-size:11px}
+  .nav-links a:nth-child(2),.nav-links a:nth-child(3){display:none}
+  .logo{font-size:19px}
+  .logo-icon{width:37px;height:37px}
+  .nav>.btn{font-size:11px;padding:9px}
+  .hero{padding-top:42px}
+  .hero h1{font-size:38px}
+  .hero p{font-size:14px}
+  .hero-art{min-height:220px}
+  .section{padding:27px 0}
+  .section-head h2{font-size:22px}
+  .car-grid{grid-template-columns:1fr}
+  .car-photo{height:220px}
+  .search-panel{grid-template-columns:1fr}
+  .selector-layout{grid-template-columns:1fr}
+  .select-grid,.form-grid{grid-template-columns:1fr}
+  .feature-grid{grid-template-columns:1fr 1fr}
+  .panel{padding:15px}
+  .section-head{align-items:start}
+}
 </style>
 </head>
+
 <body>
 <header>
-<div class="container nav">
-<a class="logo" href="#"><div class="logo-mark">خ</div>خودرو<span>بان</span></a>
-<nav class="navlinks"><a href="#cars">خودروها</a><a href="#compare">مقایسه فنی</a><a href="#estimate">تخمین قیمت</a><a href="#sources">منابع قیمت</a></nav>
-<a class="btn primary" href="#compare">مقایسه خودروها</a>
-</div>
+  <div class="container nav">
+    <a href="#" class="logo"><div class="logo-icon">🚘</div>خودرو<span>بان</span></a>
+    <nav class="nav-links">
+      <a href="#cars">خودروها</a>
+      <a href="#compare">مقایسه فنی</a>
+      <a href="#estimate">قیمت خودروی من</a>
+    </nav>
+    <a class="btn btn-small" href="#finder">پیدا کردن خودرو</a>
+  </div>
 </header>
 
-<main class="container">
+<main>
 <section class="hero">
-<div>
-<div class="tag">● راهنمای خرید و بررسی خودرو</div>
-<h1>قبل از خرید،<br><em>هوشمندانه مقایسه کن.</em></h1>
-<p>قیمت مصرف‌کننده در بازار آزاد، مشخصات فنی، سال ساخت و تیپ خودرو را بررسی کن. خودروها را کنار هم مقایسه کن و برای ماشین کارکرده‌ات تخمین قیمت بگیر.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
-<a class="btn primary" href="#cars">دیدن خودروها ←</a>
-<a class="btn secondary" href="#estimate">خودروی من چند؟</a>
-</div>
-</div>
-<div class="hero-art"><div class="hero-car">🚘</div><div class="hero-caption">خودروبان؛ مقایسه قبل از تصمیم</div></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">● انتخاب بهتر، با اطلاعات بیشتر</span>
+      <h1>قبل از خرید،<br><span>خودروتو بشناس.</span></h1>
+      <p>مدل‌ها رو پیدا کن، تیپ و سال ساخت رو مشخص کن، قیمت بازار رو بررسی کن و مشخصات فنی ماشین‌ها رو کنار هم بذار.</p>
+      <div class="hero-actions">
+        <a href="#cars" class="btn">دیدن خودروها ←</a>
+        <a href="#compare" class="btn btn-secondary">مقایسه فنی</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg class="hero-car" viewBox="0 0 640 300" role="img" aria-label="تصویر گرافیکی خودرو">
+        <defs>
+          <linearGradient id="carPaint" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d8ff9c"/>
+            <stop offset=".45" stop-color="#91d44c"/>
+            <stop offset="1" stop-color="#4b8a2c"/>
+          </linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#3e6256"/><stop offset="1" stop-color="#0b1712"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="325" cy="245" rx="240" ry="22" fill="#000" opacity=".4"/>
+        <path d="M92 192 L117 150 Q128 132 160 126 L222 79 Q238 68 264 68 L379 70 Q400 72 421 94 L480 143 L525 157 Q546 164 551 185 L553 208 L83 208Z" fill="url(#carPaint)" stroke="#d8ff9c" stroke-width="2"/>
+        <path d="M174 125 L232 83 Q241 78 264 78 L311 79 L311 125Z" fill="url(#glass)" stroke="#a8df7b" stroke-width="2"/>
+        <path d="M324 79 L376 81 Q391 82 405 99 L433 125 L324 125Z" fill="url(#glass)" stroke="#a8df7b" stroke-width="2"/>
+        <path d="M315 80 L315 128" stroke="#d8ff9c" stroke-width="3"/>
+        <path d="M128 155 L183 155" stroke="#e7ffb8" stroke-width="4" stroke-linecap="round"/>
+        <path d="M479 157 L517 169 L525 184 L478 184Z" fill="#fff0b8"/>
+        <path d="M89 183 L130 183 L122 199 L84 199Z" fill="#e0ffb0"/>
+        <path d="M160 207 L477 207" stroke="#315b24" stroke-width="5"/>
+        <circle cx="179" cy="207" r="39" fill="#0a100d" stroke="#65766a" stroke-width="5"/>
+        <circle cx="179" cy="207" r="23" fill="#263a30" stroke="#c5d7c9" stroke-width="4"/>
+        <circle cx="179" cy="207" r="7" fill="#a9b8ae"/>
+        <circle cx="451" cy="207" r="39" fill="#0a100d" stroke="#65766a" stroke-width="5"/>
+        <circle cx="451" cy="207" r="23" fill="#263a30" stroke="#c5d7c9" stroke-width="4"/>
+        <circle cx="451" cy="207" r="7" fill="#a9b8ae"/>
+        <path d="M110 146 Q150 135 173 143" fill="none" stroke="#efffd8" stroke-width="2" opacity=".8"/>
+      </svg>
+      <div class="hero-stat"><strong>خودروبان</strong>قیمت بازار + مشخصات فنی + مقایسه</div>
+    </div>
+  </div>
 </section>
 
-<div class="stats">
-<div class="stat"><strong id="totalCount">۱۳۰+</strong><span>مدل و تیپ خودرو</span></div>
-<div class="stat"><strong>۳ خودرو</strong><span>مقایسه هم‌زمان</span></div>
-<div class="stat"><strong>۱۴۰۵</strong><span>سال مرجع انتخاب</span></div>
-</div>
+<section class="section" id="finder">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>ماشین موردنظرت رو پیدا کن</h2><p>جست‌وجو کن یا مرحله‌به‌مرحله برند، مدل و تیپ رو انتخاب کن.</p></div>
+      <span class="tag">جست‌وجوی هوشمند</span>
+    </div>
 
-<section class="section" id="cars">
-<div class="section-head"><div><h2>کاتالوگ خودروها</h2><div class="sub">سال ساخت و تیپ را انتخاب کن؛ قیمت تخمینی بازار مصرف‌کننده را ببین.</div></div><div class="sub" id="shownCount"></div></div>
-<div class="toolbar">
-<input class="field" id="search" placeholder="جست‌وجو: پراید ۱۳۱، پژو ۴۰۵، دنا...">
-<select class="field" id="brandFilter"><option value="">همه برندها</option></select>
-<select class="field" id="sortFilter"><option value="default">ترتیب پیشنهادی</option><option value="low">قیمت بازار: کم به زیاد</option><option value="high">قیمت بازار: زیاد به کم</option><option value="power">قدرت موتور: زیاد به کم</option></select>
-</div>
-<div class="filters" id="categoryFilters">
-<button class="chip active" data-cat="">همه</button><button class="chip" data-cat="داخلی">داخلی</button><button class="chip" data-cat="چینی">چینی</button><button class="chip" data-cat="وارداتی">وارداتی</button><button class="chip" data-cat="وانت">وانت</button>
-</div>
-<div class="car-grid" id="carGrid"></div>
-<div class="more-wrap"><button class="btn secondary" id="moreBtn">خودروهای بیشتر +</button></div>
-<p class="notice">**قیمت مصرف‌کننده در این سایت یعنی قیمت تقریبی قابل معامله در بازار آزاد برای خریدار نهایی، نه قیمت کارخانه و نه قیمت فروش ویژه شرکت.** اعداد این نسخه نمونه‌اند و هنوز به منبع قیمت روز متصل نیستند؛ قبل از معامله، قیمت روز همان تیپ و مدل را بررسی کن.</p>
+    <div class="search-panel">
+      <div class="field">
+        <label for="searchCars">جست‌وجوی نام خودرو</label>
+        <input id="searchCars" placeholder="مثلاً پراید، دنا، ۲۰۷..." autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="brandFilter">برند</label>
+        <select id="brandFilter"><option value="">همه برندها</option></select>
+      </div>
+      <div class="field">
+        <label for="categoryFilter">دسته‌بندی</label>
+        <select id="categoryFilter">
+          <option value="">همه خودروها</option>
+          <option value="داخلی">داخلی</option>
+          <option value="مونتاژی">مونتاژی</option>
+          <option value="وارداتی">وارداتی</option>
+          <option value="وانت">وانت و تجاری</option>
+        </select>
+      </div>
+      <button class="btn" id="resetFilters">پاک‌کردن فیلترها</button>
+    </div>
+
+    <div class="filter-row" id="quickFilters">
+      <button class="filter-pill active" data-filter="">همه</button>
+      <button class="filter-pill" data-filter="داخلی">ایرانی</button>
+      <button class="filter-pill" data-filter="مونتاژی">مونتاژی</button>
+      <button class="filter-pill" data-filter="وارداتی">وارداتی</button>
+      <button class="filter-pill" data-filter="وانت">وانت</button>
+    </div>
+
+    <div class="section-head">
+      <div><h2>خودروهای پیشنهادی</h2><p id="resultCount">در حال آماده‌سازی فهرست...</p></div>
+      <button class="btn btn-secondary btn-small" id="showMoreBtn">خودروهای بیشتر +</button>
+    </div>
+    <div class="car-grid" id="carGrid"></div>
+    <div class="notice">
+      <strong>نکته درباره قیمت‌ها:</strong>
+      قیمت‌های این نسخه تخمین بازار هستند و اتصال زنده به آگهی‌های دیوار ندارند.
+      قیمت آگهی‌ها ممکن است با توجه به سال، تیپ، کارکرد، شهر و وضعیت بدنه تغییر کند.
+      برای تصمیم خرید، آگهی‌های همان خودرو و همان سال را جداگانه بررسی کن.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="choose">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>انتخاب مرحله‌ای خودرو</h2><p>اول خانواده خودرو، بعد مدل، سپس تیپ و سال ساخت.</p></div>
+      <span class="tag">مدل ← تیپ ← سال</span>
+    </div>
+    <div class="selector-layout">
+      <div class="panel">
+        <h3>۱. مشخصات خودرو</h3>
+        <div class="select-grid">
+          <div class="field">
+            <label for="familySelect">خانواده / مدل اصلی</label>
+            <select id="familySelect"></select>
+          </div>
+          <div class="field">
+            <label for="trimSelect">تیپ / نسخه</label>
+            <select id="trimSelect"></select>
+          </div>
+          <div class="field">
+            <label for="yearSelect">سال ساخت</label>
+            <select id="yearSelect"></select>
+          </div>
+          <div class="field">
+            <label for="mileageSelect">وضعیت قیمت</label>
+            <select id="conditionSelect">
+              <option value="clean">بدنه سالم و بی‌رنگ</option>
+              <option value="minor">خط‌وخش یا صافکاری جزئی</option>
+              <option value="paint">دارای رنگ‌شدگی</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" id="showSelectedPrice" style="width:100%;margin-top:15px">بررسی قیمت بازار</button>
+        <div class="selected-car" id="selectedCarCard">
+          <div><strong>خودروی انتخابی</strong><small>مدل و تیپ را انتخاب کن</small></div>
+          <div class="selected-price">—</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>۲. اطلاعات فنی نسخه انتخابی</h3>
+        <div id="selectedSpecs" style="color:var(--muted);font-size:13px">
+          با انتخاب خودرو، مشخصات فنی اینجا نمایش داده می‌شود.
+        </div>
+        <div class="notice">مشخصات فنی در بعضی سال‌ها یا تیپ‌ها متفاوت است. اطلاعات نمایش‌داده‌شده عمومی است و پیش از خرید باید با مشخصات همان نسخه تطبیق داده شود.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section" id="compare">
-<div class="panel">
-<div class="compare-top"><div><h2>مقایسه فنی خودروها</h2><div class="sub">حداکثر ۳ خودرو انتخاب کن؛ در هر معیار، نتیجه بهتر مشخص می‌شود.</div></div><button class="btn danger" id="clearCompare">پاک کردن مقایسه</button></div>
-<div id="compareContent" class="sub">از کارت خودروها گزینه «مقایسه فنی» را انتخاب کن.</div>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <div><h2>مقایسه واقعی مشخصات فنی</h2><p>تا سه خودرو انتخاب کن؛ برتری هر عدد با توجه به نوع مشخصه مشخص می‌شود.</p></div>
+      <span class="tag">مقایسه تا ۳ خودرو</span>
+    </div>
+    <div class="panel">
+      <div class="field">
+        <label for="compareAdd">افزودن خودرو به مقایسه</label>
+        <select id="compareAdd"><option value="">انتخاب خودرو...</option></select>
+      </div>
+      <div id="compareSelected" class="filter-row" style="margin-top:15px"></div>
+      <div id="compareResult">
+        <div class="empty-state">برای شروع، خودروها را از فهرست بالا اضافه کن.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section" id="estimate">
-<div class="section-head"><div><h2>خودروی من چند؟</h2><div class="sub">اطلاعات خودروی کارکرده را وارد کن تا یک بازه تخمینی قیمت بازار آزاد ببینی.</div></div></div>
-<div class="forms-grid">
-<div class="panel">
-<h3 style="margin-top:0">مشخصات خودرو</h3>
-<div class="form-grid">
-<div class="form-item"><label for="estModel">مدل خودرو</label><select class="field" id="estModel"></select></div>
-<div class="form-item"><label for="estYear">سال ساخت</label><select class="field" id="estYear"></select></div>
-<div class="form-item"><label for="estKm">کارکرد (کیلومتر)</label><input class="field" id="estKm" type="number" min="0" value="80000"></div>
-<div class="form-item"><label for="estPaint">وضعیت رنگ بدنه</label><select class="field" id="estPaint"><option value="1">بدون رنگ</option><option value=".96">یک لکه رنگ</option><option value=".91">چند لکه رنگ</option><option value=".84">رنگ‌شدگی گسترده</option></select></div>
-<div class="form-item"><label for="estBody">وضعیت شاسی و بدنه</label><select class="field" id="estBody"><option value="1">سالم</option><option value=".90">ضربه جزئی بدون آسیب شاسی</option><option value=".72">آسیب شاسی یا تصادف جدی</option></select></div>
-<div class="form-item"><label for="estTech">وضعیت فنی</label><select class="field" id="estTech"><option value="1">سالم</option><option value=".93">نیازمند تعمیر جزئی</option><option value=".82">نیازمند تعمیر اساسی</option></select></div>
-</div>
-<button class="btn primary" style="width:100%;margin-top:16px" id="estimateBtn">تخمین قیمت بازار آزاد</button>
-<div class="result" id="estimateResult"></div>
-<div class="notice">تخمین تقریبی است؛ قیمت واقعی به تیپ دقیق، بیمه، شهر، وضعیت فنی و شرایط بازار وابسته است.</div>
-</div>
-<div class="panel">
-<h3 style="margin-top:0">منابع بررسی قیمت بازار</h3>
-<div class="specs">
-<div class="spec"><span>قیمت بازار</span><strong>قیمت آگهی‌های فروش</strong></div>
-<div class="spec"><span>سال ساخت</span><strong>مدل خودرو</strong></div>
-<div class="spec"><span>بدنه</span><strong>رنگ و تصادف</strong></div>
-<div class="spec"><span>فنی</span><strong>موتور و گیربکس</strong></div>
-</div>
-<p class="sub" style="line-height:2;margin-top:15px">در این سایت نباید قیمت کارخانه یا قیمت فروش فوری شرکت به‌عنوان قیمت خودرو به مصرف‌کننده نمایش داده شود. مبنای قیمت باید قیمت بازار آزاد و آگهی‌های خودروهای مشابه با همان تیپ و سال باشد.</p>
-<div class="source-links" id="sources">
-<a href="https://nemuda.com/car" target="_blank" rel="noopener">قیمت خودروهای کارکرده</a>
-<a href="https://carbank.info/prices" target="_blank" rel="noopener">بررسی قیمت خودرو</a>
-<a href="https://divar.ir/" target="_blank" rel="noopener">آگهی‌های بازار آزاد</a>
-<a href="https://asbe-bokhar.com/car-price/daily-car-price/" target="_blank" rel="noopener">جدول قیمت روز خودرو</a>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="section-head">
+      <div><h2>خودروی من چند می‌ارزه؟</h2><p>یک تخمین اولیه براساس خودرو، سال، کارکرد و وضعیت بدنه بگیر.</p></div>
+      <span class="tag">تخمین قیمت</span>
+    </div>
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label for="estimateFamily">مدل خودرو</label>
+          <select id="estimateFamily"></select>
+        </div>
+        <div class="field">
+          <label for="estimateTrim">تیپ خودرو</label>
+          <select id="estimateTrim"></select>
+        </div>
+        <div class="field">
+          <label for="estimateYear">سال ساخت</label>
+          <select id="estimateYear"></select>
+        </div>
+        <div class="field">
+          <label for="estimateKm">کارکرد (کیلومتر)</label>
+          <input type="number" id="estimateKm" min="0" max="1000000" value="150000">
+        </div>
+        <div class="field">
+          <label for="estimateBody">وضعیت بدنه</label>
+          <select id="estimateBody">
+            <option value="1">سالم و بی‌رنگ</option>
+            <option value=".96">خط‌وخش جزئی</option>
+            <option value=".90">یک یا چند لکه رنگ</option>
+            <option value=".84">دوررنگ</option>
+            <option value=".70">تصادف جدی یا آسیب شاسی</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="estimateTech">وضعیت فنی</label>
+          <select id="estimateTech">
+            <option value="1">سالم</option>
+            <option value=".94">نیاز به سرویس</option>
+            <option value=".82">دارای ایراد فنی</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn" id="calculateEstimate" style="margin-top:18px;width:100%">محاسبه تخمینی قیمت</button>
+      <div id="estimateResult"></div>
+      <div class="notice">این ابزار جای کارشناسی حضوری، بررسی مدارک، تست فنی و استعلام آگهی‌های روز را نمی‌گیرد. نتیجه صرفاً تخمین اولیه است.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>چرا خودروبان؟</h2><p>ابزارهایی برای انتخاب آگاهانه‌تر، نه فقط دیدن یک عدد قیمت.</p></div>
+    </div>
+    <div class="feature-grid">
+      <div class="feature"><div class="feature-icon">🔎</div><h3>جست‌وجوی سریع</h3><p>مدل و برند موردنظرت را راحت پیدا کن.</p></div>
+      <div class="feature"><div class="feature-icon">⚙️</div><h3>مشخصات فنی</h3><p>قدرت، گشتاور، مصرف، گیربکس و فضای صندوق را ببین.</p></div>
+      <div class="feature"><div class="feature-icon">📊</div><h3>مقایسه دقیق‌تر</h3><p>بفهم کدام خودرو در هر مشخصه برتری دارد.</p></div>
+      <div class="feature"><div class="feature-icon">💰</div><h3>تخمین قیمت بازار</h3><p>تفاوت سال، تیپ و وضعیت بدنه را در نظر بگیر.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div><h2>بررسی قیمت در بازار</h2><p>برای قیمت روز، آگهی‌های همان مدل، سال و تیپ را بررسی کن.</p></div>
+    </div>
+    <div class="source-links">
+      <a href="https://divar.ir/" target="_blank" rel="noopener">رفتن به دیوار ↗</a>
+      <a href="https://nemuda.com/car" target="_blank" rel="noopener">نمودا؛ داده‌های قیمت بازار ↗</a>
+      <a href="https://asbe-bokhar.com/car-price/daily-car-price/" target="_blank" rel="noopener">قیمت روز خودرو ↗</a>
+    </div>
+  </div>
 </section>
 </main>
 
-<footer><div class="container"><strong style="color:var(--green)">خودروبان</strong> — مقایسه خودرو و بررسی قیمت مصرف‌کننده در بازار آزاد.<br>قیمت‌های این نسخه برای نمایش ساختار سایت هستند و به‌صورت زنده دریافت نمی‌شوند. پیش از خرید، قیمت روز همان تیپ و سال ساخت را از منابع بازار بررسی کنید.</div></footer>
+<footer>
+  <div class="container footer-row">
+    <div><strong style="color:var(--green)">خودروبان</strong> — انتخاب آگاهانه‌تر خودرو</div>
+    <div>قیمت‌ها تخمینی‌اند؛ قیمت معامله ممکن است متفاوت باشد.</div>
+  </div>
+</footer>
 <div class="toast" id="toast"></div>
 
 <script>
-const carSeeds = [
-["پراید ۱۳۱","سایپا","داخلی","Pride 131",65,320,480,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۳۱ SL","سایپا","داخلی","Pride 131",65,300,440,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۳۱ SX","سایپا","داخلی","Pride 131",65,310,460,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۳۱ SE","سایپا","داخلی","Pride 131",65,330,490,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۳۲","سایپا","داخلی","Pride 132",65,300,470,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۳۲ SL","سایپا","داخلی","Pride 132",65,300,440,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۳۲ SX","سایپا","داخلی","Pride 132",65,310,460,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۱۱","سایپا","داخلی","Pride 111",65,330,500,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۱۱ SE","سایپا","داخلی","Pride 111",65,350,510,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۱۱ EX","سایپا","داخلی","Pride 111",65,340,500,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۴۱","سایپا","داخلی","Pride 141",65,250,380,71,108,15,6.5,"دستی","بنزین"],
-["پراید ۱۵۱ وانت","سایپا","وانت","Pride 151",65,400,600,71,108,15,7,"دستی","بنزین"],
-["پژو ۴۰۵ GLX","ایران‌خودرو","داخلی","Peugeot 405",120,350,620,100,153,11.5,8.5,"دستی","بنزین"],
-["پژو ۴۰۵ GLX دوگانه‌سوز","ایران‌خودرو","داخلی","Peugeot 405",120,370,600,100,153,12,8.8,"دستی","دوگانه‌سوز"],
-["پژو ۴۰۵ SLX","ایران‌خودرو","داخلی","Peugeot 405",120,450,700,108,142,11.5,7.5,"دستی","بنزین"],
-["پژو ۴۰۵ GL","ایران‌خودرو","داخلی","Peugeot 405",120,300,480,97,148,12,8.7,"دستی","بنزین"],
-["پژو پارس XU7","ایران‌خودرو","داخلی","Peugeot Pars",180,500,850,100,153,11.5,8.5,"دستی","بنزین"],
-["پژو پارس TU5","ایران‌خودرو","داخلی","Peugeot Pars",180,600,950,105,142,12,7.5,"دستی","بنزین"],
-["پژو پارس XU7P","ایران‌خودرو","داخلی","Peugeot Pars",180,650,1000,97,146,12,7.8,"دستی","بنزین"],
-["پژو پارس ELX","ایران‌خودرو","داخلی","Peugeot Pars",180,550,850,110,155,11,8,"دستی","بنزین"],
-["پژو پارس LX","ایران‌خودرو","داخلی","Peugeot Pars",180,600,950,105,142,12,7.5,"دستی","بنزین"],
-["پژو ۲۰۶ تیپ ۲","ایران‌خودرو","داخلی","Peugeot 206",260,500,750,75,118,14,6.4,"دستی","بنزین"],
-["پژو ۲۰۶ تیپ ۳","ایران‌خودرو","داخلی","Peugeot 206",260,550,800,75,118,14,6.4,"دستی","بنزین"],
-["پژو ۲۰۶ تیپ ۵","ایران‌خودرو","داخلی","Peugeot 206",260,600,900,105,142,11.6,7.3,"دستی","بنزین"],
-["پژو ۲۰۶ تیپ ۶ اتوماتیک","ایران‌خودرو","داخلی","Peugeot 206",260,650,950,110,147,12,7.5,"اتوماتیک","بنزین"],
-["پژو ۲۰۶ SD V8","ایران‌خودرو","داخلی","Peugeot 206 sedan",260,600,900,105,142,11.6,7.3,"دستی","بنزین"],
-["پژو ۲۰۶ SD V9 اتوماتیک","ایران‌خودرو","داخلی","Peugeot 206 sedan",260,650,950,110,147,12,7.5,"اتوماتیک","بنزین"],
-["پژو ۲۰۶ SD V20","ایران‌خودرو","داخلی","Peugeot 206 sedan",260,500,750,75,118,14,6.4,"دستی","بنزین"],
-["پژو ۲۰۷ TU3 دستی","ایران‌خودرو","داخلی","Peugeot 207",420,1900,2350,75,118,14,6.5,"دستی","بنزین"],
-["پژو ۲۰۷ TU5 دستی","ایران‌خودرو","داخلی","Peugeot 207",420,1900,2600,105,142,11.6,7.3,"دستی","بنزین"],
-["پژو ۲۰۷ TU5P دستی","ایران‌خودرو","داخلی","Peugeot 207",420,2100,2800,113,144,11.5,7.2,"دستی","بنزین"],
-["پژو ۲۰۷ اتوماتیک TU5","ایران‌خودرو","داخلی","Peugeot 207",420,2700,3500,105,142,12.5,7.5,"اتوماتیک","بنزین"],
-["پژو ۲۰۷ اتوماتیک TU5P","ایران‌خودرو","داخلی","Peugeot 207",420,3000,3800,113,144,12,7.4,"اتوماتیک","بنزین"],
-["پژو ۲۰۷ پانوراما دستی","ایران‌خودرو","داخلی","Peugeot 207",420,2300,3000,113,144,11.5,7.2,"دستی","بنزین"],
-["پژو ۲۰۷ پانوراما اتوماتیک","ایران‌خودرو","داخلی","Peugeot 207",420,3000,3900,113,144,12,7.4,"اتوماتیک","بنزین"],
-["رانا پلاس","ایران‌خودرو","داخلی","Runna",150,1400,1900,105,142,12,7.3,"دستی","بنزین"],
-["رانا پلاس TU5P","ایران‌خودرو","داخلی","Runna",150,1800,2300,113,144,11.5,7.2,"دستی","بنزین"],
-["رانا پلاس پانوراما","ایران‌خودرو","داخلی","Runna",150,1900,2400,113,144,11.5,7.2,"دستی","بنزین"],
-["سمند LX XU7","ایران‌خودرو","داخلی","Samand",140,400,700,100,153,12,8.5,"دستی","بنزین"],
-["سمند LX EF7","ایران‌خودرو","داخلی","Samand",140,450,750,113,155,11.5,7.5,"دستی","بنزین"],
-["سمند SE","ایران‌خودرو","داخلی","Samand",140,350,600,100,153,12,8.5,"دستی","بنزین"],
-["سمند سورن ELX","ایران‌خودرو","داخلی","Samand Soren",160,450,800,113,155,11.5,7.5,"دستی","بنزین"],
-["سمند سورن پلاس EF7","ایران‌خودرو","داخلی","Samand Soren",160,1400,2100,113,155,11.5,7.5,"دستی","بنزین"],
-["سورن پلاس XU7P","ایران‌خودرو","داخلی","Samand Soren",160,1500,2200,97,146,12,7.8,"دستی","بنزین"],
-["سورن پلاس دوگانه‌سوز","ایران‌خودرو","داخلی","Samand Soren",160,1500,2200,113,155,12,8,"دستی","دوگانه‌سوز"],
-["سورن پلاس توربو","ایران‌خودرو","داخلی","Samand Soren",160,1700,2500,150,215,9.5,8.5,"دستی","بنزین"],
-["دنا","ایران‌خودرو","داخلی","Dena",200,1000,1700,113,155,11.5,7.7,"دستی","بنزین"],
-["دنا پلاس EF7","ایران‌خودرو","داخلی","Dena Plus",200,1500,2300,113,155,11.5,7.7,"دستی","بنزین"],
-["دنا پلاس EF7P","ایران‌خودرو","داخلی","Dena Plus",200,1800,2700,115,157,11.5,7.5,"دستی","بنزین"],
-["دنا پلاس توربو دستی","ایران‌خودرو","داخلی","Dena Plus Turbo",200,2100,3100,150,215,9.5,8.5,"دستی","بنزین"],
-["دنا پلاس توربو اتوماتیک","ایران‌خودرو","داخلی","Dena Plus Turbo",200,2800,3800,150,215,10,8.5,"اتوماتیک","بنزین"],
-["دنا پلاس ۶ دنده","ایران‌خودرو","داخلی","Dena Plus",200,2200,3200,115,157,11.5,7.5,"دستی","بنزین"],
-["تارا دستی V1","ایران‌خودرو","داخلی","Tara",250,1900,2700,113,144,11.5,7.2,"دستی","بنزین"],
-["تارا دستی V1 پلاس","ایران‌خودرو","داخلی","Tara",250,2100,2900,113,144,11.5,7.2,"دستی","بنزین"],
-["تارا اتوماتیک V2","ایران‌خودرو","داخلی","Tara",250,2400,3300,113,144,12.5,7.5,"اتوماتیک","بنزین"],
-["تارا اتوماتیک V4","ایران‌خودرو","داخلی","Tara",250,2700,3600,113,144,12.5,7.5,"اتوماتیک","بنزین"],
-["آریسان ۲","ایران‌خودرو","وانت","Arisun",100,500,850,97,146,13,8,"دستی","دوگانه‌سوز"],
-["ری‌را","ایران‌خودرو","داخلی","Iran Khodro Reera",300,2500,3600,160,240,9.5,8.5,"اتوماتیک","بنزین"],
-["تیبا صندوق‌دار","سایپا","داخلی","Tiba",100,350,600,87,128,13.5,7,"دستی","بنزین"],
-["تیبا SX","سایپا","داخلی","Tiba",100,350,580,87,128,13.5,7,"دستی","بنزین"],
-["تیبا EX","سایپا","داخلی","Tiba",100,370,620,87,128,13.5,7,"دستی","بنزین"],
-["تیبا ۲","سایپا","داخلی","Tiba 2",100,400,650,87,128,13.5,7,"دستی","بنزین"],
-["تیبا ۲ پلاس","سایپا","داخلی","Tiba 2",100,420,680,87,128,13.5,7,"دستی","بنزین"],
-["ساینا EX","سایپا","داخلی","Saipa Saina",120,450,750,87,128,13.5,7,"دستی","بنزین"],
-["ساینا S","سایپا","داخلی","Saipa Saina",120,600,950,87,128,13.5,7,"دستی","بنزین"],
-["ساینا S دوگانه‌سوز","سایپا","داخلی","Saipa Saina",120,650,1000,87,128,14,7.5,"دستی","دوگانه‌سوز"],
-["ساینا اتوماتیک","سایپا","داخلی","Saipa Saina",120,650,950,87,128,14,7.5,"اتوماتیک","بنزین"],
-["کوییک دنده‌ای","سایپا","داخلی","Saipa Quick",130,450,750,87,128,13.5,7,"دستی","بنزین"],
-["کوییک R","سایپا","داخلی","Saipa Quick",130,500,800,87,128,13.5,7,"دستی","بنزین"],
-["کوییک S","سایپا","داخلی","Saipa Quick",130,600,950,87,128,13.5,7,"دستی","بنزین"],
-["کوییک GXR","سایپا","داخلی","Saipa Quick",130,650,1000,87,128,13.5,7,"دستی","بنزین"],
-["کوییک اتوماتیک پلاس","سایپا","داخلی","Saipa Quick",130,650,950,87,128,14,7.5,"اتوماتیک","بنزین"],
-["اطلس G","سایپا","داخلی","Saipa Atlas",140,900,1350,90,137,12.5,7.2,"دستی","بنزین"],
-["اطلس GL","سایپا","داخلی","Saipa Atlas",140,850,1300,90,137,12.5,7.2,"دستی","بنزین"],
-["شاهین G","سایپا","داخلی","Saipa Shahin",180,1100,1800,110,178,13,7.5,"دستی","بنزین"],
-["شاهین اتوماتیک G","سایپا","داخلی","Saipa Shahin",180,1600,2300,110,178,13.5,7.5,"اتوماتیک","بنزین"],
-["شاهین پلاس","سایپا","داخلی","Saipa Shahin",180,1900,2700,110,178,12.5,7.5,"اتوماتیک","بنزین"],
-["چانگان CS35 پلاس","چانگان","چینی","Changan CS35",1200,2500,3600,158,260,9.5,7.5,"اتوماتیک","بنزین"],
-["چانگان CS55 پلاس","چانگان","چینی","Changan CS55",1500,3200,4500,181,280,8.5,8,"اتوماتیک","بنزین"],
-["هایما S5","هایما","چینی","Haima S5",1200,1500,2500,161,223,9.5,8.5,"اتوماتیک","بنزین"],
-["هایما S7","هایما","چینی","Haima S7",1500,1700,2800,170,230,10,9,"اتوماتیک","بنزین"],
-["هایما 8S","هایما","چینی","Haima 8S",1800,2600,3900,192,293,7.8,8.5,"اتوماتیک","بنزین"],
-["ام‌وی‌ام X22 پرو","ام‌وی‌ام","چینی","MVM X22",1000,1200,2000,116,230,10.5,7.5,"اتوماتیک","بنزین"],
-["ام‌وی‌ام X33 کراس","ام‌وی‌ام","چینی","MVM X33",1200,1300,2200,116,230,10.5,7.5,"اتوماتیک","بنزین"],
-["ام‌وی‌ام X55 پرو","ام‌وی‌ام","چینی","MVM X55",1500,1800,2900,156,230,9,7.5,"اتوماتیک","بنزین"],
-["آریزو ۵ اسپرت","چری","چینی","Chery Arrizo 5",1300,1700,2600,147,210,9.5,7.5,"اتوماتیک","بنزین"],
-["آریزو ۶ پرو","چری","چینی","Chery Arrizo 6",1700,2200,3300,147,210,9.5,7.5,"اتوماتیک","بنزین"],
-["فونیکس تیگو ۷ پرو","فونیکس","چینی","Chery Tiggo 7",2000,2500,3900,157,230,9.5,8,"اتوماتیک","بنزین"],
-["فونیکس تیگو ۸ پرو","فونیکس","چینی","Chery Tiggo 8",2500,3500,5200,197,290,8.5,8.5,"اتوماتیک","بنزین"],
-["فونیکس FX","فونیکس","چینی","Chery Omoda 5",2000,2500,3900,197,290,8.5,8,"اتوماتیک","بنزین"],
-["جک J4","جک","چینی","JAC J4",1000,1000,1800,103,146,13,6.5,"اتوماتیک","بنزین"],
-["جک S3","جک","چینی","JAC S3",1200,1000,1900,107,155,12.5,7.5,"اتوماتیک","بنزین"],
-["جک S5","جک","چینی","JAC S5",1500,1300,2400,174,265,10,8.5,"دستی","بنزین"],
-["کی‌ام‌سی J7","کرمان موتور","چینی","KMC J7",1800,2200,3400,172,280,8.5,7.5,"اتوماتیک","بنزین"],
-["کی‌ام‌سی X5","کرمان موتور","چینی","KMC X5",1600,1900,3000,172,280,9,8,"اتوماتیک","بنزین"],
-["کی‌ام‌سی T8","کرمان موتور","چینی","KMC T8",2000,2000,3300,174,290,12,9.5,"دستی","بنزین"],
-["کی‌ام‌سی T9","کرمان موتور","چینی","KMC T9",2500,3000,4500,221,390,10,10,"اتوماتیک","بنزین"],
-["دیگنیتی پرایم","بهمن موتور","چینی","Dignity Prime",1800,1800,2900,148,220,10,8,"CVT","بنزین"],
-["دیگنیتی پرستیژ","بهمن موتور","چینی","Dignity Prestige",2000,2500,3900,228,355,8.5,9,"اتوماتیک","بنزین"],
-["فیدلیتی پرایم ۵ نفره","بهمن موتور","چینی","Fidelity Prime",2000,2200,3500,155,230,10,8.5,"اتوماتیک","بنزین"],
-["فیدلیتی پرایم ۷ نفره","بهمن موتور","چینی","Fidelity Prime",2000,2300,3600,155,230,10,8.5,"اتوماتیک","بنزین"],
-["فیدلیتی پرستیژ","بهمن موتور","چینی","Fidelity Prestige",2000,3000,4500,197,290,8.5,8.5,"اتوماتیک","بنزین"],
-["رسپکت ۲","بهمن موتور","چینی","Respect 2",1600,1600,2600,154,230,9.5,7.5,"CVT","بنزین"],
-["لاماری ایما","آرین موتور","چینی","Lamari Eama",2000,2000,3200,195,285,9,8,"اتوماتیک","بنزین"],
-["بستیون T77","بستیون","چینی","Bestune T77",1500,1700,2800,166,258,9.5,7.5,"اتوماتیک","بنزین"],
-["اکستریم TXL","اکستریم","چینی","Exeed TXL",2200,3500,5000,261,400,8,9,"اتوماتیک","بنزین"],
-["اکستریم VX","اکستریم","چینی","Exeed VX",2500,4500,6500,261,400,8.5,9.5,"اتوماتیک","بنزین"],
-["جتا VS5","جتا","چینی","Jetta VS5",1800,2500,3700,150,250,9,7.5,"اتوماتیک","بنزین"],
-["جتا VS7","جتا","چینی","Jetta VS7",2000,3000,4400,150,250,9.5,7.8,"اتوماتیک","بنزین"],
-["ام‌جی ۵","ام‌جی","وارداتی","MG 5",1500,1800,2800,118,150,12,6.5,"CVT","بنزین"],
-["ام‌جی GT","ام‌جی","وارداتی","MG GT",1500,2000,3200,173,250,8.5,7.5,"اتوماتیک","بنزین"],
-["هیوندای اکسنت","هیوندای","وارداتی","Hyundai Accent",1600,1000,2500,123,151,11,6.5,"اتوماتیک","بنزین"],
-["هیوندای النترا","هیوندای","وارداتی","Hyundai Elantra",1800,1300,3500,147,180,10,7,"اتوماتیک","بنزین"],
-["هیوندای سوناتا","هیوندای","وارداتی","Hyundai Sonata",2000,1500,4000,178,232,9.5,8,"اتوماتیک","بنزین"],
-["هیوندای توسان","هیوندای","وارداتی","Hyundai Tucson",2000,1800,4500,177,265,9.5,8.5,"اتوماتیک","بنزین"],
-["هیوندای سانتافه","هیوندای","وارداتی","Hyundai Santa Fe",2400,2000,5000,188,241,10,9.5,"اتوماتیک","بنزین"],
-["کیا سراتو","کیا","وارداتی","Kia Cerato",2000,1000,3200,152,192,10,7.5,"اتوماتیک","بنزین"],
-["کیا اپتیما","کیا","وارداتی","Kia Optima",2400,1300,3500,178,229,9.5,8,"اتوماتیک","بنزین"],
-["کیا اسپورتیج","کیا","وارداتی","Kia Sportage",2000,1500,4200,177,265,9.5,8.5,"اتوماتیک","بنزین"],
-["کیا سورنتو","کیا","وارداتی","Kia Sorento",2400,1800,4800,188,241,10,9.5,"اتوماتیک","بنزین"],
-["تویوتا کرولا","تویوتا","وارداتی","Toyota Corolla",1800,1800,4500,140,173,10,6.5,"CVT","بنزین"],
-["تویوتا کمری","تویوتا","وارداتی","Toyota Camry",2500,1500,5000,181,235,9,7.5,"اتوماتیک","بنزین"],
-["تویوتا یاریس","تویوتا","وارداتی","Toyota Yaris",1500,1000,3000,106,140,11,5.8,"CVT","بنزین"],
-["تویوتا C-HR","تویوتا","وارداتی","Toyota C-HR",1800,2000,5000,140,171,10,6.5,"CVT","بنزین"],
-["تویوتا RAV4","تویوتا","وارداتی","Toyota RAV4",2500,2500,6000,203,243,9,8,"اتوماتیک","بنزین"],
-["مزدا ۳","مزدا","وارداتی","Mazda 3",2000,1000,3500,148,187,10,7.5,"اتوماتیک","بنزین"],
-["مزدا CX-30","مزدا","وارداتی","Mazda CX-30",2000,2500,4500,155,200,9.5,7.5,"اتوماتیک","بنزین"],
-["نیسان جوک","نیسان","وارداتی","Nissan Juke",1600,1000,2800,117,158,11,6.5,"CVT","بنزین"],
-["نیسان ایکس‌تریل","نیسان","وارداتی","Nissan X-Trail",2500,1800,4500,170,233,10,8.5,"CVT","بنزین"],
-["میتسوبیشی ASX","میتسوبیشی","وارداتی","Mitsubishi ASX",2000,1200,3500,150,197,10.5,8,"CVT","بنزین"],
-["میتسوبیشی اوتلندر","میتسوبیشی","وارداتی","Mitsubishi Outlander",2400,1800,4500,166,222,10.5,8.5,"CVT","بنزین"],
-["رنو تالیسمان","رنو","وارداتی","Renault Talisman",1600,1600,4000,190,260,8.5,7,"اتوماتیک","بنزین"],
-["رنو کولیوس","رنو","وارداتی","Renault Koleos",2500,1800,4500,170,233,10,8.5,"CVT","بنزین"],
-["رنو کپچر","رنو","وارداتی","Renault Captur",1200,900,2500,120,190,10.5,6.5,"اتوماتیک","بنزین"],
-["فولکس‌واگن تیگوان","فولکس‌واگن","وارداتی","Volkswagen Tiguan",2000,2500,5500,180,320,8.5,8,"اتوماتیک","بنزین"],
-["فولکس‌واگن پاسات","فولکس‌واگن","وارداتی","Volkswagen Passat",1800,1800,4500,180,250,8.5,7,"اتوماتیک","بنزین"],
-["بی‌ام‌و سری ۳","بی‌ام‌و","وارداتی","BMW 3 Series",2000,2500,6500,184,300,7.5,7,"اتوماتیک","بنزین"],
-["بی‌ام‌و سری ۵","بی‌ام‌و","وارداتی","BMW 5 Series",2000,3000,8500,252,350,6.5,7.5,"اتوماتیک","بنزین"],
-["بنز C کلاس","مرسدس بنز","وارداتی","Mercedes C Class",2000,2500,7500,204,300,7,7.5,"اتوماتیک","بنزین"],
-["بنز E کلاس","مرسدس بنز","وارداتی","Mercedes E Class",2000,3000,9000,258,370,6.5,8,"اتوماتیک","بنزین"],
-["لکسوس ES","لکسوس","وارداتی","Lexus ES",2500,2500,7500,204,243,8.5,7,"اتوماتیک","بنزین"],
-["لکسوس NX","لکسوس","وارداتی","Lexus NX",2000,3000,8500,235,350,7.5,8.5,"اتوماتیک","بنزین"],
-["پورشه ماکان","پورشه","وارداتی","Porsche Macan",2000,3500,10000,252,370,6.5,9,"اتوماتیک","بنزین"],
-["سوزوکی ویتارا","سوزوکی","وارداتی","Suzuki Vitara",2400,1000,3500,169,227,10,8.5,"اتوماتیک","بنزین"],
-["سوزوکی بالنو","سوزوکی","وارداتی","Suzuki Baleno",1500,1800,3000,103,138,11,5.5,"اتوماتیک","بنزین"],
-["سوزوکی فرانکس","سوزوکی","وارداتی","Suzuki Fronx",1500,2000,3300,103,138,11,5.5,"اتوماتیک","بنزین"],
-["هوندا سیتی","هوندا","وارداتی","Honda City",1500,2000,3500,119,145,10.5,6,"CVT","بنزین"],
-["هوندا HR-V","هوندا","وارداتی","Honda HR-V",1500,2500,4500,129,253,10,5.5,"CVT","بنزین"],
-["جیلی امگرند ۷","جیلی","چینی","Geely Emgrand",1800,500,1200,138,185,10.5,7.5,"CVT","بنزین"],
-["جیلی کول‌ری","جیلی","چینی","Geely Coolray",1500,1500,3000,172,290,8.5,7.5,"اتوماتیک","بنزین"],
-["هاوال H6","هاوال","چینی","Haval H6",2000,1800,3500,201,320,8.5,8,"اتوماتیک","بنزین"],
-["هاوال جولیون","هاوال","چینی","Haval Jolion",1500,1600,3200,143,210,10,7.5,"اتوماتیک","بنزین"],
-["گریت‌وال وینگل ۵","گریت‌وال","وانت","Great Wall Wingle",2000,700,1600,134,200,14,9,"دستی","بنزین"],
-["فوتون تونلند","فوتون","وانت","Foton Tunland",2400,1200,2800,174,360,12,9,"دستی","دیزل"],
-["نیسان وانت زامیاد","زامیاد","وانت","Zamyad Pickup",2800,600,1100,95,187,20,13,"دستی","بنزین"],
-["زامیاد پادرا پلاس","زامیاد","وانت","Zamyad Padra",2400,900,1500,95,187,18,12,"دستی","بنزین"],
-["کاپرا ۲","بهمن موتور","وانت","Capra 2",2400,1000,1800,125,200,15,10,"دستی","بنزین"],
-["کارون","زامیاد","وانت","Zamyad Karun",2400,800,1400,95,187,18,12,"دستی","بنزین"],
-["دانگ‌فنگ H30 کراس","دانگ‌فنگ","چینی","Dongfeng H30 Cross",1600,500,1100,105,142,12,7.5,"اتوماتیک","بنزین"],
-["برلیانس H330","برلیانس","چینی","Brilliance H330",1500,500,1200,103,138,12,7.5,"اتوماتیک","بنزین"],
-["برلیانس H220","برلیانس","چینی","Brilliance H220",1500,400,950,103,138,12,7.5,"دستی","بنزین"],
-["لیفان X60","لیفان","چینی","Lifan X60",1800,400,1000,131,168,12,8.5,"CVT","بنزین"],
-["لیفان ۸۲۰","لیفان","چینی","Lifan 820",2400,500,1300,158,221,11,9,"اتوماتیک","بنزین"],
-["ام‌وی‌ام ۳۱۵","ام‌وی‌ام","چینی","MVM 315",1500,350,850,107,140,12,7.5,"دستی","بنزین"],
-["ام‌وی‌ام ۵۳۰","ام‌وی‌ام","چینی","MVM 530",2000,350,900,139,182,11,8.5,"دستی","بنزین"],
-["پیکان","ایران‌خودرو","داخلی","Paykan",1600,150,350,65,110,20,10,"دستی","بنزین"],
-["روآ","ایران‌خودرو","داخلی","Iran Khodro Roa",1600,180,400,86,140,17,9,"دستی","بنزین"],
-["پژو ۲۰۰۸","ایران‌خودرو","داخلی","Peugeot 2008",1600,1800,3500,163,240,8.5,7,"اتوماتیک","بنزین"],
-["سیتروئن C3","سیتروئن","وارداتی","Citroen C3",1600,1500,2800,163,240,8.5,7,"اتوماتیک","بنزین"],
-["کیا پیکانتو","کیا","وارداتی","Kia Picanto",1200,700,1800,84,121,13,5.5,"اتوماتیک","بنزین"],
-["مینی کوپر","مینی","وارداتی","Mini Cooper",1500,2500,6500,136,220,8,6.5,"اتوماتیک","بنزین"],
-["جیپ صحرا","جیپ","وارداتی","Jeep Wrangler",4000,900,3000,125,285,15,14,"دستی","بنزین"]
+"use strict";
+
+/*
+  قیمت‌ها به میلیون تومان و صرفاً تخمین بازار هستند.
+  این صفحه به دیوار یا هیچ منبع قیمت زنده‌ای متصل نیست.
+  برای پراید ۱۳۱ مدل ۱۳۹۰، قیمت پایه نزدیک ۶۰۰ میلیون در نظر گرفته شده
+  تا تخمین با داده‌های اخیر بازار برای تیپ‌های سالم آن سال هم‌خوانی داشته باشد.
+*/
+
+const carFamilies = [
+  {brand:"سایپا",family:"پراید ۱۳۱",category:"داخلی",base:600,yearBase:1390,trim:["SE","SX","SL","EX","LE","ساده","دوگانه‌سوز"],spec:{hp:71,torque:108,accel:14.5,consumption:6.4,engine:1323,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:330,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"پراید ۱۳۲",category:"داخلی",base:620,yearBase:1390,trim:["SE","SX","SL","EX","ساده"],spec:{hp:71,torque:108,accel:14.5,consumption:6.4,engine:1323,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:330,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"پراید ۱۱۱",category:"داخلی",base:690,yearBase:1390,trim:["SE","SX","SL","EX"],spec:{hp:71,torque:108,accel:14.5,consumption:6.4,engine:1323,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:190,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"پراید ۱۴۱",category:"داخلی",base:560,yearBase:1390,trim:["SE","SX","SL"],spec:{hp:71,torque:108,accel:14.5,consumption:6.4,engine:1323,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:400,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"پراید وانت ۱۵۱",category:"وانت",base:600,yearBase:1398,trim:["SE","TL","ارتقایافته"],spec:{hp:71,torque:108,accel:16,consumption:7,engine:1323,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:ناموجود,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"پژو ۴۰۵",category:"داخلی",base:650,yearBase:1397,trim:["GLX XU7","GLX دوگانه‌سوز","SLX TU5","GLi","GL"],spec:{hp:100,torque:153,accel:11.5,consumption:8.5,engine:1761,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:470,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"پژو پارس",category:"داخلی",base:1050,yearBase:1400,trim:["XU7","XU7 دوگانه‌سوز","TU5","LX","ELX","XU7P"],spec:{hp:105,torque:142,accel:12,consumption:8.2,engine:1587,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:470,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"پژو ۲۰۶",category:"داخلی",base:850,yearBase:1399,trim:["تیپ ۲","تیپ ۳","تیپ ۵","تیپ ۶ اتوماتیک","SD V8","SD V9","SD V19","SD V20"],spec:{hp:75,torque:118,accel:13.2,consumption:6.4,engine:1360,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:245,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"پژو ۲۰۷",category:"داخلی",base:2300,yearBase:1404,trim:["TU3 دستی","TU5 دستی","TU5P دستی","اتوماتیک TU5","اتوماتیک TU5P","پانوراما دستی","پانوراما اتوماتیک","MC اتوماتیک"],spec:{hp:105,torque:142,accel:11.6,consumption:7.1,engine:1587,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:245,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"رانا",category:"داخلی",base:1550,yearBase:1402,trim:["LX","پلاس","پلاس TU5P"],spec:{hp:105,torque:142,accel:11.5,consumption:6.9,engine:1587,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:400,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"سمند",category:"داخلی",base:850,yearBase:1398,trim:["LX XU7","LX EF7","SE","EL","سورن ELX","دوگانه‌سوز"],spec:{hp:100,torque:153,accel:12,consumption:8.5,engine:1761,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:500,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"سورن پلاس",category:"داخلی",base:1750,yearBase:1403,trim:["XU7P","EF7","EF7 دوگانه‌سوز","توربو","بنزینی"],spec:{hp:113,torque:155,accel:12,consumption:7.5,engine:1646,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:500,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"دنا",category:"داخلی",base:1550,yearBase:1401,trim:["معمولی","EF7","پلاس","پلاس EF7P","پلاس توربو دستی","پلاس توربو اتوماتیک","پلاس ۶ دنده"],spec:{hp:113,torque:155,accel:12,consumption:7.7,engine:1646,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:500,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"تارا",category:"داخلی",base:2200,yearBase:1403,trim:["V1 دستی","V2 اتوماتیک","V3 دستی","V4 اتوماتیک","V1P دستی","V4 LX"],spec:{hp:113,torque:144,accel:12.5,consumption:7.1,engine:1587,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:640,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"آریسان ۲",category:"وانت",base:800,yearBase:1402,trim:["دوگانه‌سوز","ارتقایافته"],spec:{hp:97,torque:146,accel:15,consumption:8.5,engine:1696,gearbox:"دستی ۵ سرعته",fuel:"دوگانه‌سوز",trunk:ناموجود,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"تیبا",category:"داخلی",base:650,yearBase:1398,trim:["صندوق‌دار SX","صندوق‌دار EX","هاچ‌بک SX","هاچ‌بک EX"],spec:{hp:87,torque:128,accel:13.5,consumption:7,engine:1503,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:420,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"ساینا",category:"داخلی",base:850,yearBase:1401,trim:["EX","S","G","اتوماتیک"],spec:{hp:87,torque:128,accel:13,consumption:7,engine:1503,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:370,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"کوییک",category:"داخلی",base:900,yearBase:1402,trim:["دنده‌ای معمولی","S","R","GXR","اتوماتیک CVT","R اتوماتیک"],spec:{hp:87,torque:128,accel:13.5,consumption:7.2,engine:1503,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:225,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"اطلس",category:"داخلی",base:1150,yearBase:1404,trim:["G","GL","E","اتوماتیک"],spec:{hp:91,torque:137,accel:13,consumption:7.2,engine:1497,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:285,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"شاهین",category:"داخلی",base:1500,yearBase:1402,trim:["G دنده‌ای","GL دنده‌ای","اتوماتیک CVT","پلاس اتوماتیک"],spec:{hp:110,torque:178,accel:12.5,consumption:7.5,engine:1497,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:420,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"ری‌را",category:"داخلی",base:3000,yearBase:1404,trim:["توربو اتوماتیک","نسخه پایه"],spec:{hp:160,torque:240,accel:10,consumption:7.5,engine:1645,gearbox:"اتوماتیک ۶ سرعته",fuel:"بنزین",trunk:410,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"چانگان CS35 پلاس",category:"مونتاژی",base:3500,yearBase:1403,trim:["تیپ ۲","تیپ ۳","مونتاژی"],spec:{hp:158,torque:260,accel:9.5,consumption:7.5,engine:1392,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:403,drive:"دیفرانسیل جلو"}},
+  {brand:"سایپا",family:"چانگان CS55 پلاس",category:"مونتاژی",base:4200,yearBase:1403,trim:["نسخه مونتاژی","نسخه وارداتی"],spec:{hp:181,torque:280,accel:8.5,consumption:8,engine:1494,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:475,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"هایما S5",category:"مونتاژی",base:2400,yearBase:1402,trim:["توربو","پرو"],spec:{hp:161,torque:223,accel:9.5,consumption:8,engine:1497,gearbox:"اتوماتیک",fuel:"بنزین",trunk:320,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"هایما S7",category:"مونتاژی",base:3000,yearBase:1402,trim:["توربو","پلاس","پرو"],spec:{hp:170,torque:230,accel:10,consumption:8.5,engine:1795,gearbox:"اتوماتیک",fuel:"بنزین",trunk:400,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"هایما 8S",category:"مونتاژی",base:3900,yearBase:1403,trim:["توربو"],spec:{hp:192,torque:293,accel:7.8,consumption:8.5,engine:1594,gearbox:"اتوماتیک ۶ سرعته",fuel:"بنزین",trunk:552,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"ام‌وی‌ام X22 پرو",category:"مونتاژی",base:1700,yearBase:1402,trim:["دنده‌ای","IE اتوماتیک","اتوماتیک"],spec:{hp:105,torque:205,accel:11,consumption:7.5,engine:998,gearbox:"اتوماتیک CVT",fuel:"بنزین",trunk:420,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"ام‌وی‌ام X33 کراس",category:"مونتاژی",base:1800,yearBase:1403,trim:["دنده‌ای","CVT"],spec:{hp:102,torque:150,accel:12,consumption:7.5,engine:1497,gearbox:"CVT",fuel:"بنزین",trunk:420,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"ام‌وی‌ام X55 پرو",category:"مونتاژی",base:2600,yearBase:1403,trim:["IE","اکسلنت"],spec:{hp:156,torque:230,accel:9.5,consumption:7.5,engine:1498,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:370,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"فونیکس تیگو ۷ پرو",category:"مونتاژی",base:3500,yearBase:1403,trim:["اکسلنت","پرومکس","هیبرید"],spec:{hp:157,torque:230,accel:9.5,consumption:7.5,engine:1498,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:475,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"فونیکس تیگو ۸ پرو",category:"مونتاژی",base:4700,yearBase:1403,trim:["پرمیوم","مکس","هیبرید"],spec:{hp:197,torque:290,accel:8.5,consumption:8.5,engine:1598,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:193,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"فونیکس FX",category:"مونتاژی",base:3900,yearBase:1403,trim:["پرمیوم","AWD"],spec:{hp:197,torque:290,accel:8,consumption:8.5,engine:1598,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:384,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"آریزو ۵",category:"مونتاژی",base:2200,yearBase:1403,trim:["اسپرت","IE","توربو"],spec:{hp:147,torque:210,accel:10,consumption:7.5,engine:1498,gearbox:"CVT",fuel:"بنزین",trunk:430,drive:"دیفرانسیل جلو"}},
+  {brand:"مدیران خودرو",family:"آریزو ۶ پرو",category:"مونتاژی",base:3000,yearBase:1403,trim:["اکسلنت","GT"],spec:{hp:147,torque:210,accel:10,consumption:7.5,engine:1498,gearbox:"CVT",fuel:"بنزین",trunk:570,drive:"دیفرانسیل جلو"}},
+  {brand:"کرمان موتور",family:"جک J4",category:"مونتاژی",base:1500,yearBase:1402,trim:["CVT","نسخه دنده‌ای"],spec:{hp:103,torque:146,accel:12,consumption:6.5,engine:1499,gearbox:"CVT",fuel:"بنزین",trunk:550,drive:"دیفرانسیل جلو"}},
+  {brand:"کرمان موتور",family:"جک S3",category:"مونتاژی",base:1900,yearBase:1401,trim:["اتوماتیک"],spec:{hp:107,torque:155,accel:12,consumption:7.5,engine:1590,gearbox:"CVT",fuel:"بنزین",trunk:600,drive:"دیفرانسیل جلو"}},
+  {brand:"کرمان موتور",family:"جک S5",category:"مونتاژی",base:2500,yearBase:1401,trim:["دنده‌ای","اتوماتیک","فیس‌لیفت"],spec:{hp:174,torque:265,accel:9.5,consumption:8.5,engine:1997,gearbox:"دستی ۶ سرعته",fuel:"بنزین",trunk:505,drive:"دیفرانسیل جلو"}},
+  {brand:"کرمان موتور",family:"کی‌ام‌سی J7",category:"مونتاژی",base:3300,yearBase:1403,trim:["اتوماتیک"],spec:{hp:172,torque:280,accel:8.5,consumption:7.5,engine:1499,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:540,drive:"دیفرانسیل جلو"}},
+  {brand:"کرمان موتور",family:"کی‌ام‌سی X5",category:"مونتاژی",base:3200,yearBase:1403,trim:["اتوماتیک"],spec:{hp:172,torque:280,accel:9,consumption:8,engine:1499,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:485,drive:"دیفرانسیل جلو"}},
+  {brand:"کرمان موتور",family:"کی‌ام‌سی T8",category:"مونتاژی",base:3100,yearBase:1403,trim:["دنده‌ای"],spec:{hp:174,torque:290,accel:12,consumption:9.5,engine:1998,gearbox:"دستی ۶ سرعته",fuel:"بنزین",trunk:ناموجود,drive:"دو دیفرانسیل"}},
+  {brand:"کرمان موتور",family:"کی‌ام‌سی T9",category:"مونتاژی",base:4300,yearBase:1404,trim:["اتوماتیک"],spec:{hp:221,torque:390,accel:10,consumption:10,engine:1998,gearbox:"اتوماتیک ۸ سرعته",fuel:"بنزین",trunk:ناموجود,drive:"دو دیفرانسیل"}},
+  {brand:"بهمن موتور",family:"دیگنیتی",category:"مونتاژی",base:3200,yearBase:1403,trim:["پرایم","پرستیژ"],spec:{hp:148,torque:220,accel:10,consumption:8,engine:1498,gearbox:"CVT",fuel:"بنزین",trunk:780,drive:"دیفرانسیل جلو"}},
+  {brand:"بهمن موتور",family:"فیدلیتی",category:"مونتاژی",base:3500,yearBase:1403,trim:["پرایم ۵ نفره","پرایم ۷ نفره","پرستیژ"],spec:{hp:155,torque:230,accel:10,consumption:8.5,engine:1498,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:450,drive:"دیفرانسیل جلو"}},
+  {brand:"بهمن موتور",family:"رسپکت",category:"مونتاژی",base:2400,yearBase:1403,trim:["تیپ ۲","پرایم"],spec:{hp:154,torque:230,accel:9.5,consumption:7.5,engine:1498,gearbox:"CVT",fuel:"بنزین",trunk:455,drive:"دیفرانسیل جلو"}},
+  {brand:"آرین پارس موتور",family:"لاماری ایما",category:"مونتاژی",base:3500,yearBase:1403,trim:["توربو","HEV"],spec:{hp:195,torque:285,accel:9,consumption:8,engine:1498,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:480,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"دانگ‌فنگ H30 کراس",category:"مونتاژی",base:1150,yearBase:1397,trim:["اتوماتیک","دنده‌ای"],spec:{hp:105,torque:142,accel:12,consumption:7.5,engine:1587,gearbox:"اتوماتیک",fuel:"بنزین",trunk:417,drive:"دیفرانسیل جلو"}},
+  {brand:"پارس خودرو",family:"برلیانس H330",category:"مونتاژی",base:1100,yearBase:1397,trim:["۱.۵ دستی","۱.۶ اتوماتیک"],spec:{hp:103,torque:138,accel:13,consumption:7.5,engine:1498,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:460,drive:"دیفرانسیل جلو"}},
+  {brand:"پارس خودرو",family:"برلیانس H220",category:"مونتاژی",base:850,yearBase:1397,trim:["دستی","اتوماتیک"],spec:{hp:102,torque:138,accel:13,consumption:7,engine:1498,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:300,drive:"دیفرانسیل جلو"}},
+  {brand:"لیفان",family:"لیفان X60",category:"مونتاژی",base:950,yearBase:1395,trim:["دنده‌ای","اتوماتیک"],spec:{hp:131,torque:168,accel:12,consumption:8.5,engine:1794,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:405,drive:"دیفرانسیل جلو"}},
+  {brand:"لیفان",family:"لیفان ۸۲۰",category:"مونتاژی",base:1350,yearBase:1396,trim:["۲.۴ اتوماتیک"],spec:{hp:158,torque:221,accel:10.5,consumption:9,engine:2378,gearbox:"اتوماتیک ۶ سرعته",fuel:"بنزین",trunk:510,drive:"دیفرانسیل جلو"}},
+  {brand:"تویوتا",family:"تویوتا کرولا",category:"وارداتی",base:5200,yearBase:1403,trim:["۱.۲ توربو","۱.۸ هیبرید","۲.۰ بنزینی"],spec:{hp:140,torque:173,accel:10,consumption:6.5,engine:1798,gearbox:"CVT",fuel:"بنزین / هیبرید",trunk:470,drive:"دیفرانسیل جلو"}},
+  {brand:"تویوتا",family:"تویوتا کمری",category:"وارداتی",base:4000,yearBase:2017,trim:["GL","GLX","هیبرید"],spec:{hp:178,torque:231,accel:9,consumption:7.5,engine:2494,gearbox:"اتوماتیک",fuel:"بنزین",trunk:436,drive:"دیفرانسیل جلو"}},
+  {brand:"تویوتا",family:"تویوتا یاریس",category:"وارداتی",base:2600,yearBase:2016,trim:["هاچ‌بک","صندوق‌دار","هیبرید"],spec:{hp:106,torque:140,accel:11,consumption:6,engine:1497,gearbox:"اتوماتیک",fuel:"بنزین",trunk:286,drive:"دیفرانسیل جلو"}},
+  {brand:"تویوتا",family:"تویوتا RAV4",category:"وارداتی",base:6800,yearBase:2018,trim:["۲.۵ بنزینی","هیبرید","AWD"],spec:{hp:203,torque:243,accel:9,consumption:8,engine:2487,gearbox:"اتوماتیک",fuel:"بنزین",trunk:580,drive:"دو دیفرانسیل"}},
+  {brand:"هیوندای",family:"هیوندای اکسنت",category:"وارداتی",base:2200,yearBase:2017,trim:["GL","GLS","اتوماتیک"],spec:{hp:123,torque:151,accel:11,consumption:7,engine:1591,gearbox:"اتوماتیک",fuel:"بنزین",trunk:465,drive:"دیفرانسیل جلو"}},
+  {brand:"هیوندای",family:"هیوندای النترا",category:"وارداتی",base:3500,yearBase:2018,trim:["۲.۰ MPI","۱.۶ توربو","فول"],spec:{hp:147,torque:179,accel:10,consumption:7.5,engine:1999,gearbox:"اتوماتیک ۶ سرعته",fuel:"بنزین",trunk:458,drive:"دیفرانسیل جلو"}},
+  {brand:"هیوندای",family:"هیوندای سوناتا",category:"وارداتی",base:3700,yearBase:2017,trim:["GL","GLS","هیبرید"],spec:{hp:178,torque:229,accel:9,consumption:7.5,engine:2359,gearbox:"اتوماتیک",fuel:"بنزین",trunk:510,drive:"دیفرانسیل جلو"}},
+  {brand:"هیوندای",family:"هیوندای توسان",category:"وارداتی",base:4400,yearBase:2017,trim:["GL","GLS","GDI","AWD"],spec:{hp:155,torque:192,accel:10.5,consumption:8.5,engine:1999,gearbox:"اتوماتیک",fuel:"بنزین",trunk:488,drive:"دو دیفرانسیل"}},
+  {brand:"هیوندای",family:"هیوندای سانتافه",category:"وارداتی",base:5200,yearBase:2017,trim:["DM","فول","GDI"],spec:{hp:188,torque:241,accel:10,consumption:9.5,engine:2359,gearbox:"اتوماتیک",fuel:"بنزین",trunk:585,drive:"دو دیفرانسیل"}},
+  {brand:"کیا",family:"کیا سراتو",category:"وارداتی",base:2400,yearBase:2017,trim:["۱.۶ مونتاژ","۲.۰ وارداتی","آپشنال"],spec:{hp:154,torque:194,accel:10,consumption:8,engine:1999,gearbox:"اتوماتیک",fuel:"بنزین",trunk:482,drive:"دیفرانسیل جلو"}},
+  {brand:"کیا",family:"کیا اپتیما",category:"وارداتی",base:3500,yearBase:2017,trim:["JF","GT Line","هیبرید"],spec:{hp:178,torque:229,accel:9,consumption:7.5,engine:2359,gearbox:"اتوماتیک",fuel:"بنزین",trunk:510,drive:"دیفرانسیل جلو"}},
+  {brand:"کیا",family:"کیا اسپورتیج",category:"وارداتی",base:4500,yearBase:2017,trim:["QL","GT Line","AWD"],spec:{hp:181,torque:237,accel:9.5,consumption:8.5,engine:1999,gearbox:"اتوماتیک",fuel:"بنزین",trunk:466,drive:"دو دیفرانسیل"}},
+  {brand:"کیا",family:"کیا سورنتو",category:"وارداتی",base:5500,yearBase:2017,trim:["UM","GT Line","AWD"],spec:{hp:188,torque:241,accel:10,consumption:9.5,engine:2359,gearbox:"اتوماتیک",fuel:"بنزین",trunk:605,drive:"دو دیفرانسیل"}},
+  {brand:"مزدا",family:"مزدا ۳",category:"وارداتی",base:3000,yearBase:2017,trim:["تیپ ۳","تیپ ۴","نیو"],spec:{hp:147,torque:187,accel:10,consumption:8,engine:1999,gearbox:"اتوماتیک",fuel:"بنزین",trunk:430,drive:"دیفرانسیل جلو"}},
+  {brand:"مزدا",family:"مزدا CX-30",category:"وارداتی",base:4300,yearBase:2023,trim:["۲.۰ بنزینی","فول"],spec:{hp:155,torque:200,accel:9,consumption:7.5,engine:1998,gearbox:"اتوماتیک",fuel:"بنزین",trunk:430,drive:"دیفرانسیل جلو"}},
+  {brand:"نیسان",family:"نیسان جوک",category:"وارداتی",base:2400,yearBase:2017,trim:["اسکای‌پک","پلاتینیوم","اسپرت"],spec:{hp:117,torque:158,accel:11,consumption:6.5,engine:1598,gearbox:"CVT",fuel:"بنزین",trunk:354,drive:"دیفرانسیل جلو"}},
+  {brand:"نیسان",family:"نیسان ایکس‌تریل",category:"وارداتی",base:4300,yearBase:2017,trim:["تک‌دیفرانسیل","دو دیفرانسیل"],spec:{hp:171,torque:233,accel:10.5,consumption:8.5,engine:2488,gearbox:"CVT",fuel:"بنزین",trunk:550,drive:"دو دیفرانسیل"}},
+  {brand:"میتسوبیشی",family:"میتسوبیشی ASX",category:"وارداتی",base:3300,yearBase:2017,trim:["فول","نیمه‌فول"],spec:{hp:147,torque:197,accel:11,consumption:8,engine:1998,gearbox:"CVT",fuel:"بنزین",trunk:416,drive:"دو دیفرانسیل"}},
+  {brand:"میتسوبیشی",family:"میتسوبیشی اوتلندر",category:"وارداتی",base:4400,yearBase:2017,trim:["۳۵۰۰","PHEV","GT"],spec:{hp:166,torque:220,accel:10,consumption:9,engine:2360,gearbox:"CVT",fuel:"بنزین",trunk:477,drive:"دو دیفرانسیل"}},
+  {brand:"رنو",family:"رنو تالیسمان",category:"وارداتی",base:3500,yearBase:2018,trim:["E2","E3","فول"],spec:{hp:190,torque:260,accel:7.5,consumption:6.5,engine:1618,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:608,drive:"دیفرانسیل جلو"}},
+  {brand:"رنو",family:"رنو کولیوس",category:"وارداتی",base:4200,yearBase:2018,trim:["SE","فول","AWD"],spec:{hp:170,torque:233,accel:9.5,consumption:8,engine:2488,gearbox:"CVT",fuel:"بنزین",trunk:565,drive:"دو دیفرانسیل"}},
+  {brand:"رنو",family:"رنو کپچر",category:"وارداتی",base:2200,yearBase:2017,trim:["فول","نیمه‌فول"],spec:{hp:120,torque:190,accel:10.5,consumption:6.5,engine:1197,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:377,drive:"دیفرانسیل جلو"}},
+  {brand:"فولکس‌واگن",family:"فولکس‌واگن تیگوان",category:"وارداتی",base:5200,yearBase:2018,trim:["Trendline","Comfortline","Highline"],spec:{hp:180,torque:320,accel:8.5,consumption:8,engine:1984,gearbox:"DSG",fuel:"بنزین",trunk:615,drive:"دو دیفرانسیل"}},
+  {brand:"فولکس‌واگن",family:"فولکس‌واگن پاسات",category:"وارداتی",base:4000,yearBase:2018,trim:["Trendline","Comfortline","Highline"],spec:{hp:180,torque:250,accel:7.9,consumption:6.5,engine:1798,gearbox:"DSG",fuel:"بنزین",trunk:586,drive:"دیفرانسیل جلو"}},
+  {brand:"ب‌ام‌و",family:"بی‌ام‌و سری ۳",category:"وارداتی",base:4500,yearBase:2017,trim:["320i","330i","فول"],spec:{hp:184,torque:270,accel:7.2,consumption:7,engine:1998,gearbox:"اتوماتیک ۸ سرعته",fuel:"بنزین",trunk:480,drive:"دیفرانسیل عقب"}},
+  {brand:"ب‌ام‌و",family:"بی‌ام‌و سری ۵",category:"وارداتی",base:6000,yearBase:2017,trim:["530i","520i","فول"],spec:{hp:252,torque:350,accel:6.2,consumption:7.5,engine:1998,gearbox:"اتوماتیک ۸ سرعته",fuel:"بنزین",trunk:530,drive:"دیفرانسیل عقب"}},
+  {brand:"مرسدس بنز",family:"بنز C کلاس",category:"وارداتی",base:5200,yearBase:2017,trim:["C200","C250","AMG Line"],spec:{hp:184,torque:300,accel:7.5,consumption:7,engine:1991,gearbox:"اتوماتیک",fuel:"بنزین",trunk:480,drive:"دیفرانسیل عقب"}},
+  {brand:"مرسدس بنز",family:"بنز E کلاس",category:"وارداتی",base:7000,yearBase:2017,trim:["E200","E250","فول"],spec:{hp:184,torque:300,accel:7.7,consumption:7.5,engine:1991,gearbox:"اتوماتیک",fuel:"بنزین",trunk:540,drive:"دیفرانسیل عقب"}},
+  {brand:"لکسوس",family:"لکسوس ES",category:"وارداتی",base:6000,yearBase:2017,trim:["ES250","ES300h","فول"],spec:{hp:181,torque:235,accel:9,consumption:7,engine:2494,gearbox:"اتوماتیک",fuel:"بنزین / هیبرید",trunk:425,drive:"دیفرانسیل جلو"}},
+  {brand:"لکسوس",family:"لکسوس NX",category:"وارداتی",base:6500,yearBase:2017,trim:["NX200t","NX300h","AWD"],spec:{hp:235,torque:350,accel:7.5,consumption:8.5,engine:1998,gearbox:"اتوماتیک",fuel:"بنزین",trunk:500,drive:"دو دیفرانسیل"}},
+  {brand:"سوزوکی",family:"سوزوکی ویتارا",category:"وارداتی",base:3000,yearBase:2017,trim:["۲.۰","۲.۴","مونتاژ"],spec:{hp:166,torque:227,accel:11,consumption:9,engine:2393,gearbox:"اتوماتیک",fuel:"بنزین",trunk:398,drive:"دو دیفرانسیل"}},
+  {brand:"سوزوکی",family:"سوزوکی بالنو",category:"وارداتی",base:2000,yearBase:2023,trim:["GL","GLX","اتوماتیک"],spec:{hp:103,torque:138,accel:11,consumption:5.5,engine:1462,gearbox:"اتوماتیک",fuel:"بنزین",trunk:339,drive:"دیفرانسیل جلو"}},
+  {brand:"سوزوکی",family:"سوزوکی فرانکس",category:"وارداتی",base:2700,yearBase:2024,trim:["GL","GLX","هیبرید"],spec:{hp:101,torque:135,accel:11,consumption:5.5,engine:1462,gearbox:"اتوماتیک",fuel:"بنزین / هیبرید",trunk:308,drive:"دیفرانسیل جلو"}},
+  {brand:"هوندا",family:"هوندا سیتی",category:"وارداتی",base:2800,yearBase:2023,trim:["V","RS","هیبرید"],spec:{hp:121,torque:145,accel:10,consumption:6,engine:1498,gearbox:"CVT",fuel:"بنزین",trunk:506,drive:"دیفرانسیل جلو"}},
+  {brand:"هوندا",family:"هوندا HR-V",category:"وارداتی",base:3900,yearBase:2023,trim:["بنزینی","هیبرید"],spec:{hp:129,torque:253,accel:10,consumption:5.5,engine:1498,gearbox:"CVT",fuel:"هیبرید",trunk:335,drive:"دیفرانسیل جلو"}},
+  {brand:"جیلی",family:"جیلی امگرند ۷",category:"مونتاژی",base:850,yearBase:1395,trim:["دنده‌ای","اتوماتیک"],spec:{hp:138,torque:185,accel:11,consumption:7.5,engine:1792,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:680,drive:"دیفرانسیل جلو"}},
+  {brand:"جیلی",family:"جیلی کول‌ری",category:"وارداتی",base:3000,yearBase:2023,trim:["Comfort","Premium","Sport"],spec:{hp:172,torque:290,accel:8,consumption:7,engine:1477,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:330,drive:"دیفرانسیل جلو"}},
+  {brand:"هاوال",family:"هاوال H6",category:"وارداتی",base:3900,yearBase:2023,trim:["بنزینی","هیبرید"],spec:{hp:201,torque:320,accel:8.5,consumption:7.5,engine:1998,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:560,drive:"دیفرانسیل جلو"}},
+  {brand:"هاوال",family:"هاوال جولیون",category:"وارداتی",base:2800,yearBase:2023,trim:["Luxury","Premium","هیبرید"],spec:{hp:148,torque:220,accel:10,consumption:7.5,engine:1497,gearbox:"اتوماتیک دوکلاچه",fuel:"بنزین",trunk:430,drive:"دیفرانسیل جلو"}},
+  {brand:"فوتون",family:"فوتون تونلند",category:"وانت",base:2500,yearBase:1402,trim:["G7 بنزینی","دیزلی","اتوماتیک"],spec:{hp:238,torque:360,accel:12,consumption:10,engine:1981,gearbox:"اتوماتیک",fuel:"بنزین",trunk:"اتاق بار",drive:"دو دیفرانسیل"}},
+  {brand:"زامیاد",family:"نیسان وانت زامیاد",category:"وانت",base:850,yearBase:1402,trim:["بنزینی","دوگانه‌سوز","آپشنال"],spec:{hp:95,torque:187,accel:20,consumption:13,engine:2400,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:"اتاق بار",drive:"دیفرانسیل عقب"}},
+  {brand:"زامیاد",family:"پادرا پلاس",category:"وانت",base:1250,yearBase:1403,trim:["بنزینی","دوگانه‌سوز"],spec:{hp:95,torque:187,accel:20,consumption:13,engine:2400,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:"اتاق بار",drive:"دیفرانسیل عقب"}},
+  {brand:"ایران‌خودرو",family:"کارون",category:"وانت",base:1500,yearBase:1403,trim:["دوگانه‌سوز"],spec:{hp:95,torque:187,accel:20,consumption:13,engine:2400,gearbox:"دستی ۵ سرعته",fuel:"دوگانه‌سوز",trunk:"اتاق بار",drive:"دیفرانسیل عقب"}},
+  {brand:"بهمن موتور",family:"کاپرا ۲",category:"وانت",base:1900,yearBase:1402,trim:["دوکابین","دو دیفرانسیل"],spec:{hp:125,torque:200,accel:15,consumption:10.5,engine:2378,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:"اتاق بار",drive:"دو دیفرانسیل"}},
+  {brand:"پیکان",family:"پیکان",category:"داخلی",base:350,yearBase:1382,trim:["سدان","کار","جوانان"],spec:{hp:70,torque:130,accel:18,consumption:10,engine:1600,gearbox:"دستی ۴ سرعته",fuel:"بنزین",trunk:400,drive:"دیفرانسیل عقب"}},
+  {brand:"ایران‌خودرو",family:"روآ",category:"داخلی",base:380,yearBase:1389,trim:["معمولی","سال","دوگانه‌سوز"],spec:{hp:90,torque:155,accel:16,consumption:9,engine:1696,gearbox:"دستی ۵ سرعته",fuel:"بنزین",trunk:400,drive:"دیفرانسیل عقب"}},
+  {brand:"کیا",family:"کیا پیکانتو",category:"وارداتی",base:2100,yearBase:2017,trim:["۱.۲","EX","فول"],spec:{hp:84,torque:121,accel:13.5,consumption:5.5,engine:1248,gearbox:"اتوماتیک",fuel:"بنزین",trunk:200,drive:"دیفرانسیل جلو"}},
+  {brand:"سیتروئن",family:"سیتروئن C3",category:"وارداتی",base:3000,yearBase:2018,trim:["۱.۶ توربو","فول"],spec:{hp:163,torque:240,accel:8.5,consumption:6.5,engine:1598,gearbox:"اتوماتیک",fuel:"بنزین",trunk:300,drive:"دیفرانسیل جلو"}},
+  {brand:"ایران‌خودرو",family:"پژو ۲۰۰۸",category:"مونتاژی",base:3300,yearBase:1398,trim:["۱.۶ توربو","فول"],spec:{hp:163,torque:240,accel:8.5,consumption:7,engine:1598,gearbox:"اتوماتیک ۶ سرعته",fuel:"بنزین",trunk:410,drive:"دیفرانسیل جلو"}},
+  {brand:"جیپ",family:"جیپ صحرا",category:"وارداتی",base:1500,yearBase:1380,trim:["۲.۵","۴.۰","دو دیفرانسیل"],spec:{hp:120,torque:190,accel:15,consumption:13,engine:2464,gearbox:"دستی",fuel:"بنزین",trunk:ناموجود,drive:"دو دیفرانسیل"}}
 ];
 
-const carSeedsExtra = [
-["پژو پارس دوگانه‌سوز","ایران‌خودرو","داخلی","Peugeot Pars",180,550,850,100,153,12,8.8,"دستی","دوگانه‌سوز"],
-["پژو ۲۰۶ تیپ ۱","ایران‌خودرو","داخلی","Peugeot 206",260,400,650,75,118,14,6.4,"دستی","بنزین"],
-["پژو ۲۰۶ تیپ ۴","ایران‌خودرو","داخلی","Peugeot 206",260,500,800,75,118,14,6.4,"دستی","بنزین"],
-["پژو ۲۰۶ SD V19","ایران‌خودرو","داخلی","Peugeot 206 sedan",260,500,800,105,142,12,7.3,"دستی","بنزین"],
-["پژو ۲۰۶ SD V20 دوگانه‌سوز","ایران‌خودرو","داخلی","Peugeot 206 sedan",260,450,700,75,118,14,7.5,"دستی","دوگانه‌سوز"],
-["پژو ۲۰۷ سقف فلزی دستی","ایران‌خودرو","داخلی","Peugeot 207",420,1900,2600,113,144,11.5,7.2,"دستی","بنزین"],
-["پژو ۲۰۷ سقف فلزی اتوماتیک","ایران‌خودرو","داخلی","Peugeot 207",420,2800,3700,113,144,12,7.4,"اتوماتیک","بنزین"],
-["پژو پارس سال","ایران‌خودرو","داخلی","Peugeot Pars",180,500,850,100,153,11.5,8.5,"دستی","بنزین"],
-["پژو پارس ساده","ایران‌خودرو","داخلی","Peugeot Pars",180,450,750,100,153,12,8.5,"دستی","بنزین"],
-["سمند LX دوگانه‌سوز","ایران‌خودرو","داخلی","Samand",140,400,700,100,153,12,8.8,"دستی","دوگانه‌سوز"],
-["سورن پلاس EF7 دوگانه‌سوز","ایران‌خودرو","داخلی","Samand Soren",160,1600,2300,113,155,12,8,"دستی","دوگانه‌سوز"],
-["دنا پلاس توربو اتوماتیک آپشنال","ایران‌خودرو","داخلی","Dena Plus Turbo",200,3000,4000,150,215,10,8.5,"اتوماتیک","بنزین"],
-["تارا دستی V2","ایران‌خودرو","داخلی","Tara",250,2000,2800,113,144,11.5,7.2,"دستی","بنزین"],
-["پراید ۱۳۱ دوگانه‌سوز","سایپا","داخلی","Pride 131",65,300,450,71,108,15,7,"دستی","دوگانه‌سوز"],
-["پراید ۱۳۲ دوگانه‌سوز","سایپا","داخلی","Pride 132",65,300,450,71,108,15,7,"دستی","دوگانه‌سوز"],
-["پراید ۱۱۱ SL","سایپا","داخلی","Pride 111",65,300,450,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۱۱ SX","سایپا","داخلی","Pride 111",65,320,480,71,108,14.5,6.4,"دستی","بنزین"],
-["پراید ۱۵۱ ارتقایافته","سایپا","وانت","Pride 151",65,450,650,71,108,15,7,"دستی","بنزین"],
-["ساینا S اتوماتیک","سایپا","داخلی","Saipa Saina",120,700,1050,87,128,14,7.5,"اتوماتیک","بنزین"],
-["کوییک GXR دو رنگ","سایپا","داخلی","Saipa Quick",130,700,1100,87,128,13.5,7,"دستی","بنزین"],
-["شاهین G دنده‌ای","سایپا","داخلی","Saipa Shahin",180,1100,1800,110,178,13,7.5,"دستی","بنزین"],
-["هایما S7 توربو پلاس","هایما","چینی","Haima S7",1500,1800,2900,170,230,10,9,"اتوماتیک","بنزین"],
-["جک S5 اتوماتیک","جک","چینی","JAC S5",1500,1500,2600,174,265,10,8.5,"اتوماتیک","بنزین"],
-["جک S5 نیوفیس","جک","چینی","JAC S5",1500,1700,2800,174,265,10,8.5,"اتوماتیک","بنزین"],
-["ام‌وی‌ام X22 دنده‌ای","ام‌وی‌ام","چینی","MVM X22",1500,650,1300,105,135,12,7.5,"دستی","بنزین"],
-["ام‌وی‌ام X22 اتوماتیک","ام‌وی‌ام","چینی","MVM X22",1500,750,1500,105,135,12,7.5,"اتوماتیک","بنزین"],
-["آریزو ۵ توربو","چری","چینی","Chery Arrizo 5",1500,1200,2300,147,210,9.5,7.5,"CVT","بنزین"],
-["تیگو ۷ پرو مکس","فونیکس","چینی","Chery Tiggo 7",1600,3000,4500,197,290,8.5,8.5,"اتوماتیک","بنزین"],
-["چانگان CS35 مونتاژی","چانگان","چینی","Changan CS35",1600,900,1900,123,160,12,7.5,"اتوماتیک","بنزین"],
-["تویوتا کرولا هیبرید","تویوتا","وارداتی","Toyota Corolla Hybrid",1800,2500,5000,140,185,9,4.5,"CVT","هیبرید"],
-["تویوتا کمری هیبرید","تویوتا","وارداتی","Toyota Camry Hybrid",2500,2000,6000,208,221,8,5,"CVT","هیبرید"],
-["کیا سراتو مونتاژی ۱.۶","کیا","وارداتی","Kia Cerato",1600,900,2200,124,156,11,7,"دستی","بنزین"],
-["کیا سراتو مونتاژی ۲.۰","کیا","وارداتی","Kia Cerato",2000,1100,2700,154,194,10,7.5,"اتوماتیک","بنزین"],
-["هیوندای توسان ix35","هیوندای","وارداتی","Hyundai Tucson",2000,1000,3000,166,201,10.5,8.5,"اتوماتیک","بنزین"],
-["نیسان پیکاپ","نیسان","وانت","Nissan Pickup",2400,700,1800,133,197,14,10,"دستی","بنزین"],
-["فوتون تونلند G7","فوتون","وانت","Foton Tunland",2000,2500,4000,174,360,12,9,"اتوماتیک","دیزل"]
-];
-
-const years=Array.from({length:26},(_,i)=>1405-i);
-const photoIds=["photo-1492144534655-ae79c964c9d7","photo-1503376780353-7e6692767b70","photo-1503736334956-4c8f8e92946d","photo-1549317661-bd32c8ce0db2","photo-1552519507-da3b142c6e3d","photo-1502877338535-766e1452684a","photo-1511919884226-fd3cad34687c","photo-1494976388531-d1058494cdd8","photo-1533473359331-0135ef1b58bf","photo-1489824904134-891ab64532f1"];
-const cars=[...carSeeds,...carSeedsExtra].map((r,i)=>({id:i,name:r[0],brand:r[1],category:r[2],imageModel:r[3],baseYear:r[4],min:r[5],max:r[6],hp:r[7],torque:r[8],accel:r[9],fuelUse:r[10],gearbox:r[11],fuel:r[12]}));
-const fmt=n=>Math.round(n).toLocaleString('fa-IR');
-const money=n=>n>=1000?(n/1000).toLocaleString('fa-IR',{maximumFractionDigits:2})+' میلیارد تومان':fmt(n)+' میلیون تومان';
-const safe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const photoUrl=c=>`https://images.unsplash.com/${photoIds[c.id%photoIds.length]}?auto=format&fit=crop&w=900&q=80`;
-function fallbackSvg(name){const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="#10271e"/><circle cx="400" cy="200" r="160" fill="#173c2c"/><path d="M135 250 L190 250 L250 165 Q270 145 310 145 L480 145 Q520 145 550 185 L610 225 L660 240 L660 290 L135 290 Z" fill="#80f0b2"/><path d="M275 170 L475 170 Q500 170 520 200 L245 200 Z" fill="#163a2b"/><circle cx="250" cy="290" r="39" fill="#071713" stroke="#9bb2a6" stroke-width="9"/><circle cx="550" cy="290" r="39" fill="#071713" stroke="#9bb2a6" stroke-width="9"/><text x="400" y="90" text-anchor="middle" font-size="27" font-family="sans-serif" fill="#c6e6d3">${safe(name)}</text><text x="400" y="360" text-anchor="middle" font-size="18" font-family="sans-serif" fill="#9bb2a6">KHODROBAN</text></svg>`;return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
-function yearFactor(year){return Math.max(.32,1-(1405-year)*.035)}
-function priceAt(c,year){const f=yearFactor(year);return{min:c.min*f,max:c.max*f}}
-function selectedYear(c){const el=document.getElementById('year-'+c.id);return el?Number(el.value):1405}
-function trimOptions(c){const key=c.name.split(' ')[0];const options=cars.filter(x=>x.name.startsWith(key)).map(x=>x.name);return[...new Set([c.name,...options])]}
-let compareIds=[],activeCategory='',visibleLimit=12;
-function cardHTML(c){
- const p=priceAt(c,1405);
- return `<article class="car-card"><div class="car-photo"><img src="${photoUrl(c)}" alt="${safe(c.name)}" loading="lazy" onerror="this.onerror=null;this.src='${fallbackSvg(c.name)}'"><span class="photo-badge">${safe(c.category)}</span><label class="compare-check"><input type="checkbox" data-compare="${c.id}" ${compareIds.includes(c.id)?'checked':''}> مقایسه</label></div>
- <div class="car-content"><h3 class="car-title">${safe(c.name)}</h3><div class="car-trim">${safe(c.brand)} · ${safe(c.gearbox)} · ${safe(c.fuel)}</div>
- <div class="price" id="price-${c.id}">${money((p.min+p.max)/2)} <small>قیمت بازار آزاد</small></div><div class="price-range" id="range-${c.id}">بازه تخمینی: ${money(p.min)} تا ${money(p.max)}</div>
- <div class="specs"><div class="spec"><span>قدرت موتور</span><strong>${fmt(c.hp)} اسب‌بخار</strong></div><div class="spec"><span>گشتاور</span><strong>${fmt(c.torque)} نیوتن‌متر</strong></div><div class="spec"><span>شتاب ۰ تا ۱۰۰</span><strong>${String(c.accel).replace('.', '٫')} ثانیه</strong></div><div class="spec"><span>مصرف ترکیبی</span><strong>${String(c.fuelUse).replace('.', '٫')} لیتر</strong></div></div>
- <div class="card-controls"><select class="field" id="year-${c.id}" aria-label="سال ساخت" onchange="updatePrice(${c.id})">${years.map(y=>`<option value="${y}" ${y===1405?'selected':''}>مدل ${fmt(y)}</option>`).join('')}</select><select class="field" id="trim-${c.id}" aria-label="تیپ خودرو" onchange="updateTrim(${c.id})">${trimOptions(c).map(t=>`<option value="${safe(t)}" ${t===c.name?'selected':''}>${safe(t)}</option>`).join('')}</select></div>
- <div class="card-actions"><button class="btn secondary" onclick="toggleCompare(${c.id})">${compareIds.includes(c.id)?'حذف از مقایسه':'مقایسه فنی'}</button><button class="btn" onclick="useForEstimate(${c.id})">تخمین قیمت</button></div></div></article>`;
-}
-function renderCars(){
- let list=cars.filter(c=>{const q=document.getElementById('search').value.trim().toLowerCase();return(!q||(c.name+' '+c.brand+' '+c.category).toLowerCase().includes(q))&&(!activeCategory||c.category===activeCategory)});
- const brand=document.getElementById('brandFilter').value;if(brand)list=list.filter(c=>c.brand===brand);
- const sort=document.getElementById('sortFilter').value;
- if(sort==='low')list.sort((a,b)=>(a.min+a.max)-(b.min+b.max));
- if(sort==='high')list.sort((a,b)=>(b.min+b.max)-(a.min+a.max));
- if(sort==='power')list.sort((a,b)=>b.hp-a.hp);
- document.getElementById('shownCount').textContent=`نمایش ${fmt(Math.min(visibleLimit,list.length))} از ${fmt(list.length)} خودرو`;
- document.getElementById('carGrid').innerHTML=list.slice(0,visibleLimit).map(cardHTML).join('')||'<div class="sub">خودرویی با این مشخصات پیدا نشد.</div>';
- document.getElementById('moreBtn').style.display=visibleLimit>=list.length?'none':'inline-block';
-}
-function updatePrice(id){const c=cars.find(x=>x.id===id);if(!c)return;const p=priceAt(c,selectedYear(c));document.getElementById('price-'+id).innerHTML=money((p.min+p.max)/2)+' <small>قیمت بازار آزاد</small>';document.getElementById('range-'+id).textContent='بازه تخمینی بازار: '+money(p.min)+' تا '+money(p.max)}
-function updateTrim(id){const name=document.getElementById('trim-'+id).value;const match=cars.find(c=>c.name===name);if(!match)return;const p=priceAt(match,selectedYear(cars.find(c=>c.id===id)));document.getElementById('price-'+id).innerHTML=money((p.min+p.max)/2)+' <small>قیمت بازار آزاد</small>';document.getElementById('range-'+id).textContent='بازه تخمینی تیپ انتخاب‌شده: '+money(p.min)+' تا '+money(p.max)}
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2300)}
-function toggleCompare(id){if(compareIds.includes(id))compareIds=compareIds.filter(x=>x!==id);else if(compareIds.length>=3){toast('حداکثر ۳ خودرو را می‌توانی مقایسه کنی.');return}else compareIds.push(id);renderCars();renderCompare()}
-function renderCompare(){
- const box=document.getElementById('compareContent'),list=compareIds.map(id=>cars.find(c=>c.id===id)).filter(Boolean);
- if(!list.length){box.innerHTML='از کارت خودروها گزینه «مقایسه فنی» را انتخاب کن.';return}
- const rows=[['قیمت بازار آزاد',c=>(priceAt(c,1405).min+priceAt(c,1405).max)/2,'low',money],['قدرت موتور (اسب‌بخار)',c=>c.hp,'high',fmt],['گشتاور (نیوتن‌متر)',c=>c.torque,'high',fmt],['شتاب صفر تا ۱۰۰ (ثانیه)',c=>c.accel,'low',v=>String(v).replace('.', '٫')],['مصرف ترکیبی (لیتر/۱۰۰ کیلومتر)',c=>c.fuelUse,'low',v=>String(v).replace('.', '٫')]];
- let html='<div class="compare-table-wrap"><table><thead><tr><th>معیار</th>'+list.map(c=>`<th>${safe(c.name)}</th>`).join('')+'</tr></thead><tbody>';
- rows.forEach(([label,get,better,format])=>{const vals=list.map(get),best=better==='high'?Math.max(...vals):Math.min(...vals);html+=`<tr><th>${label}</th>`+list.map((c,i)=>`<td class="${vals[i]===best?'best':''}">${format(vals[i])}${vals.filter(v=>v===best).length===1&&vals[i]===best?'<span class="winner">بهترین در این معیار</span>':''}</td>`).join('')+'</tr>'});
- html+='<tr><th>گیربکس</th>'+list.map(c=>`<td>${safe(c.gearbox)}</td>`).join('')+'</tr><tr><th>نوع سوخت</th>'+list.map(c=>`<td>${safe(c.fuel)}</td>`).join('')+'</tr></tbody></table></div><p class="notice">قیمت‌ها تخمینی‌اند. مشخصات واقعی می‌تواند با تیپ و سال ساخت تفاوت داشته باشد.</p>';box.innerHTML=html;
-}
-function useForEstimate(id){const c=cars.find(x=>x.id===id);if(!c)return;document.getElementById('estModel').value=String(id);document.getElementById('estYear').value=String(selectedYear(c));document.getElementById('estimate').scrollIntoView({behavior:'smooth'})}
-function init(){
- const brands=[...new Set(cars.map(c=>c.brand))].sort((a,b)=>a.localeCompare(b,'fa'));
- document.getElementById('brandFilter').innerHTML='<option value="">همه برندها</option>'+brands.map(b=>`<option value="${safe(b)}">${safe(b)}</option>`).join('');
- document.getElementById('estModel').innerHTML=cars.map(c=>`<option value="${c.id}">${safe(c.name)}</option>`).join('');
- document.getElementById('estYear').innerHTML=years.map(y=>`<option value="${y}" ${y===1400?'selected':''}>${fmt(y)}</option>`).join('');
- document.getElementById('totalCount').textContent=fmt(cars.length)+'+';
- renderCars();renderCompare();
-}
-document.getElementById('search').addEventListener('input',()=>{visibleLimit=12;renderCars()});
-document.getElementById('brandFilter').addEventListener('change',()=>{visibleLimit=12;renderCars()});
-document.getElementById('sortFilter').addEventListener('change',renderCars);
-document.getElementById('categoryFilters').addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(!b)return;activeCategory=b.dataset.cat;document.querySelectorAll('#categoryFilters .chip').forEach(x=>x.classList.toggle('active',x===b));visibleLimit=12;renderCars()});
-document.getElementById('moreBtn').addEventListener('click',()=>{visibleLimit+=12;renderCars()});
-document.getElementById('clearCompare').addEventListener('click',()=>{compareIds=[];renderCars();renderCompare()});
-document.getElementById('estimateBtn').addEventListener('click',()=>{
- const c=cars.find(x=>x.id===Number(document.getElementById('estModel').value));if(!c)return;
- const year=Number(document.getElementById('estYear').value),km=Math.max(0,Number(document.getElementById('estKm').value)||0);
- const paint=Number(document.getElementById('estPaint').value),body=Number(document.getElementById('estBody').value),tech=Number(document.getElementById('estTech').value);
- const base=priceAt(c,year),kmFactor=Math.max(.65,1-Math.max(0,km-30000)/1000000),factor=paint*body*tech*kmFactor;
- const low=base.min*factor,high=base.max*factor,result=document.getElementById('estimateResult');
- result.style.display='block';result.innerHTML=`تخمین قیمت بازار آزاد <b>${safe(c.name)}</b><strong>${money(low)} تا ${money(high)}</strong><span class="sub">قیمت میانی تخمینی: ${money((low+high)/2)}</span>`;
+/* اصلاح مقادیر ناموجود برای سازگاری جاوااسکریپت */
+carFamilies.forEach(f=>{
+  if(f.spec.trunk===undefined || f.spec.trunk==="ناموجود") f.spec.trunk=null;
 });
+
+const images=[
+  "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=85",
+  "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=85",
+  "https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1000&q=85",
+  "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1000&q=85",
+  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1000&q=85",
+  "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=85"
+];
+
+const allCars=[];
+carFamilies.forEach((family,fi)=>{
+  family.trim.forEach((trim,ti)=>{
+    const yearBase=family.yearBase;
+    const id=fi+"-"+ti;
+    let price=family.base;
+    const trimLower=trim.toLowerCase();
+    if(/اتوماتیک|توربو|پانوراما|پرستیژ|فول|هیبرید|دو دیفرانسیل/.test(trimLower)) price*=1.08;
+    if(/ساده|معمولی|دنده‌ای/.test(trimLower)) price*=.97;
+    const spec={...family.spec};
+    if(/اتوماتیک|cvt|dct|پرستیژ/.test(trimLower)){
+      spec.gearbox=/CVT/i.test(trimLower)?"CVT":"اتوماتیک";
+    }
+    if(/دوگانه/.test(trimLower)) spec.fuel="دوگانه‌سوز";
+    if(/توربو/.test(trimLower)&&spec.hp) spec.hp=Math.round(spec.hp*1.18);
+    allCars.push({
+      id,brand:family.brand,family:family.family,trim,category:family.category,
+      basePrice:Math.round(price),yearBase,spec,
+      image:images[fi%images.length]
+    });
+  });
+});
+
+const $=id=>document.getElementById(id);
+const faNum=n=>new Intl.NumberFormat("fa-IR",{maximumFractionDigits:1}).format(n);
+const money=n=>{
+  if(!Number.isFinite(n)||n<=0)return "نامشخص";
+  return n>=1000?(faNum(n/1000)+" میلیارد تومان"):(faNum(Math.round(n))+" میلیون تومان");
+};
+const rangeMoney=(a,b)=>money(a)+" تا "+money(b);
+const yearList=Array.from({length:1405-1380+1},(_,i)=>1405-i);
+let showAll=false;
+let activeCategory="";
+let compareIds=[];
+let selectedCarId=null;
+
+function getCar(id){return allCars.find(c=>c.id===id)}
+function getFamilyCars(family){return allCars.filter(c=>c.family===family)}
+function priceForYear(car,year){
+  const delta=Number(year)-car.yearBase;
+  let factor;
+  if(delta>=0) factor=Math.pow(1.045,Math.min(delta,8));
+  else factor=Math.pow(.955,Math.min(Math.abs(delta),18));
+  const min=Math.round(car.basePrice*factor*.94);
+  const max=Math.round(car.basePrice*factor*1.06);
+  return {min,max,mid:(min+max)/2};
+}
+function adjustedPrice(car,year,condition="clean"){
+  const p=priceForYear(car,year);
+  const factor=condition==="minor"?.96:condition==="paint"?.90:1;
+  return {min:Math.round(p.min*factor),max:Math.round(p.max*factor),mid:p.mid*factor};
+}
+function displayName(car){return car.family+" "+car.trim}
+function specText(value,unit=""){
+  if(value===null||value===undefined||value==="")return "—";
+  return faNum(value)+(unit?" "+unit:"");
+}
+function showToast(message){
+  const t=$("toast");t.textContent=message;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2500);
+}
+function carImageError(img){
+  img.onerror=null;
+  img.src="data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1c3527"/><stop offset="1" stop-color="#0b1712"/></linearGradient></defs>
+      <rect width="800" height="450" fill="url(#g)"/>
+      <circle cx="400" cy="210" r="155" fill="none" stroke="#39573f" stroke-width="2"/>
+      <path d="M145 276l48-76q10-16 36-20l94-62q14-9 37-9h105q26 0 45 20l57 53 50 15q17 5 22 25l5 43H145z" fill="#a8e66b" stroke="#d8ffad" stroke-width="4"/>
+      <path d="M258 179l78-51h80v53H258z" fill="#23483c"/>
+      <path d="M429 128h37q13 0 24 14l35 39H429z" fill="#23483c"/>
+      <circle cx="263" cy="275" r="34" fill="#0a100d" stroke="#91a49a" stroke-width="8"/>
+      <circle cx="520" cy="275" r="34" fill="#0a100d" stroke="#91a49a" stroke-width="8"/>
+      <text x="400" y="370" font-size="25" fill="#b5f36d" text-anchor="middle" font-family="Tahoma">تصویر خودروبان</text>
+    </svg>`);
+}
+function fillBrandFilter(){
+  const brands=[...new Set(carFamilies.map(c=>c.brand))].sort((a,b)=>a.localeCompare(b,"fa"));
+  $("brandFilter").innerHTML='<option value="">همه برندها</option>'+brands.map(b=>`<option>${b}</option>`).join("");
+}
+function currentFilteredCars(){
+  const q=$("searchCars").value.trim().toLowerCase();
+  const brand=$("brandFilter").value;
+  const category=$("categoryFilter").value||activeCategory;
+  return allCars.filter(c=>{
+    const search=(c.family+" "+c.trim+" "+c.brand).toLowerCase();
+    return (!q||search.includes(q))&&(!brand||c.brand===brand)&&(!category||c.category===category);
+  });
+}
+function renderCards(){
+  const filtered=currentFilteredCars();
+  const visible=showAll?filtered:filtered.slice(0,6);
+  $("resultCount").textContent=faNum(filtered.length)+" نسخه از "+faNum(carFamilies.length)+" خانواده خودرو";
+  $("showMoreBtn").style.display=filtered.length>6?"inline-block":"none";
+  $("showMoreBtn").textContent=showAll?"نمایش کمتر −":"خودروهای بیشتر +";
+  if(!visible.length){
+    $("carGrid").innerHTML='<div class="empty-state">خودرویی با این مشخصات پیدا نشد. فیلترها را تغییر بده.</div>';return;
+  }
+  $("carGrid").innerHTML=visible.map(c=>{
+    const p=priceForYear(c,Math.min(1405,Math.max(1380,c.yearBase)));
+    const isSelected=compareIds.includes(c.id);
+    return `<article class="car-card">
+      <div class="car-photo">
+        <img loading="lazy" src="${c.image}" alt="تصویر نمایشی خودرو ${c.family}" onerror="carImageError(this)">
+        <span class="photo-label">${c.category}</span>
+      </div>
+      <div class="car-body">
+        <div class="car-title-row">
+          <div><h3 class="car-title">${c.family}</h3><div class="car-subtitle">${c.brand} · ${c.trim}</div></div>
+          <span class="tag">${faNum(c.yearBase)}</span>
+        </div>
+        <div class="car-price">${rangeMoney(p.min,p.max)} <small>تخمین بازار</small></div>
+        <div class="spec-mini">
+          <div><strong>${specText(c.spec.hp)}</strong><span>اسب بخار</span></div>
+          <div><strong>${specText(c.spec.engine)}</strong><span>حجم موتور cc</span></div>
+          <div><strong>${specText(c.spec.consumption)}</strong><span>لیتر در ۱۰۰km</span></div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-small" onclick="chooseCar('${c.id}')">بررسی نسخه</button>
+          <button class="btn btn-secondary btn-small" onclick="toggleCompare('${c.id}')">${isSelected?"✓ انتخاب شد":"مقایسه +"}</button>
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+}
+function populateSelect(select,options,firstLabel){
+  select.innerHTML=options.map((o,i)=>`<option value="${typeof o==="string"?o:o.value}" ${i===0?"":""}>${typeof o==="string"?o:o.label}</option>`).join("");
+  if(firstLabel)select.insertAdjacentHTML("afterbegin",`<option value="">${firstLabel}</option>`);
+}
+function setupFamilySelector(){
+  const families=[...new Set(carFamilies.map(c=>c.family))];
+  populateSelect($("familySelect"),families);
+  populateSelect($("estimateFamily"),families);
+  populateSelect($("yearSelect"),yearList.map(y=>({value:y,label:faNum(y)})));
+  populateSelect($("estimateYear"),yearList.map(y=>({value:y,label:faNum(y)})));
+  populateSelect($("compareAdd"),allCars.map(c=>({value:c.id,label:displayName(c)})),"انتخاب خودرو...");
+  updateTrimSelect("familySelect","trimSelect");
+  updateTrimSelect("estimateFamily","estimateTrim");
+  selectedCarId=allCars[0].id;
+  updateSelectedCar();
+}
+function updateTrimSelect(familyId,trimId){
+  const family=$(familyId).value;
+  const cars=getFamilyCars(family);
+  $(trimId).innerHTML=cars.map(c=>`<option value="${c.id}">${c.trim}</option>`).join("");
+}
+function updateSelectedCar(){
+  const car=getCar($("trimSelect").value);
+  if(!car)return;
+  selectedCarId=car.id;
+  const year=Number($("yearSelect").value||car.yearBase);
+  const condition=$("conditionSelect").value;
+  const p=adjustedPrice(car,year,condition);
+  $("selectedCarCard").innerHTML=`<div><strong>${car.family}</strong><small>${car.trim} · مدل ${faNum(year)}</small></div>
+  <div class="selected-price"><div>${rangeMoney(p.min,p.max)}</div><small>تخمین قیمت بازار</small></div>`;
+  const s=car.spec;
+  $("selectedSpecs").innerHTML=`
+  <div class="spec-mini">
+    <div><strong>${specText(s.hp)}</strong><span>اسب بخار</span></div>
+    <div><strong>${specText(s.torque)}</strong><span>نیوتن‌متر</span></div>
+    <div><strong>${specText(s.accel)}</strong><span>۰ تا ۱۰۰ ثانیه</span></div>
+    <div><strong>${specText(s.consumption)}</strong><span>مصرف ترکیبی</span></div>
+    <div><strong>${specText(s.engine)}</strong><span>حجم موتور cc</span></div>
+    <div><strong>${specText(s.trunk)}</strong><span>حجم صندوق لیتر</span></div>
+  </div>
+  <p><b style="color:var(--text)">گیربکس:</b> ${s.gearbox||"نامشخص"}</p>
+  <p><b style="color:var(--text)">سوخت:</b> ${s.fuel||"نامشخص"}</p>
+  <p><b style="color:var(--text)">سیستم انتقال نیرو:</b> ${s.drive||"نامشخص"}</p>`;
+}
+function chooseCar(id){
+  const car=getCar(id);if(!car)return;
+  $("familySelect").value=car.family;
+  updateTrimSelect("familySelect","trimSelect");
+  $("trimSelect").value=car.id;
+  $("yearSelect").value=car.yearBase;
+  updateSelectedCar();
+  $("choose").scrollIntoView({behavior:"smooth"});
+}
+function toggleCompare(id){
+  if(compareIds.includes(id)){
+    compareIds=compareIds.filter(x=>x!==id);
+  }else{
+    if(compareIds.length>=3){showToast("حداکثر سه خودرو را می‌توان مقایسه کرد.");return;}
+    compareIds.push(id);
+  }
+  renderCards();renderCompare();
+}
+function renderCompare(){
+  const selected=compareIds.map(getCar).filter(Boolean);
+  $("compareSelected").innerHTML=selected.map(c=>`<button class="filter-pill active" onclick="toggleCompare('${c.id}')">${displayName(c)} ×</button>`).join("");
+  if(!selected.length){
+    $("compareResult").innerHTML='<div class="empty-state">برای شروع، خودروها را از فهرست بالا اضافه کن.</div>';return;
+  }
+  const metrics=[
+    {key:"hp",label:"قدرت موتور",unit:"اسب بخار",better:"max"},
+    {key:"torque",label:"گشتاور",unit:"نیوتن‌متر",better:"max"},
+    {key:"accel",label:"شتاب صفر تا ۱۰۰",unit:"ثانیه",better:"min"},
+    {key:"consumption",label:"مصرف ترکیبی",unit:"لیتر در ۱۰۰ کیلومتر",better:"min"},
+    {key:"engine",label:"حجم موتور",unit:"cc",better:null},
+    {key:"trunk",label:"حجم صندوق",unit:"لیتر",better:"max"},
+    {key:"gearbox",label:"گیربکس",unit:"",better:null},
+    {key:"fuel",label:"نوع سوخت",unit:"",better:null},
+    {key:"drive",label:"انتقال نیرو",unit:"",better:null}
+  ];
+  let html='<div class="compare-wrap"><table class="compare-table"><thead><tr><th>مشخصه</th>';
+  html+=selected.map(c=>`<th>${c.family}<br><small>${c.trim}</small></th>`).join("");
+  html+='</tr></thead><tbody>';
+  metrics.forEach(m=>{
+    const values=selected.map(c=>c.spec[m.key]);
+    const nums=values.map(v=>typeof v==="number"?v:null);
+    let bestValue=null;
+    if(m.better){
+      const valid=nums.filter(v=>v!==null);
+      if(valid.length)bestValue=m.better==="max"?Math.max(...valid):Math.min(...valid);
+    }
+    html+=`<tr><td>${m.label}</td>`;
+    html+=selected.map((c,i)=>{
+      const v=c.spec[m.key];
+      const isBest=bestValue!==null&&typeof v==="number"&&v===bestValue;
+      const textValue=(v===null||v===undefined)?"—":(typeof v==="number"?specText(v,m.unit):v);
+      return `<td class="${isBest?"best":"not-best"}">${textValue}${isBest?" ★":""}</td>`;
+    }).join("");
+    html+='</tr>';
+  });
+  html+='<tr><td>قیمت تخمینی بازار</td>';
+  html+=selected.map(c=>{const p=priceForYear(c,c.yearBase);return `<td>${rangeMoney(p.min,p.max)}</td>`}).join("");
+  html+='</tr></tbody></table></div><p style="color:var(--muted);font-size:12px">★ یعنی بهترین مقدار عددی در همان ردیف. در شتاب و مصرف، عدد کمتر بهتر است؛ در قدرت، گشتاور و حجم صندوق، عدد بیشتر بهتر است. تفاوت تیپ و سال می‌تواند مشخصات را تغییر دهد.</p>';
+  $("compareResult").innerHTML=html;
+}
+function updateEstimateTrim(){
+  const fam=$("estimateFamily").value;
+  const cars=getFamilyCars(fam);
+  $("estimateTrim").innerHTML=cars.map(c=>`<option value="${c.id}">${c.trim}</option>`).join("");
+}
+function calculateEstimate(){
+  const car=getCar($("estimateTrim").value);
+  if(!car){showToast("اول خودرو و تیپ را انتخاب کن.");return;}
+  const year=Number($("estimateYear").value||car.yearBase);
+  const km=Math.max(0,Number($("estimateKm").value||0));
+  const body=Number($("estimateBody").value);
+  const tech=Number($("estimateTech").value);
+  let p=priceForYear(car,year);
+  let kmFactor=1;
+  if(km<50000)kmFactor=1.03;
+  else if(km<100000)kmFactor=1.015;
+  else if(km>250000)kmFactor=.96;
+  else if(km>180000)kmFactor=.98;
+  const min=Math.round(p.min*body*tech*kmFactor);
+  const max=Math.round(p.max*body*tech*kmFactor);
+  $("estimateResult").innerHTML=`<div class="estimate-result">
+    <span>قیمت تخمینی بازار خودرو</span>
+    <strong>${rangeMoney(min,max)}</strong>
+    <p>${car.family} ${car.trim} · مدل ${faNum(year)} · کارکرد ${faNum(km)} کیلومتر</p>
+    <p>این عدد تخمینی است؛ شهر، بیمه، تعداد مالکان، وضعیت شاسی، سلامت موتور و قیمت آگهی‌های روز می‌توانند نتیجه را تغییر دهند.</p>
+  </div>`;
+}
+function init(){
+  fillBrandFilter();
+  setupFamilySelector();
+  renderCards();
+  $("searchCars").addEventListener("input",()=>{showAll=false;renderCards()});
+  $("brandFilter").addEventListener("change",()=>{showAll=false;renderCards()});
+  $("categoryFilter").addEventListener("change",()=>{
+    activeCategory=$("categoryFilter").value;showAll=false;
+    document.querySelectorAll(".filter-pill").forEach(b=>b.classList.toggle("active",b.dataset.filter===activeCategory));
+    renderCards();
+  });
+  $("resetFilters").addEventListener("click",()=>{
+    $("searchCars").value="";$("brandFilter").value="";$("categoryFilter").value="";
+    activeCategory="";showAll=false;
+    document.querySelectorAll(".filter-pill").forEach(b=>b.classList.toggle("active",b.dataset.filter===""));
+    renderCards();
+  });
+  document.querySelectorAll(".filter-pill[data-filter]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      activeCategory=btn.dataset.filter;
+      $("categoryFilter").value=activeCategory;
+      document.querySelectorAll(".filter-pill[data-filter]").forEach(b=>b.classList.toggle("active",b===btn));
+      showAll=false;renderCards();
+    });
+  });
+  $("showMoreBtn").addEventListener("click",()=>{showAll=!showAll;renderCards()});
+  $("familySelect").addEventListener("change",()=>{
+    updateTrimSelect("familySelect","trimSelect");
+    const car=getCar($("trimSelect").value);
+    if(car)$("yearSelect").value=car.yearBase;
+    updateSelectedCar();
+  });
+  $("trimSelect").addEventListener("change",updateSelectedCar);
+  $("yearSelect").addEventListener("change",updateSelectedCar);
+  $("conditionSelect").addEventListener("change",updateSelectedCar);
+  $("showSelectedPrice").addEventListener("click",()=>{
+    updateSelectedCar();showToast("قیمت تخمینی بازار به‌روزرسانی شد.");
+  });
+  $("compareAdd").addEventListener("change",e=>{
+    const id=e.target.value;
+    if(!id)return;
+    if(!compareIds.includes(id)){
+      if(compareIds.length>=3){showToast("حداکثر سه خودرو را می‌توان مقایسه کرد.");e.target.value="";return;}
+      compareIds.push(id);
+    }
+    e.target.value="";renderCards();renderCompare();
+  });
+  $("estimateFamily").addEventListener("change",updateEstimateTrim);
+  $("calculateEstimate").addEventListener("click",calculateEstimate);
+  updateEstimateTrim();
+}
 init();
 </script>
 </body>
 </html>
-
