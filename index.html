@@ -4,699 +4,444 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1512">
-<meta name="description" content="خودروبان؛ بررسی، مقایسه و انتخاب خودرو بر اساس بودجه، سال ساخت و تیپ.">
-<title>خودروبان | انتخاب هوشمند خودرو</title>
-
+<meta name="theme-color" content="#07130f">
+<title>خودروبان | مقایسه و بررسی خودرو</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
 
-:root {
-  --bg:#0b1210;
-  --panel:#121c18;
-  --panel2:#19251f;
-  --line:#29382f;
-  --text:#f0f5f1;
-  --muted:#a3b2a8;
-  --green:#a6f36b;
-  --green2:#6fc93e;
-  --danger:#ff7979;
-  --radius:20px;
-}
+:root{--bg:#07130f;--panel:#0d2019;--panel2:#12291f;--line:#254334;--green:#45e69a;--text:#f1f7f3;--muted:#9bb4a6;--red:#ff7878}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:"Vazirmatn",Tahoma,sans-serif;
-  line-height:1.8
-}
+body{margin:0;background:radial-gradient(ellipse at top,#123526 0,#07130f 48%);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh}
 button,input,select{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-a{color:inherit;text-decoration:none}
 button{cursor:pointer}
-.container{width:min(1180px,92%);margin:auto}
-header{
-  position:sticky;top:0;z-index:20;
-  background:#0b1210ed;backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--line)
-}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font-size:25px;font-weight:900;letter-spacing:-1px}
-.logo span{color:var(--green)}
-.navlinks{display:flex;gap:23px;color:var(--muted);font-size:14px}
-.navlinks a:hover{color:var(--green)}
-.nav-action,.primary{
-  border:0;border-radius:12px;background:var(--green);color:#14200f;
-  padding:11px 18px;font-weight:800
-}
-.hero{padding:75px 0 48px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:35px}
-.eyebrow{color:var(--green);font-size:13px;font-weight:800}
-h1{font-size:clamp(35px,5vw,62px);line-height:1.35;margin:12px 0}
-.hero p{color:var(--muted);max-width:570px}
-.hero-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
-.secondary{
-  border:1px solid var(--line);background:var(--panel);color:var(--text);
-  border-radius:12px;padding:11px 18px;font-weight:700
-}
-.hero-image{position:relative}
-.hero-image img{
-  width:100%;height:340px;object-fit:cover;border-radius:28px;
-  border:1px solid var(--line)
-}
-.hero-tag{
-  position:absolute;bottom:16px;right:16px;background:#101a16ed;
-  border:1px solid var(--line);padding:12px 16px;border-radius:15px
-}
-.hero-tag strong{display:block;color:var(--green)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
-.stat{padding:15px;border:1px solid var(--line);border-radius:15px;background:var(--panel)}
-.stat strong{display:block;color:var(--green);font-size:22px}
-.stat span{font-size:12px;color:var(--muted)}
-.section{padding:55px 0}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:25px}
-.section-head h2{font-size:clamp(24px,3vw,34px);margin:0}
-.section-head p{color:var(--muted);margin:5px 0 0;font-size:14px}
-.pill{border:1px solid var(--line);padding:6px 11px;border-radius:50px;color:var(--muted);font-size:12px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
-.filters{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:10px;
-  margin-bottom:20px
-}
-.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-.field input,.field select{
-  width:100%;min-width:0;background:#0c1511;border:1px solid var(--line);
-  color:var(--text);border-radius:11px;padding:11px;outline:none
-}
-.field input:focus,.field select:focus{border-color:var(--green)}
-.field select option{background:#101a15}
-.filter-button{align-self:end}
-.results-line{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:12px 0;color:var(--muted);font-size:13px}
-.car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.car-card{
-  background:var(--panel);border:1px solid var(--line);border-radius:18px;
-  overflow:hidden;transition:.25s;min-width:0
-}
-.car-card:hover{transform:translateY(-4px);border-color:#557d47}
-.car-image{position:relative;background:#202c25}
-.car-image img{width:100%;height:205px;display:block;object-fit:cover}
-.car-label{
-  position:absolute;top:12px;right:12px;background:#0b1512df;
-  padding:4px 10px;border-radius:30px;font-size:11px
-}
-.car-content{padding:16px}
-.car-content h3{margin:0 0 4px;font-size:19px}
-.car-subtitle{font-size:12px;color:var(--muted)}
-.price{color:var(--green);font-size:21px;font-weight:900;margin:13px 0 2px}
-.price small{font-size:11px;font-weight:500;color:var(--muted)}
-.specs{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}
-.specs span{background:var(--panel2);padding:4px 8px;border-radius:7px;font-size:11px;color:#d0dcd3}
-.card-actions{display:flex;gap:8px}
-.card-actions button{flex:1;font-size:12px;padding:9px 7px;border-radius:10px}
-.compare-btn{background:transparent;border:1px solid var(--line);color:var(--text)}
-.detail-btn{background:var(--green);color:#14200f;border:0;font-weight:800}
-.notice{
-  border:1px solid #6d6231;background:#272316;color:#e7d9a1;
-  padding:13px 15px;border-radius:12px;font-size:12px;margin:16px 0
-}
-.empty{padding:35px;text-align:center;color:var(--muted);grid-column:1/-1}
-.budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.budget-output{min-height:150px}
-.budget-output h3{margin-top:0}
-.budget-output p{color:var(--muted);font-size:14px}
-.budget-results{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.budget-results button{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:9px;padding:8px 12px}
-.compare-list{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
-.compare-chip{background:var(--panel2);padding:7px 10px;border-radius:10px;font-size:12px}
-.compare-chip button{color:var(--danger);background:none;border:0;margin-right:8px}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:550px}
-th,td{padding:13px;text-align:right;border-bottom:1px solid var(--line);font-size:13px}
-th{color:var(--muted);font-weight:500}
-td strong{color:var(--green)}
-.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.tech-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel)}
-.tech-card img{width:100%;height:185px;object-fit:cover;display:block}
-.tech-card div{padding:15px}
-.tech-card h3{margin:0 0 5px}
-.tech-card p{color:var(--muted);font-size:13px;margin:0}
-footer{border-top:1px solid var(--line);padding:35px 0;margin-top:35px;color:var(--muted);font-size:13px}
-.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.footer-links{display:flex;gap:16px;flex-wrap:wrap}
-.footer-links a:hover{color:var(--green)}
-.modal-backdrop{
-  display:none;position:fixed;inset:0;background:#000b;z-index:50;
-  padding:18px;overflow-y:auto;align-items:center;justify-content:center
-}
-.modal-backdrop.open{display:flex}
-.modal{
-  width:min(760px,100%);max-height:92vh;overflow:auto;background:var(--panel);
-  border:1px solid var(--line);border-radius:22px;padding:22px
-}
-.modal-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.close{background:var(--panel2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:5px 12px}
-.modal img{width:100%;height:260px;object-fit:cover;border-radius:14px;margin:12px 0}
-.modal select{background:#0b1512;color:var(--text);border:1px solid var(--line);padding:10px;border-radius:10px;width:100%}
-.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
-.modal-grid .field{min-width:0}
-.modal-price{font-size:26px;font-weight:900;color:var(--green);margin:15px 0}
-.modal-text{color:var(--muted);font-size:13px}
-.small-button{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:8px 12px;border-radius:10px}
-@media(max-width:900px){
- .hero-grid{grid-template-columns:1fr}
- .hero-image img{height:290px}
- .filters{grid-template-columns:repeat(2,minmax(0,1fr))}
- .car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .tech-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:560px){
- .nav{min-height:65px}.navlinks{display:none}
- .hero{padding-top:45px}
- .hero-image img{height:220px}
- .stats{gap:7px}.stat{padding:10px}.stat strong{font-size:18px}
- .car-grid,.budget-grid,.tech-grid{grid-template-columns:1fr}
- .car-image img{height:220px}
- .filters{grid-template-columns:1fr 1fr}
- .filters .field:first-child{grid-column:1/-1}
- .filter-button{width:100%}
- .section{padding:38px 0}
- .section-head{align-items:start;flex-direction:column}
- .modal-grid{grid-template-columns:1fr}
-}
+.wrap{width:min(1200px,94%);margin:auto}
+header{padding:23px 0;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.logo{font-size:27px;font-weight:800;color:var(--green);letter-spacing:-1px}
+.logo span{color:white}
+.nav small{color:var(--muted)}
+.hero{padding:42px 0 25px}
+.eyebrow{color:var(--green);font-size:13px;font-weight:700}
+h1{font-size:clamp(27px,5vw,48px);line-height:1.5;margin:8px 0}
+.hero p{color:var(--muted);max-width:700px;line-height:2}
+.searchbox{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+input,select{background:#091a13;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+.searchbox input{flex:1;min-width:200px}
+button{border:0;border-radius:12px;padding:11px 16px;font-weight:700;transition:.2s}
+button:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.primary{background:var(--green);color:#062015}
+.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
+.danger{background:#3a1d20;color:#ffb4b4;border:1px solid #71343b}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:25px 0 15px}
+h2{font-size:22px;margin:0}
+.muted{color:var(--muted);font-size:13px}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:15px 0 20px}
+.filters select{width:100%}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:linear-gradient(145deg,#11271e,#0a1912);border:1px solid var(--line);border-radius:18px;overflow:hidden;min-width:0;transition:.2s}
+.card:hover{border-color:#438a65;transform:translateY(-3px)}
+.carphoto{height:185px;background:#0c1d15;position:relative;overflow:hidden}
+.carphoto img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;top:12px;right:12px;background:#07130fe8;color:var(--green);border:1px solid #315b43;border-radius:8px;padding:5px 9px;font-size:11px}
+.cardbody{padding:15px}
+.card h3{margin:0 0 5px;font-size:19px}
+.brand{color:var(--muted);font-size:12px}
+.specmini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:15px 0}
+.specmini div{background:#091a13;padding:9px;border-radius:10px}
+.specmini small{display:block;color:var(--muted);font-size:11px}
+.specmini strong{font-size:14px}
+.card select{width:100%;margin:5px 0}
+.price{color:var(--green);font-size:19px;font-weight:800;margin:10px 0}
+.price small{font-size:11px;color:var(--muted);font-weight:400}
+.actions{display:flex;gap:8px;margin-top:12px}
+.actions button{flex:1;font-size:12px;padding:10px 5px}
+.selected{border-color:var(--green)!important;box-shadow:0 0 0 1px #45e69a25}
+#moreBtn{display:block;margin:24px auto}
+.empty{padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px}
+.compare-area{margin:38px 0;background:#0a1912;border:1px solid var(--line);padding:20px;border-radius:18px}
+.compare-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.compare-selects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0}
+.compare-selects select{width:100%}
+.tablewrap{overflow-x:auto;margin-top:18px}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{padding:13px 11px;border-bottom:1px solid var(--line);text-align:center}
+th{color:var(--muted);font-size:13px}
+td:first-child,th:first-child{text-align:right}
+td:first-child{color:#d4e5da}
+.winner{color:var(--green)!important;background:#123b29;font-weight:800}
+.winner::after{content:"  ✓";font-size:12px}
+.note{color:var(--muted);font-size:12px;line-height:1.9;margin-top:13px}
+.verdict{background:#10281c;border:1px solid #286443;padding:15px;border-radius:13px;line-height:2;margin-top:16px}
+footer{margin-top:50px;padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:2}
+dialog{width:min(600px,94%);max-height:90vh;overflow:auto;background:#0b1c13;color:var(--text);border:1px solid var(--line);border-radius:18px;padding:22px}
+dialog::backdrop{background:#000b}
+.modalgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.modalgrid div{padding:12px;background:#12291f;border-radius:10px}
+.modalgrid small{display:block;color:var(--muted)}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.carphoto{height:210px}.filters{grid-template-columns:1fr 1fr}.compare-selects{grid-template-columns:1fr}.hero{padding-top:25px}.logo{font-size:23px}}
 </style>
 </head>
-
 <body>
 <header>
-  <div class="container nav">
-    <a class="logo" href="#home">خودرو<span>بان</span></a>
-    <nav class="navlinks">
-      <a href="#cars">خودروها</a>
-      <a href="#budget">انتخاب با بودجه</a>
-      <a href="#compare">مقایسه</a>
-      <a href="#tech">زیر کاپوت</a>
-    </nav>
-    <a class="nav-action" href="#cars">پیدا کردن خودرو</a>
-  </div>
+ <div class="wrap nav">
+  <div class="logo">خودرو<span>بان</span></div>
+  <small>انتخاب آگاهانه‌تر، قبل از خرید خودرو</small>
+ </div>
 </header>
 
-<main>
-<section class="hero" id="home">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">انتخاب خودرو، بدون سردرگمی</div>
-      <h1>قبل از خرید،<br><span style="color:var(--green)">هوشمندانه</span> بررسی کن.</h1>
-      <p>مدل‌ها رو بررسی کن، سال و تیپ رو انتخاب کن، مشخصات رو ببین و چند خودرو رو کنار هم مقایسه کن.</p>
-      <div class="hero-buttons">
-        <a class="primary" href="#cars">دیدن خودروها ←</a>
-        <a class="secondary" href="#budget">خودروی مناسب بودجه من</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><strong id="carCount">۰</strong><span>مدل خودرو</span></div>
-        <div class="stat"><strong>۳</strong><span>مرحله انتخاب</span></div>
-        <div class="stat"><strong>۱</strong><span>هدف؛ خرید آگاهانه</span></div>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=85" alt="تصویر خودرو" onerror="this.style.display='none'">
-      <div class="hero-tag"><strong>خودروی مناسب خودت رو پیدا کن</strong><span style="font-size:12px;color:var(--muted)">مدل، تیپ، سال و بودجه</span></div>
-    </div>
+<main class="wrap">
+ <section class="hero">
+  <div class="eyebrow">مقایسه، بررسی و انتخاب خودرو</div>
+  <h1>قبل از خرید، <span style="color:var(--green)">هوشمندانه مقایسه کن.</span></h1>
+  <p>خودروها رو جست‌وجو کن، مشخصات فنی‌شون رو کنار هم ببین و با توجه به قدرت موتور، مصرف سوخت، شتاب و قیمت تصمیم بگیر.</p>
+  <div class="searchbox">
+   <input id="search" placeholder="نام خودرو یا شرکت سازنده..." aria-label="جست‌وجوی خودرو">
+   <button class="primary" id="searchBtn">جست‌وجو</button>
+   <button class="secondary" id="resetBtn">پاک کردن فیلترها</button>
   </div>
-</section>
+ </section>
 
-<section class="section" id="cars">
-<div class="container">
-  <div class="section-head">
-    <div><h2>خودروها</h2><p>خودرو رو پیدا کن و نسخه دقیقش رو انتخاب کن.</p></div>
-    <span class="pill">جست‌وجو و فیلتر</span>
+ <section>
+  <div class="sectionhead">
+   <h2>فهرست خودروها</h2>
+   <span id="count" class="muted"></span>
   </div>
+  <div class="filters">
+   <select id="category">
+    <option value="">همه دسته‌ها</option>
+    <option value="داخلی">داخلی</option>
+    <option value="مونتاژی">مونتاژی</option>
+    <option value="وارداتی">وارداتی</option>
+   </select>
+   <select id="body">
+    <option value="">همه کلاس‌ها</option>
+    <option value="سدان">سدان</option>
+    <option value="هاچ‌بک">هاچ‌بک</option>
+    <option value="کراس‌اوور">کراس‌اوور</option>
+    <option value="SUV">شاسی‌بلند</option>
+    <option value="پیکاپ">پیکاپ</option>
+   </select>
+   <select id="sort">
+    <option value="default">ترتیب پیش‌فرض</option>
+    <option value="price">قیمت: ارزان به گران</option>
+    <option value="power">قدرت موتور: بیشتر</option>
+    <option value="fuel">مصرف سوخت: کمتر</option>
+   </select>
+   <select id="sortBrand">
+    <option value="">همه سازنده‌ها</option>
+    <option>ایران‌خودرو</option><option>سایپا</option><option>مدیران خودرو</option>
+    <option>کرمان موتور</option><option>بهمن موتور</option><option>سایر</option>
+   </select>
+  </div>
+  <div id="cars" class="grid"></div>
+  <button id="moreBtn" class="secondary">ماشین‌های بیشتر ↓</button>
+ </section>
 
-  <div class="panel">
-    <div class="filters">
-      <div class="field">
-        <label for="search">جست‌وجوی نام یا برند</label>
-        <input id="search" placeholder="مثلاً دنا، تارا، تویوتا..." autocomplete="off">
-      </div>
-      <div class="field">
-        <label for="brandFilter">برند</label>
-        <select id="brandFilter"><option value="">همه برندها</option></select>
-      </div>
-      <div class="field">
-        <label for="typeFilter">نوع خودرو</label>
-        <select id="typeFilter">
-          <option value="">همه انواع</option>
-          <option value="سدان">سدان</option>
-          <option value="هاچ‌بک">هاچ‌بک</option>
-          <option value="کراس‌اوور">کراس‌اوور</option>
-          <option value="شاسی‌بلند">شاسی‌بلند</option>
-          <option value="پیکاپ">پیکاپ</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="budgetFilter">حداکثر بودجه (میلیون)</label>
-        <input id="budgetFilter" type="number" min="0" placeholder="مثلاً ۱۵۰۰">
-      </div>
-      <button class="primary filter-button" id="resetFilters">پاک کردن فیلتر</button>
-    </div>
-    <div class="results-line">
-      <span id="resultsCount">در حال نمایش خودروها...</span>
-      <span>قیمت‌ها در این نسخه نمونه‌اند.</span>
-    </div>
-    <div class="notice">
-      توجه: قیمت‌های نمایش‌داده‌شده برآورد آزمایشی هستند و قیمت روز بازار محسوب نمی‌شوند.
-      برای بررسی قیمت‌های روز، از منابع بیرونی استفاده کن.
-    </div>
-    <div class="car-grid" id="carGrid"></div>
+ <section class="compare-area" id="compare">
+  <div class="compare-head">
+   <div>
+    <h2>مقایسه فنی خودروها</h2>
+    <div class="muted" style="margin-top:6px">حداکثر ۳ خودرو رو انتخاب کن؛ بهترین مقدار هر معیار سبز می‌شه.</div>
+   </div>
+   <button class="secondary" id="clearCompare">پاک کردن مقایسه</button>
   </div>
-</div>
-</section>
-
-<section class="section" id="budget">
-<div class="container">
-  <div class="section-head">
-    <div><h2>با بودجه‌ات انتخاب کن</h2><p>بودجه رو وارد کن تا خودروهای دارای نسخه مناسب رو ببینی.</p></div>
+  <div class="compare-selects">
+   <select id="cmp1" aria-label="خودروی اول"><option value="">خودروی اول را انتخاب کن</option></select>
+   <select id="cmp2" aria-label="خودروی دوم"><option value="">خودروی دوم را انتخاب کن</option></select>
+   <select id="cmp3" aria-label="خودروی سوم"><option value="">خودروی سوم را انتخاب کن</option></select>
   </div>
-  <div class="budget-grid">
-    <div class="panel">
-      <div class="field">
-        <label for="myBudget">بودجه شما (میلیون تومان)</label>
-        <input id="myBudget" type="number" min="1" placeholder="مثلاً ۱۲۰۰">
-      </div>
-      <div class="field" style="margin-top:15px">
-        <label for="myType">نوع خودروی دلخواه</label>
-        <select id="myType">
-          <option value="">فرقی نمی‌کند</option>
-          <option value="سدان">سدان</option>
-          <option value="هاچ‌بک">هاچ‌بک</option>
-          <option value="کراس‌اوور">کراس‌اوور</option>
-          <option value="شاسی‌بلند">شاسی‌بلند</option>
-          <option value="پیکاپ">پیکاپ</option>
-        </select>
-      </div>
-      <button class="primary" id="findBudget" style="margin-top:16px;width:100%">پیدا کردن گزینه‌ها</button>
-    </div>
-    <div class="panel budget-output" id="budgetOutput">
-      <h3>پیشنهادهای متناسب با بودجه</h3>
-      <p>بودجه رو وارد کن تا نسخه‌های نمونه متناسب با اون نمایش داده بشن.</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<section class="section" id="compare">
-<div class="container">
-  <div class="section-head">
-    <div><h2>مقایسه خودروها</h2><p>از کارت خودروها گزینه «مقایسه» رو بزن؛ حداکثر سه خودرو.</p></div>
-    <button class="small-button" id="clearCompare">پاک کردن مقایسه</button>
-  </div>
-  <div class="panel">
-    <div id="compareList" class="compare-list"><span class="modal-text">هنوز خودرویی انتخاب نکردی.</span></div>
-    <div id="compareTable" class="table-wrap"></div>
-  </div>
-</div>
-</section>
-
-<section class="section" id="tech">
-<div class="container">
-  <div class="section-head">
-    <div><h2>زیر کاپوت چه خبره؟</h2><p>آشنایی ساده با بخش‌های مهم خودرو.</p></div>
-  </div>
-  <div class="tech-grid">
-    <article class="tech-card">
-      <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80" alt="موتور خودرو" loading="lazy">
-      <div><h3>موتور</h3><p>توان موتور، مصرف سوخت، نوع سوخت‌رسانی و هزینه نگهداری از نکات مهم بررسی خودرو هستند.</p></div>
-    </article>
-    <article class="tech-card">
-      <img src="https://images.unsplash.com/photo-1632823469850-1b4f9b7b2c6b?auto=format&fit=crop&w=900&q=80" alt="قطعات فنی خودرو" loading="lazy">
-      <div><h3>گیربکس</h3><p>نوع گیربکس، عملکرد در ترافیک، هزینه تعمیر و سابقه سرویس را پیش از خرید بررسی کن.</p></div>
-    </article>
-    <article class="tech-card">
-      <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=900&q=80" alt="تعمیر و بررسی خودرو" loading="lazy">
-      <div><h3>ترمز و ایمنی</h3><p>وجود سامانه‌های ایمنی به‌تنهایی کافی نیست؛ وضعیت واقعی ترمز، لاستیک و بدنه نیز مهم است.</p></div>
-    </article>
-  </div>
-</div>
-</section>
+  <div id="compareResult"><div class="empty">برای شروع، دو یا سه خودرو انتخاب کن.</div></div>
+  <p class="note">راهنمای مقایسه: قدرت و گشتاور بیشتر معمولاً امتیاز مثبت است؛ مصرف سوخت، شتاب صفر تا صد و قیمت کمتر امتیاز مثبت محسوب می‌شوند. شرایط واقعی رانندگی، ایمنی، کیفیت خدمات و هزینه قطعات هم مهم‌اند.</p>
+ </section>
 </main>
 
 <footer>
-  <div class="container footer-grid">
-    <div><a class="logo" href="#home">خودرو<span>بان</span></a><p>برای انتخاب آگاهانه‌تر خودرو.</p></div>
-    <div class="footer-links">
-      <a href="https://car.ir/prices" target="_blank" rel="noopener noreferrer">قیمت روز در Car.ir</a>
-      <a href="https://1car.ir/price" target="_blank" rel="noopener noreferrer">قیمت‌ها در 1Car</a>
-      <a href="#cars">فهرست خودروها</a>
-    </div>
-    <div>© <span id="yearNow"></span> خودروبان</div>
-  </div>
+ <div class="wrap">
+  <strong style="color:var(--green)">خودروبان</strong><br>
+  این نسخه نمونه اولیه است. قیمت‌ها تخمینی و برای نمایش عملکرد سایت هستند، نه قیمت قطعی بازار. اطلاعات فنی نیز باید با کاتالوگ رسمی هر سال و تیپ بررسی شوند. این فهرست تمام خودروهای واردشده یا شماره‌گذاری‌شده در ایران را پوشش نمی‌دهد.
+ </div>
 </footer>
 
-<div class="modal-backdrop" id="detailBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal">
-    <div class="modal-top">
-      <h2 id="modalTitle">مشخصات خودرو</h2>
-      <button class="close" id="closeModal">بستن ✕</button>
-    </div>
-    <img id="modalImage" src="" alt="تصویر خودرو">
-    <div class="modal-grid">
-      <div class="field"><label for="modalYear">سال ساخت</label><select id="modalYear"></select></div>
-      <div class="field"><label for="modalTrim">تیپ / نسخه</label><select id="modalTrim"></select></div>
-    </div>
-    <div class="modal-price" id="modalPrice"></div>
-    <div class="specs" id="modalSpecs"></div>
-    <p class="modal-text" id="modalDescription"></p>
-    <p class="modal-text">قیمت این نسخه آزمایشی است؛ قبل از خرید، قیمت روز و مشخصات رسمی همان مدل را بررسی کن.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="primary" id="modalCompare">افزودن نسخه به مقایسه</button>
-      <a class="secondary" href="https://car.ir/prices" target="_blank" rel="noopener noreferrer">بررسی قیمت روز</a>
-    </div>
-  </div>
-</div>
+<dialog id="details">
+ <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+  <h2 id="detailTitle">مشخصات خودرو</h2>
+  <button class="secondary" id="closeDetails">بستن ✕</button>
+ </div>
+ <div id="detailContent"></div>
+</dialog>
 
 <script>
 "use strict";
 
 /*
-  قیمت‌ها داده آزمایشی هستند و از API دریافت نمی‌شوند.
-  تمام قیمت‌ها بر حسب میلیون تومان‌اند.
-  base = قیمت پایه فرضی مدل
-  trimFactor = ضریب نمونه تیپ
-  yearFactor = ضریب نمونه سال ساخت
-  برای قیمت واقعی، داده معتبر یا API باید جایگزین این روش شود.
+  داده‌های زیر نمونه اولیه‌اند و قیمت‌ها تقریبی هستند.
+  برای دقت واقعی باید داده‌های هر سال و تیپ جداگانه از منابع معتبر وارد شوند.
+  سال انتخابی به‌تنهایی مشخصات واقعی مدل را تغییر نمی‌دهد.
 */
 
-const currentYear = new Date().getFullYear();
-const years = [currentYear, currentYear-1, currentYear-2, currentYear-3, currentYear-4];
-
-const cars = [
- {id:1,name:"پژو ۲۰۷",brand:"ایران‌خودرو",type:"هاچ‌بک",base:850,image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",desc:"هاچ‌بک شهری؛ پیش از خرید، نوع موتور، گیربکس و تجهیزات نسخه دقیق را بررسی کن.",trims:[["دنده‌ای",1],["اتوماتیک",1.25],["پانوراما اتوماتیک",1.34]]},
- {id:2,name:"دنا پلاس",brand:"ایران‌خودرو",type:"سدان",base:1050,image:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80",desc:"سدان خانوادگی؛ تفاوت موتور و تجهیزات بین نسخه‌ها مهم است.",trims:[["۵ دنده",1],["۶ دنده",1.08],["توربو اتوماتیک",1.3]]},
- {id:3,name:"تارا",brand:"ایران‌خودرو",type:"سدان",base:1000,image:"https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80",desc:"سدان خانوادگی؛ مشخصات گیربکس و امکانات را با سال ساخت تطبیق بده.",trims:[["دنده‌ای V1",1],["اتوماتیک V2",1.23],["اتوماتیک V4",1.34]]},
- {id:4,name:"سورن پلاس",brand:"ایران‌خودرو",type:"سدان",base:780,image:"https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80",desc:"خودروی خانوادگی؛ وضعیت فنی و سوابق سرویس نمونه کارکرده را بررسی کن.",trims:[["XU7P",1],["EF7 دوگانه‌سوز",1.07],["EF7 بنزینی",1.04]]},
- {id:5,name:"رانا پلاس",brand:"ایران‌خودرو",type:"سدان",base:720,image:"https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=900&q=80",desc:"سدان اقتصادی؛ سلامت بدنه و سیستم انتقال قدرت را بررسی کن.",trims:[["دنده‌ای",1],["ارتقایافته",1.06]]},
- {id:6,name:"ری‌را",brand:"ایران‌خودرو",type:"کراس‌اوور",base:1650,image:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",desc:"کراس‌اوور؛ تجهیزات ایمنی و مشخصات موتور را از کاتالوگ همان نسخه تأیید کن.",trims:[["اتوماتیک",1],["نسخه فول",1.12]]},
- {id:7,name:"شاهین",brand:"سایپا",type:"سدان",base:850,image:"https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=900&q=80",desc:"سدان سایپا؛ نوع گیربکس و مشخصات موتور ممکن است با نسخه فرق داشته باشد.",trims:[["G دنده‌ای",1],["G اتوماتیک",1.23],["پلاس اتوماتیک",1.36]]},
- {id:8,name:"اطلس",brand:"سایپا",type:"هاچ‌بک",base:620,image:"https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=900&q=80",desc:"خودروی شهری؛ امکانات نسخه‌های مختلف را مقایسه کن.",trims:[["S",1],["G",1.1],["اتوماتیک",1.24]]},
- {id:9,name:"سهند",brand:"سایپا",type:"سدان",base:650,image:"https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80",desc:"سدان شهری؛ تجهیزات رفاهی و ایمنی را با نسخه دقیق تطبیق بده.",trims:[["S",1],["G",1.1],["اتوماتیک",1.23]]},
- {id:10,name:"کوییک",brand:"سایپا",type:"هاچ‌بک",base:480,image:"https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80",desc:"هاچ‌بک اقتصادی؛ وضعیت گیربکس، تعلیق و بدنه در نمونه کارکرده مهم است.",trims:[["S",1],["GXR",1.08],["اتوماتیک",1.2]]},
- {id:11,name:"ساینا",brand:"سایپا",type:"سدان",base:470,image:"https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=900&q=80",desc:"سدان شهری؛ سال ساخت و سطح امکانات را هنگام خرید بررسی کن.",trims:[["S",1],["GX",1.08],["اتوماتیک",1.2]]},
- {id:12,name:"پراید ۱۳۱",brand:"سایپا",type:"سدان",base:330,image:"https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=80",desc:"خودروی کارکرده؛ سلامت شاسی، ایمنی و سابقه تصادف را جدی بگیر.",trims:[["معمولی",1],["آپشنال",1.05]]},
- {id:13,name:"پژو پارس",brand:"ایران‌خودرو",type:"سدان",base:680,image:"https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=900&q=80",desc:"مدل‌های مختلف موتور و تجهیزات دارند؛ مشخصات را با کارت و مدارک خودرو تطبیق بده.",trims:[["XU7",1],["TU5",1.12],["ساده",0.96]]},
- {id:14,name:"پژو ۲۰۶",brand:"ایران‌خودرو",type:"هاچ‌بک",base:500,image:"https://images.unsplash.com/photo-1471479917193-f00955256257?auto=format&fit=crop&w=900&q=80",desc:"خودروی کارکرده؛ سلامت موتور، جلوبندی و سابقه تصادف تعیین‌کننده است.",trims:[["تیپ ۲",1],["تیپ ۵",1.12],["SD",1.08]]},
- {id:15,name:"سمند EF7",brand:"ایران‌خودرو",type:"سدان",base:620,image:"https://images.unsplash.com/photo-1485463611174-f302f6a5c1b9?auto=format&fit=crop&w=900&q=80",desc:"سدان خانوادگی؛ سابقه نگهداری و وضعیت موتور را بررسی کن.",trims:[["بنزینی",1],["دوگانه‌سوز",1.06]]},
- {id:16,name:"ام‌وی‌ام X22",brand:"مدیران خودرو",type:"کراس‌اوور",base:1050,image:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80",desc:"کراس‌اوور شهری؛ سابقه سرویس گیربکس و تأمین قطعات را بررسی کن.",trims:[["دنده‌ای",1],["اتوماتیک",1.18],["پرو",1.3]]},
- {id:17,name:"ام‌وی‌ام X33",brand:"مدیران خودرو",type:"کراس‌اوور",base:1250,image:"https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80",desc:"کراس‌اوور؛ تفاوت نسل و نسخه می‌تواند روی مشخصات و قیمت اثر بگذارد.",trims:[["قدیمی",0.85],["اتوماتیک",1],["نسخه جدید",1.25]]},
- {id:18,name:"تیگو ۷",brand:"مدیران خودرو",type:"کراس‌اوور",base:2400,image:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",desc:"کراس‌اوور خانوادگی؛ امکانات، خدمات پس از فروش و هزینه قطعات را مقایسه کن.",trims:[["IE",1],["پرو",1.16],["پرو مکس",1.38]]},
- {id:19,name:"تیگو ۸",brand:"مدیران خودرو",type:"شاسی‌بلند",base:3300,image:"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80",desc:"شاسی‌بلند خانوادگی؛ ظرفیت، امکانات ایمنی و هزینه نگهداری را بررسی کن.",trims:[["پرو",1],["پرو مکس",1.18],["پلاگین هیبرید",1.35]]},
- {id:20,name:"جک S5",brand:"کرمان موتور",type:"کراس‌اوور",base:1500,image:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80",desc:"در نمونه کارکرده، وضعیت توربو و گیربکس را به کارشناس مستقل بسپار.",trims:[["دنده‌ای",0.9],["اتوماتیک",1],["فیس‌لیفت",1.12]]},
- {id:21,name:"کی‌ام‌سی T8",brand:"کرمان موتور",type:"پیکاپ",base:2100,image:"https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80",desc:"پیکاپ دوکابین؛ کاربری قبلی، سلامت شاسی و سیستم انتقال نیرو را بررسی کن.",trims:[["دنده‌ای",1],["نسخه ارتقایافته",1.08]]},
- {id:22,name:"لاماری ایما",brand:"آرین پارس موتور",type:"کراس‌اوور",base:2200,image:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",desc:"کراس‌اوور؛ سطح تجهیزات و خدمات پس از فروش را بررسی کن.",trims:[["عادی",1],["نسخه فول",1.08]]},
- {id:23,name:"فیدلیتی",brand:"بهمن موتور",type:"شاسی‌بلند",base:2300,image:"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80",desc:"نسخه پنج یا هفت‌نفره را مشخص کن و فضای کابین و امکانات را بسنج.",trims:[["پرایم ۵ نفره",1],["پرایم ۷ نفره",1.05],["پرستیژ",1.22]]},
- {id:24,name:"دیگنیتی",brand:"بهمن موتور",type:"کراس‌اوور",base:2250,image:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80",desc:"کراس‌اوور؛ تجهیزات ایمنی و وضعیت سرویس‌های دوره‌ای را بررسی کن.",trims:[["پرایم",1],["پرستیژ",1.18]]},
- {id:25,name:"مزدا ۳",brand:"مزدا",type:"سدان",base:2200,image:"https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80",desc:"بسیاری از نمونه‌های بازار کارکرده‌اند؛ سلامت گیربکس، بدنه و قطعات را بسنج.",trims:[["تیپ ۳",0.9],["تیپ ۴",1],["نیوفیس",1.12]]},
- {id:26,name:"تویوتا کرولا",brand:"تویوتا",type:"سدان",base:3200,image:"https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80",desc:"سال واردات، تیپ، نوع موتور و وضعیت خدمات باید جداگانه بررسی شود.",trims:[["بنزینی",1],["هیبرید",1.15],["فول",1.2]]},
- {id:27,name:"تویوتا کمری",brand:"تویوتا",type:"سدان",base:3600,image:"https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80",desc:"قیمت نمونه‌های مختلف به نسل، سال، کارکرد و وضعیت واردات وابسته است.",trims:[["بنزینی",1],["هیبرید",1.18],["فول",1.25]]},
- {id:28,name:"هیوندای النترا",brand:"هیوندای",type:"سدان",base:2600,image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80",desc:"نسل و تیپ را دقیق مشخص کن؛ آپشن‌ها و مشخصات فنی بین نسخه‌ها متفاوت‌اند.",trims:[["پایه",0.9],["میانی",1],["فول",1.16]]},
- {id:29,name:"هیوندای توسان",brand:"هیوندای",type:"کراس‌اوور",base:3500,image:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",desc:"نسل، نوع موتور، سیستم محرک و سوابق تعمیراتی در انتخاب مهم‌اند.",trims:[["دو دیفرانسیل",1.12],["تک دیفرانسیل",1],["فول",1.2]]},
- {id:30,name:"کیا اسپورتیج",brand:"کیا",type:"کراس‌اوور",base:3400,image:"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80",desc:"نسل و نسخه وارداتی را با اسناد خودرو تطبیق بده.",trims:[["پایه",0.9],["میانی",1],["فول",1.2]]},
- {id:31,name:"کیا سراتو",brand:"کیا",type:"سدان",base:2000,image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",desc:"نوع مونتاژ، سال، موتور و تجهیزات را قبل از مقایسه قیمت مشخص کن.",trims:[["۱۶۰۰",0.9],["۲۰۰۰",1],["فول",1.12]]},
- {id:32,name:"نیسان جوک",brand:"نیسان",type:"کراس‌اوور",base:1900,image:"https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=900&q=80",desc:"نمونه‌های کارکرده را از نظر گیربکس، موتور و سابقه سرویس بررسی کن.",trims:[["اسکای‌پک",0.9],["پلاتینیوم",1.12]]},
- {id:33,name:"میتسوبیشی ASX",brand:"میتسوبیشی",type:"کراس‌اوور",base:2400,image:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80",desc:"سال و تیپ وارداتی و در دسترس بودن قطعات را بررسی کن.",trims:[["معمولی",1],["فول",1.12]]},
- {id:34,name:"هوندا سیتی",brand:"هوندا",type:"سدان",base:2600,image:"https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80",desc:"نسخه و مشخصات وارداتی را با کاتالوگ رسمی تطبیق بده.",trims:[["بنزینی",1],["فول",1.1]]},
- {id:35,name:"هوندا HR-V",brand:"هوندا",type:"کراس‌اوور",base:3100,image:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",desc:"نوع پیشرانه و سطح تجهیزات را در نسخه دقیق بررسی کن.",trims:[["بنزینی",1],["هیبرید",1.18]]},
- {id:36,name:"فولکس‌واگن ID.4",brand:"فولکس‌واگن",type:"کراس‌اوور",base:3500,image:"https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80",desc:"خودروی برقی؛ ظرفیت باتری، وضعیت سلامت باتری و شارژر را بررسی کن.",trims:[["پایه",1],["فول",1.12]]},
- {id:37,name:"چانگان CS35",brand:"چانگان",type:"کراس‌اوور",base:1700,image:"https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80",desc:"نسل و نسخه وارداتی می‌تواند مشخصات و ارزش خودرو را تغییر دهد.",trims:[["پلاس",1],["فول",1.1]]},
- {id:38,name:"چانگان CS55",brand:"چانگان",type:"کراس‌اوور",base:2300,image:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=80",desc:"نوع موتور، امکانات و پشتیبانی قطعات را مقایسه کن.",trims:[["پلاس",1],["فول",1.12]]},
- {id:39,name:"هاوال H6",brand:"هاوال",type:"کراس‌اوور",base:2800,image:"https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80",desc:"نسخه بنزینی و هیبریدی مشخصات یکسانی ندارند؛ نسخه دقیق را بررسی کن.",trims:[["بنزینی",1],["هیبرید",1.18]]},
- {id:40,name:"فوتون تونلند",brand:"فوتون",type:"پیکاپ",base:1900,image:"https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=900&q=80",desc:"کاربری، ظرفیت بار، سیستم محرک و سلامت شاسی را بررسی کن.",trims:[["دنده‌ای",1],["اتوماتیک",1.16],["دو دیفرانسیل",1.2]]}
+const photoIds = [
+ "photo-1492144534655-ae79c964c9d7",
+ "photo-1503376780353-7e6692767b70",
+ "photo-1503736334956-4c8f8e92946d",
+ "photo-1511919884226-fd3cad34687c",
+ "photo-1533473359331-0135ef1b58bf",
+ "photo-1549317661-bd32c8ce0db2",
+ "photo-1552519507-da3b142c6e3d",
+ "photo-1555215695-3004980ad54e",
+ "photo-1558981806-ec527fa84c39",
+ "photo-1560958089-b8a1929orea"
 ];
 
-function formatNumber(value){
-  return Number(value).toLocaleString("fa-IR");
-}
-function getYearFactor(year){
-  const age = currentYear - Number(year);
-  return Math.max(0.72, 1 - age * 0.055);
-}
-function getPrice(car, year, trimIndex){
-  const trim = car.trims[trimIndex] || car.trims[0];
-  return Math.round(car.base * trim[1] * getYearFactor(year) / 5) * 5;
-}
-function getVersion(car, year, trimIndex){
-  return {
-    carId:car.id, name:car.name, brand:car.brand, type:car.type,
-    year:Number(year), trimIndex:Number(trimIndex),
-    trim:car.trims[trimIndex][0],
-    price:getPrice(car,year,trimIndex),
-    image:car.image
-  };
-}
-function versionKey(v){
-  return [v.carId,v.year,v.trimIndex].join("-");
-}
-function versionLabel(v){
-  return `${v.name} ${v.trim} مدل ${v.year}`;
+const DB = [
+ {id:"207",name:"پژو ۲۰۷",brand:"ایران‌خودرو",category:"داخلی",body:"هاچ‌بک",engine:1587,power:105,torque:142,fuel:7.1,accel:11.6,price:850,years:[1400,1401,1402,1403,1404,1405],trims:[
+  {name:"TU5 دستی",gear:"دستی",engine:1587,power:105,torque:142,fuel:7.1,accel:11.6,price:850},
+  {name:"TU5 اتوماتیک",gear:"اتوماتیک",engine:1587,power:105,torque:142,fuel:7.4,accel:12.6,price:1030},
+  {name:"TU3 دستی",gear:"دستی",engine:1199,power:75,torque:107,fuel:6.4,accel:14.5,price:720}],photo:0},
+ {id:"tiba",name:"تیبا ۲",brand:"سایپا",category:"داخلی",body:"هاچ‌بک",engine:1503,power:87,torque:128,fuel:6.9,accel:13.5,price:420,years:[1395,1396,1397,1398,1399,1400],trims:[{name:"EX",gear:"دستی",engine:1503,power:87,torque:128,fuel:6.9,accel:13.5,price:420}],photo:1},
+ {id:"quick",name:"کوییک",brand:"سایپا",category:"داخلی",body:"هاچ‌بک",engine:1503,power:87,torque:128,fuel:7.2,accel:13.5,price:480,years:[1397,1398,1399,1400,1401,1402,1403,1404,1405],trims:[
+  {name:"S دستی",gear:"دستی",engine:1503,power:87,torque:128,fuel:7.2,accel:13.5,price:480},
+  {name:"R دستی",gear:"دستی",engine:1503,power:87,torque:128,fuel:7.2,accel:13.5,price:500},
+  {name:"اتوماتیک CVT",gear:"CVT",engine:1503,power:87,torque:128,fuel:7.5,accel:14.5,price:650}],photo:2},
+ {id:"saina",name:"ساینا S",brand:"سایپا",category:"داخلی",body:"سدان",engine:1503,power:87,torque:128,fuel:7.1,accel:13.5,price:490,years:[1400,1401,1402,1403,1404,1405],trims:[{name:"S دستی",gear:"دستی",engine:1503,power:87,torque:128,fuel:7.1,accel:13.5,price:490},{name:"GX",gear:"دستی",engine:1503,power:90,torque:137,fuel:7.2,accel:13.2,price:560}],photo:3},
+ {id:"shahin",name:"شاهین",brand:"سایپا",category:"داخلی",body:"سدان",engine:1497,power:110,torque:178,fuel:7.5,accel:13.2,price:850,years:[1400,1401,1402,1403,1404,1405],trims:[
+  {name:"G دستی",gear:"دستی",engine:1497,power:110,torque:178,fuel:7.5,accel:13.2,price:850},
+  {name:"G اتوماتیک",gear:"CVT",engine:1497,power:110,torque:178,fuel:7.5,accel:13.5,price:1030},
+  {name:"پلاس اتوماتیک",gear:"اتوماتیک",engine:1497,power:110,torque:178,fuel:7.8,accel:13.8,price:1250}],photo:4},
+ {id:"dena",name:"دنا پلاس",brand:"ایران‌خودرو",category:"داخلی",body:"سدان",engine:1646,power:113,torque:155,fuel:7.7,accel:12,price:1000,years:[1396,1397,1398,1399,1400,1401,1402,1403,1404,1405],trims:[
+  {name:"EF7 دستی",gear:"دستی",engine:1646,power:113,torque:155,fuel:7.7,accel:12,price:1000},
+  {name:"توربو اتوماتیک",gear:"اتوماتیک",engine:1646,power:150,torque:215,fuel:8.1,accel:10.5,price:1350}],photo:5},
+ {id:"tara",name:"تارا",brand:"ایران‌خودرو",category:"داخلی",body:"سدان",engine:1587,power:113,torque:144,fuel:7.0,accel:12.5,price:1050,years:[1400,1401,1402,1403,1404,1405],trims:[
+  {name:"V1 دستی",gear:"دستی",engine:1587,power:113,torque:144,fuel:7.0,accel:12.5,price:1050},
+  {name:"V2 اتوماتیک",gear:"اتوماتیک",engine:1587,power:113,torque:144,fuel:7.3,accel:13,price:1250},
+  {name:"V4 اتوماتیک",gear:"اتوماتیک",engine:1587,power:113,torque:144,fuel:7.3,accel:13,price:1400}],photo:6},
+ {id:"samand",name:"سمند LX",brand:"ایران‌خودرو",category:"داخلی",body:"سدان",engine:1761,power:100,torque:153,fuel:8.0,accel:13.5,price:450,years:[1381,1385,1390,1395,1398,1400],trims:[{name:"EF7",gear:"دستی",engine:1646,power:113,torque:155,fuel:7.8,accel:12.5,price:490},{name:"XU7",gear:"دستی",engine:1761,power:100,torque:153,fuel:8.0,accel:13.5,price:450}],photo:7},
+ {id:"pars",name:"پارس",brand:"ایران‌خودرو",category:"داخلی",body:"سدان",engine:1761,power:100,torque:153,fuel:8.0,accel:13.5,price:650,years:[1382,1390,1395,1400,1401,1402,1403],trims:[{name:"XU7",gear:"دستی",engine:1761,power:100,torque:153,fuel:8.0,accel:13.5,price:650},{name:"TU5",gear:"دستی",engine:1587,power:105,torque:142,fuel:7.5,accel:12.5,price:720}],photo:8},
+ {id:"runna",name:"رانا پلاس",brand:"ایران‌خودرو",category:"داخلی",body:"سدان",engine:1587,power:105,torque:142,fuel:6.9,accel:12,price:690,years:[1399,1400,1401,1402,1403,1404,1405],trims:[{name:"TU5",gear:"دستی",engine:1587,power:105,torque:142,fuel:6.9,accel:12,price:690},{name:"ارتقایافته",gear:"دستی",engine:1587,power:105,torque:142,fuel:7.0,accel:12,price:750}],photo:9},
+ {id:"quickgx",name:"کوییک GX",brand:"سایپا",category:"داخلی",body:"هاچ‌بک",engine:1503,power:90,torque:137,fuel:7.2,accel:13.2,price:560,years:[1402,1403,1404,1405],trims:[{name:"GX دستی",gear:"دستی",engine:1503,power:90,torque:137,fuel:7.2,accel:13.2,price:560},{name:"GX-L",gear:"دستی",engine:1503,power:90,torque:137,fuel:7.2,accel:13.2,price:590}],photo:1},
+ {id:"aris",name:"آریسان ۲",brand:"ایران‌خودرو",category:"داخلی",body:"پیکاپ",engine:1696,power:97,torque:146,fuel:8.5,accel:15,price:620,years:[1401,1402,1403,1404,1405],trims:[{name:"دوگانه‌سوز",gear:"دستی",engine:1696,power:97,torque:146,fuel:8.5,accel:15,price:620}],photo:2},
+ {id:"haima",name:"هایما S7",brand:"ایران‌خودرو",category:"مونتاژی",body:"SUV",engine:1997,power:170,torque:230,fuel:8.5,accel:10.5,price:1900,years:[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404,1405],trims:[
+  {name:"توربو",gear:"اتوماتیک",engine:1795,power:170,torque:230,fuel:8.5,accel:10.5,price:1900},
+  {name:"S7 پلاس",gear:"اتوماتیک",engine:1795,power:170,torque:230,fuel:8.8,accel:10.8,price:2200}],photo:3},
+ {id:"t5",name:"جک S5",brand:"کرمان موتور",category:"مونتاژی",body:"SUV",engine:1997,power:174,torque:265,fuel:7.8,accel:10.5,price:1700,years:[1394,1395,1396,1397,1398,1399,1400,1401,1402],trims:[
+  {name:"دنده‌ای",gear:"دستی",engine:1997,power:174,torque:265,fuel:7.8,accel:10.5,price:1450},
+  {name:"اتوماتیک",gear:"اتوماتیک",engine:1997,power:174,torque:265,fuel:8.5,accel:10.5,price:1700}],photo:4},
+ {id:"tiggo7",name:"تیگو ۷ پرو",brand:"مدیران خودرو",category:"مونتاژی",body:"کراس‌اوور",engine:1598,power:156,torque:230,fuel:6.9,accel:9.8,price:2300,years:[1400,1401,1402,1403,1404,1405],trims:[
+  {name:"پرو",gear:"CVT",engine:1598,power:156,torque:230,fuel:6.9,accel:9.8,price:2300},
+  {name:"پرو مکس",gear:"دوکلاچه",engine:1598,power:156,torque:230,fuel:7.2,accel:10,price:2700}],photo:5},
+ {id:"arrizo",name:"آریزو ۵",brand:"مدیران خودرو",category:"مونتاژی",body:"سدان",engine:1498,power:147,torque:210,fuel:6.9,accel:9.5,price:1600,years:[1395,1396,1397,1398,1399,1400,1401,1402,1403,1404,1405],trims:[
+  {name:"دنده‌ای",gear:"دستی",engine:1498,power:116,torque:141,fuel:6.5,accel:11.5,price:1000},
+  {name:"توربو اتوماتیک",gear:"CVT",engine:1498,power:147,torque:210,fuel:6.9,accel:9.5,price:1600}],photo:6},
+ {id:"lamari",name:"لاماری ایما",brand:"آرین پارس موتور",category:"مونتاژی",body:"کراس‌اوور",engine:1481,power:195,torque:285,fuel:6.6,accel:9.5,price:2400,years:[1401,1402,1403,1404,1405],trims:[{name:"توربو",gear:"دوکلاچه",engine:1481,power:195,torque:285,fuel:6.6,accel:9.5,price:2400}],photo:7},
+ {id:"fidelity",name:"فیدلیتی پرایم",brand:"بهمن موتور",category:"مونتاژی",body:"SUV",engine:1498,power:155,torque:230,fuel:8.1,accel:10.5,price:2200,years:[1400,1401,1402,1403,1404,1405],trims:[
+  {name:"۵ نفره",gear:"دوکلاچه",engine:1498,power:155,torque:230,fuel:8.1,accel:10.5,price:2200},
+  {name:"۷ نفره",gear:"دوکلاچه",engine:1498,power:155,torque:230,fuel:8.3,accel:10.8,price:2350}],photo:8},
+ {id:"dignity",name:"دیگنیتی پرایم",brand:"بهمن موتور",category:"مونتاژی",body:"کراس‌اوور",engine:1498,power:148,torque:220,fuel:7.5,accel:10.5,price:2100,years:[1400,1401,1402,1403,1404,1405],trims:[
+  {name:"پرایم",gear:"CVT",engine:1498,power:148,torque:220,fuel:7.5,accel:10.5,price:2100},
+  {name:"پرستیژ",gear:"اتوماتیک",engine:1967,power:228,torque:355,fuel:8.5,accel:8.5,price:2900}],photo:9},
+ {id:"kmc",name:"KMC J7",brand:"کرمان موتور",category:"مونتاژی",body:"سدان",engine:1499,power:172,torque:280,fuel:7.6,accel:8.5,price:2100,years:[1401,1402,1403,1404,1405],trims:[{name:"اتوماتیک",gear:"دوکلاچه",engine:1499,power:172,torque:280,fuel:7.6,accel:8.5,price:2100}],photo:0},
+ {id:"x22",name:"ام‌وی‌ام X22",brand:"مدیران خودرو",category:"مونتاژی",body:"کراس‌اوور",engine:1497,power:105,torque:135,fuel:6.1,accel:13,price:850,years:[1396,1397,1398,1399,1400,1401,1402,1403],trims:[
+  {name:"دنده‌ای",gear:"دستی",engine:1497,power:105,torque:135,fuel:6.1,accel:13,price:850},
+  {name:"اتوماتیک",gear:"CVT",engine:1497,power:105,torque:135,fuel:6.9,accel:13.5,price:1000}],photo:1},
+ {id:"pride",name:"پراید ۱۳۱",brand:"سایپا",category:"داخلی",body:"سدان",engine:1323,power:71,torque:108,fuel:6.4,accel:14.5,price:300,years:[1385,1390,1395,1398,1399],trims:[{name:"SE",gear:"دستی",engine:1323,power:71,torque:108,fuel:6.4,accel:14.5,price:300}],photo:2},
+ {id:"206",name:"پژو ۲۰۶",brand:"ایران‌خودرو",category:"داخلی",body:"هاچ‌بک",engine:1587,power:105,torque:142,fuel:6.6,accel:11.4,price:600,years:[1380,1385,1390,1395,1398,1399,1400,1401,1402],trims:[
+  {name:"تیپ ۲",gear:"دستی",engine:1360,power:75,torque:118,fuel:6.4,accel:14.1,price:500},
+  {name:"تیپ ۵",gear:"دستی",engine:1587,power:105,torque:142,fuel:6.6,accel:11.4,price:600}],photo:3},
+ {id:"l90",name:"تندر ۹۰",brand:"ایران‌خودرو / پارس‌خودرو",category:"داخلی",body:"سدان",engine:1598,power:105,torque:140,fuel:6.9,accel:10.2,price:800,years:[1387,1390,1395,1398,1399,1400,1401],trims:[
+  {name:"E0",gear:"دستی",engine:1598,power:105,torque:140,fuel:6.9,accel:10.2,price:700},
+  {name:"E2",gear:"دستی",engine:1598,power:105,torque:140,fuel:6.9,accel:10.2,price:800}],photo:4},
+ {id:"mazda3",name:"مزدا ۳",brand:"وارداتی",category:"وارداتی",body:"سدان",engine:1999,power:148,torque:187,fuel:7.6,accel:10.5,price:2200,years:[1387,1390,1395,1398,1400],trims:[{name:"تیپ ۳",gear:"اتوماتیک",engine:1999,power:148,torque:187,fuel:7.6,accel:10.5,price:2200}],photo:5},
+ {id:"camry",name:"تویوتا کمری",brand:"وارداتی",category:"وارداتی",body:"سدان",engine:2494,power:181,torque:235,fuel:7.8,accel:9.5,price:3500,years:[1385,1390,1395,1397,1400,1402],trims:[{name:"۲.۵ لیتری",gear:"اتوماتیک",engine:2494,power:181,torque:235,fuel:7.8,accel:9.5,price:3500}],photo:6},
+ {id:"corolla",name:"تویوتا کرولا",brand:"وارداتی",category:"وارداتی",body:"سدان",engine:1798,power:140,torque:173,fuel:6.5,accel:10.5,price:3000,years:[1385,1390,1395,1397,1400,1402,1403,1404,1405],trims:[{name:"۱.۸ لیتری",gear:"CVT",engine:1798,power:140,torque:173,fuel:6.5,accel:10.5,price:3000}],photo:7},
+ {id:"sportage",name:"کیا اسپورتیج",brand:"وارداتی",category:"وارداتی",body:"SUV",engine:1999,power:155,torque:196,fuel:8.5,accel:11,price:3200,years:[1388,1390,1395,1397,1400,1402],trims:[{name:"۲.۰ لیتری",gear:"اتوماتیک",engine:1999,power:155,torque:196,fuel:8.5,accel:11,price:3200}],photo:8},
+ {id:"tucson",name:"هیوندای توسان",brand:"وارداتی",category:"وارداتی",body:"SUV",engine:1999,power:155,torque:192,fuel:8.3,accel:11,price:3300,years:[1388,1390,1395,1397,1400,1402],trims:[{name:"۲.۰ لیتری",gear:"اتوماتیک",engine:1999,power:155,torque:192,fuel:8.3,accel:11,price:3300}],photo:9},
+ {id:"haval",name:"هاوال H6",brand:"وارداتی",category:"وارداتی",body:"کراس‌اوور",engine:1497,power:147,torque:230,fuel:7.5,accel:10,price:2800,years:[1402,1403,1404,1405],trims:[{name:"توربو",gear:"اتوماتیک",engine:1497,power:147,torque:230,fuel:7.5,accel:10,price:2800}],photo:0},
+ {id:"jetour",name:"جتور X70",brand:"وارداتی",category:"وارداتی",body:"SUV",engine:1498,power:156,torque:230,fuel:8.0,accel:10.5,price:2600,years:[1402,1403,1404,1405],trims:[{name:"پلاس",gear:"دوکلاچه",engine:1498,power:156,torque:230,fuel:8.0,accel:10.5,price:2600}],photo:1},
+ {id:"hilux",name:"تویوتا هایلوکس",brand:"وارداتی",category:"وارداتی",body:"پیکاپ",engine:2694,power:164,torque:245,fuel:10.5,accel:12,price:6000,years:[1388,1390,1395,1397,1400,1402],trims:[{name:"۲.۷ لیتری",gear:"اتوماتیک",engine:2694,power:164,torque:245,fuel:10.5,accel:12,price:6000}],photo:2}
+];
+
+const $ = id => document.getElementById(id);
+const fmt = n => Number(n).toLocaleString("fa-IR");
+const money = n => fmt(Math.round(n)) + " میلیون تومان";
+
+function svgFallback(name){
+ const safe = String(name).replace(/[<>&"']/g,"");
+ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420"><rect width="800" height="420" fill="#10271d"/><path d="M0 320H800" stroke="#315b43" stroke-width="4"/><g fill="#45e69a" opacity=".85"><path d="M155 270l45-65q10-14 30-14h245q20 0 36 18l62 61 32 10v43H130v-35z"/><circle cx="230" cy="320" r="39" fill="#07130f" stroke="#45e69a" stroke-width="12"/><circle cx="540" cy="320" r="39" fill="#07130f" stroke="#45e69a" stroke-width="12"/><path d="M246 204h213l39 51H210z" fill="#183d2a"/></g><text x="400" y="90" fill="#f1f7f3" font-size="35" text-anchor="middle" font-family="Tahoma">${safe}</text><text x="400" y="380" fill="#9bb4a6" font-size="19" text-anchor="middle" font-family="Tahoma">KHODROBAN</text></svg>`;
+ return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
 }
 
-const grid = document.getElementById("carGrid");
-const searchInput = document.getElementById("search");
-const brandFilter = document.getElementById("brandFilter");
-const typeFilter = document.getElementById("typeFilter");
-const budgetFilter = document.getElementById("budgetFilter");
-const compareItems = [];
-let activeCar = null;
+function imageUrl(car){
+ return "https://images.unsplash.com/"+photoIds[car.photo%photoIds.length]+"?auto=format&fit=crop&w=900&q=75";
+}
 
-document.getElementById("carCount").textContent = formatNumber(cars.length);
-document.getElementById("yearNow").textContent = currentYear;
+function trimFor(car,trimName){
+ return car.trims.find(t=>t.name===trimName)||car.trims[0];
+}
 
-[...new Set(cars.map(car=>car.brand))].sort((a,b)=>a.localeCompare(b,"fa")).forEach(brand=>{
-  const option=document.createElement("option");
-  option.value=brand;
-  option.textContent=brand;
-  brandFilter.appendChild(option);
-});
+function getState(car){
+ const yearEl=$("year-"+car.id), trimEl=$("trim-"+car.id);
+ const year=yearEl?Number(yearEl.value):car.years[car.years.length-1];
+ const trim=trimFor(car,trimEl?trimEl.value:car.trims[0].name);
+ // قیمت پایه هر تیپ، با تعدیل تقریبی سال انتخابی؛ قیمت بازار واقعی نیست.
+ const newest=Math.max(...car.years);
+ const age=Math.max(0,newest-year);
+ const price=Math.round(trim.price*Math.pow(0.965,age));
+ return {...car,...trim,year,trimName:trim.name,price};
+}
 
-function defaultVersion(car){
-  return getVersion(car,currentYear,0);
+function renderCard(car,index){
+ const yearOptions=car.years.slice().sort((a,b)=>b-a).map(y=>`<option value="${y}" ${y===Math.max(...car.years)?"selected":""}>${fmt(y)}</option>`).join("");
+ const trimOptions=car.trims.map(t=>`<option value="${t.name}">${t.name}</option>`).join("");
+ return `<article class="card" id="card-${car.id}">
+  <div class="carphoto">
+   <img loading="${index<6?"eager":"lazy"}" src="${imageUrl(car)}" alt="${car.name}" onerror="this.onerror=null;this.src=svgFallback('${car.name.replace(/'/g,"")}')">
+   <span class="tag">${car.category}</span>
+  </div>
+  <div class="cardbody">
+   <h3>${car.name}</h3><div class="brand">${car.brand} · ${car.body}</div>
+   <div class="specmini">
+    <div><small>قدرت موتور</small><strong>${fmt(car.power)} اسب‌بخار</strong></div>
+    <div><small>گشتاور</small><strong>${fmt(car.torque)} نیوتن‌متر</strong></div>
+    <div><small>مصرف ترکیبی</small><strong>${car.fuel} لیتر</strong></div>
+    <div><small>شتاب ۰ تا ۱۰۰</small><strong>${car.accel} ثانیه</strong></div>
+   </div>
+   <label class="muted" for="year-${car.id}">سال ساخت</label>
+   <select id="year-${car.id}" onchange="updateCard('${car.id}')">${yearOptions}</select>
+   <label class="muted" for="trim-${car.id}">تیپ / گیربکس</label>
+   <select id="trim-${car.id}" onchange="updateCard('${car.id}')">${trimOptions}</select>
+   <div class="price" id="price-${car.id}">${money(car.trims[0].price)} <small>تخمینی</small></div>
+   <div class="actions">
+    <button class="primary" onclick="addCompare('${car.id}')">مقایسه +</button>
+    <button class="secondary" onclick="showDetails('${car.id}')">جزئیات</button>
+   </div>
+  </div>
+ </article>`;
+}
+
+let visibleCount=6;
+let filteredCars=DB.slice();
+
+function filterCars(){
+ const q=$("search").value.trim().toLowerCase();
+ const cat=$("category").value, body=$("body").value, brand=$("sortBrand").value;
+ filteredCars=DB.filter(c=>{
+  const matchText=(c.name+" "+c.brand+" "+c.category+" "+c.body).toLowerCase().includes(q);
+  return matchText&&(!cat||c.category===cat)&&(!body||c.body===body)&&(!brand||(brand==="سایر"?!["ایران‌خودرو","سایپا","مدیران خودرو","کرمان موتور","بهمن موتور"].includes(c.brand):c.brand.includes(brand)));
+ });
+ const sort=$("sort").value;
+ if(sort==="price")filteredCars.sort((a,b)=>a.trims[0].price-b.trims[0].price);
+ if(sort==="power")filteredCars.sort((a,b)=>b.power-a.power);
+ if(sort==="fuel")filteredCars.sort((a,b)=>a.fuel-b.fuel);
+ visibleCount=6;
+ renderCars();
 }
 
 function renderCars(){
-  const query=searchInput.value.trim().toLocaleLowerCase("fa");
-  const brand=brandFilter.value;
-  const type=typeFilter.value;
-  const maxBudget=Number(budgetFilter.value)||Infinity;
-
-  const filtered=cars.filter(car=>{
-    const searchable=`${car.name} ${car.brand} ${car.type}`.toLocaleLowerCase("fa");
-    const bestAvailable=Math.min(...years.flatMap(year=>car.trims.map((_,i)=>getPrice(car,year,i))));
-    return (!query||searchable.includes(query))
-      &&(!brand||car.brand===brand)
-      &&(!type||car.type===type)
-      &&bestAvailable<=maxBudget;
-  });
-
-  document.getElementById("resultsCount").textContent=
-    `${formatNumber(filtered.length)} مدل از ${formatNumber(cars.length)} مدل`;
-
-  if(!filtered.length){
-    grid.innerHTML='<div class="empty">خودرویی با این فیلترها پیدا نشد. بودجه یا فیلترها رو تغییر بده.</div>';
-    return;
-  }
-
-  grid.innerHTML=filtered.map(car=>{
-    const v=defaultVersion(car);
-    return `
-      <article class="car-card">
-        <div class="car-image">
-          <img src="${car.image}" alt="${car.name}" loading="lazy" onerror="this.style.display='none'">
-          <span class="car-label">${car.type}</span>
-        </div>
-        <div class="car-content">
-          <h3>${car.name}</h3>
-          <div class="car-subtitle">${car.brand} · انتخاب سال و تیپ در جزئیات</div>
-          <div class="price">${formatNumber(v.price)} <small>میلیون تومان · نمونه</small></div>
-          <div class="specs">
-            <span>${car.type}</span><span>${car.trims.length} تیپ نمونه</span><span>${years.length} سال قابل انتخاب</span>
-          </div>
-          <div class="card-actions">
-            <button class="detail-btn" data-detail="${car.id}">سال، تیپ و قیمت</button>
-            <button class="compare-btn" data-compare="${car.id}">مقایسه +</button>
-          </div>
-        </div>
-      </article>`;
-  }).join("");
+ $("count").textContent=`${fmt(filteredCars.length)} خودرو در این فهرست`;
+ $("cars").innerHTML=filteredCars.slice(0,visibleCount).map(renderCard).join("");
+ $("moreBtn").style.display=visibleCount<filteredCars.length?"block":"none";
+ refreshCompareOptions();
+ filteredCars.slice(0,visibleCount).forEach(c=>updateCard(c.id));
 }
 
-function addCompare(version){
-  const key=versionKey(version);
-  const existing=compareItems.findIndex(v=>versionKey(v)===key);
-  if(existing>=0){
-    renderCompare();
-    return;
-  }
-  if(compareItems.length>=3){
-    alert("برای مقایسه هم‌زمان، حداکثر سه نسخه رو انتخاب کن.");
-    return;
-  }
-  compareItems.push(version);
-  renderCompare();
+function updateCard(id){
+ const car=DB.find(c=>c.id===id);
+ if(!car)return;
+ const state=getState(car);
+ const priceEl=$("price-"+id);
+ if(priceEl)priceEl.innerHTML=money(state.price)+' <small>تخمینی</small>';
 }
 
+let compareIds=["","",""];
+function refreshCompareOptions(){
+ ["cmp1","cmp2","cmp3"].forEach((selId,i)=>{
+  const sel=$(selId),old=compareIds[i]||sel.value;
+  sel.innerHTML=`<option value="">${["خودروی اول","خودروی دوم","خودروی سوم"][i]} را انتخاب کن</option>`+
+   DB.map(c=>`<option value="${c.id}">${c.name}</option>`).join("");
+  sel.value=DB.some(c=>c.id===old)?old:"";
+  compareIds[i]=sel.value;
+ });
+ renderCompare();
+}
+function addCompare(id){
+ let empty=compareIds.findIndex(x=>!x);
+ if(empty<0)empty=compareIds[0]===id?0:compareIds.findIndex(x=>x===id);
+ if(empty<0){alert("حداکثر سه خودرو قابل مقایسه است. ابتدا یکی را از مقایسه حذف کن.");return;}
+ compareIds[empty]=id;
+ $("cmp"+(empty+1)).value=id;
+ renderCompare();
+ $("compare").scrollIntoView({behavior:"smooth",block:"start"});
+}
 function renderCompare(){
-  const list=document.getElementById("compareList");
-  const table=document.getElementById("compareTable");
-
-  if(!compareItems.length){
-    list.innerHTML='<span class="modal-text">هنوز خودرویی انتخاب نکردی.</span>';
-    table.innerHTML="";
-    return;
-  }
-
-  list.innerHTML=compareItems.map((v,i)=>`
-    <span class="compare-chip">${versionLabel(v)}
-      <button aria-label="حذف ${v.name}" data-remove="${i}">✕</button>
-    </span>`).join("");
-
-  const rows=[
-    ["مدل",v=>v.name],
-    ["برند",v=>v.brand],
-    ["سال",v=>formatNumber(v.year)],
-    ["تیپ",v=>v.trim],
-    ["نوع",v=>v.type],
-    ["قیمت نمونه (میلیون)",v=>formatNumber(v.price)]
-  ];
-  table.innerHTML=`<table><thead><tr><th>مشخصات</th>${compareItems.map(v=>`<th>${v.name}</th>`).join("")}</tr></thead><tbody>${
-    rows.map(([label,fn])=>`<tr><th>${label}</th>${compareItems.map(v=>`<td>${label.startsWith("قیمت")?`<strong>${fn(v)}</strong>`:fn(v)}</td>`).join("")}</tr>`).join("")
-  }</tbody></table><p class="modal-text">مقایسه بر اساس قیمت نمونه این نسخه است، نه قیمت قطعی بازار.</p>`;
+ compareIds=["cmp1","cmp2","cmp3"].map(id=>$(id).value);
+ const cars=compareIds.filter(Boolean).map(id=>DB.find(c=>c.id===id)).filter(Boolean);
+ if(cars.length<2){$("compareResult").innerHTML='<div class="empty">برای مقایسه، دست‌کم دو خودرو انتخاب کن.</div>';return;}
+ const states=cars.map(getState);
+ const metrics=[
+  {key:"engine",label:"حجم موتور (سی‌سی)",unit:"",better:"none"},
+  {key:"power",label:"قدرت موتور (اسب‌بخار)",unit:"",better:"high"},
+  {key:"torque",label:"گشتاور (نیوتن‌متر)",unit:"",better:"high"},
+  {key:"fuel",label:"مصرف ترکیبی (لیتر در ۱۰۰ کیلومتر)",unit:"",better:"low"},
+  {key:"accel",label:"شتاب صفر تا ۱۰۰ (ثانیه)",unit:"",better:"low"},
+  {key:"price",label:"قیمت تخمینی (میلیون تومان)",unit:"",better:"low"}
+ ];
+ let html='<div class="tablewrap"><table><thead><tr><th>مشخصات</th>'+states.map(s=>`<th>${s.name}<br><small>${fmt(s.year)} · ${s.trimName}</small></th>`).join("")+'</tr></thead><tbody>';
+ for(const m of metrics){
+  const vals=states.map(s=>Number(s[m.key]));
+  let best=m.better==="high"?Math.max(...vals):m.better==="low"?Math.min(...vals):null;
+  html+=`<tr><td>${m.label}</td>`+states.map(s=>{
+   const v=Number(s[m.key]),win=m.better!=="none"&&v===best;
+   return `<td class="${win?"winner":""}">${m.key==="price"?fmt(v):fmt(v)}</td>`;
+  }).join("")+'</tr>';
+ }
+ html+='</tbody></table></div>';
+ html+='<div class="verdict"><strong>نتیجه مقایسه</strong><br>';
+ const bestPower=states.reduce((a,b)=>a.power>=b.power?a:b);
+ const bestFuel=states.reduce((a,b)=>a.fuel<=b.fuel?a:b);
+ const bestPrice=states.reduce((a,b)=>a.price<=b.price?a:b);
+ const bestTorque=states.reduce((a,b)=>a.torque>=b.torque?a:b);
+ html+=`• بیشترین قدرت موتور: <strong>${bestPower.name}</strong> (${fmt(bestPower.power)} اسب‌بخار).<br>`;
+ html+=`• کمترین مصرف سوخت: <strong>${bestFuel.name}</strong> (${bestFuel.fuel} لیتر).<br>`;
+ html+=`• کمترین قیمت تخمینی: <strong>${bestPrice.name}</strong> (${money(bestPrice.price)}).<br>`;
+ html+=`• بیشترین گشتاور: <strong>${bestTorque.name}</strong> (${fmt(bestTorque.torque)} نیوتن‌متر).`;
+ html+='<br><span class="muted">این نتیجه فقط بر اساس داده‌های نمونه و معیارهای بالا است؛ برنده مطلق خرید نیست.</span></div>';
+ $("compareResult").innerHTML=html;
 }
-
-function openDetails(carId){
-  activeCar=cars.find(c=>c.id===Number(carId));
-  if(!activeCar)return;
-  const backdrop=document.getElementById("detailBackdrop");
-  document.getElementById("modalTitle").textContent=activeCar.name;
-  document.getElementById("modalImage").src=activeCar.image;
-  document.getElementById("modalImage").alt=activeCar.name;
-  const yearSelect=document.getElementById("modalYear");
-  yearSelect.innerHTML=years.map(y=>`<option value="${y}">${formatNumber(y)}</option>`).join("");
-  const trimSelect=document.getElementById("modalTrim");
-  trimSelect.innerHTML=activeCar.trims.map((t,i)=>`<option value="${i}">${t[0]}</option>`).join("");
-  document.getElementById("modalDescription").textContent=activeCar.desc;
-  updateModalPrice();
-  backdrop.classList.add("open");
-  document.body.style.overflow="hidden";
+function showDetails(id){
+ const car=DB.find(c=>c.id===id);
+ const s=getState(car);
+ $("detailTitle").textContent=car.name;
+ $("detailContent").innerHTML=`
+  <p class="muted">${car.brand} · ${car.category} · ${car.body}</p>
+  <p>سال انتخابی: <strong>${fmt(s.year)}</strong> | تیپ: <strong>${s.trimName}</strong></p>
+  <div class="modalgrid">
+   <div><small>حجم موتور</small><strong>${fmt(s.engine)} سی‌سی</strong></div>
+   <div><small>قدرت</small><strong>${fmt(s.power)} اسب‌بخار</strong></div>
+   <div><small>گشتاور</small><strong>${fmt(s.torque)} نیوتن‌متر</strong></div>
+   <div><small>گیربکس</small><strong>${s.gear}</strong></div>
+   <div><small>مصرف ترکیبی</small><strong>${s.fuel} لیتر در ۱۰۰ کیلومتر</strong></div>
+   <div><small>شتاب صفر تا صد</small><strong>${s.accel} ثانیه</strong></div>
+  </div>
+  <div class="price">${money(s.price)} <small>قیمت تخمینی</small></div>
+  <p class="note">این اطلاعات نمونه‌اند و باید با مشخصات رسمی همان تیپ و سال تطبیق داده شوند. قیمت واقعی با کارکرد، وضعیت بدنه، شهر و شرایط بازار تغییر می‌کند.</p>
+  <button class="primary" onclick="addCompare('${car.id}');$('details').close()">افزودن به مقایسه</button>`;
+ $("details").showModal();
 }
-function closeDetails(){
-  document.getElementById("detailBackdrop").classList.remove("open");
-  document.body.style.overflow="";
-}
-function selectedModalVersion(){
-  if(!activeCar)return null;
-  return getVersion(activeCar,
-    document.getElementById("modalYear").value,
-    document.getElementById("modalTrim").value
-  );
-}
-function updateModalPrice(){
-  const v=selectedModalVersion();
-  if(!v)return;
-  document.getElementById("modalPrice").textContent=
-    `${formatNumber(v.price)} میلیون تومان · قیمت نمونه`;
-  document.getElementById("modalSpecs").innerHTML=
-    `<span>${v.brand}</span><span>مدل ${formatNumber(v.year)}</span><span>${v.trim}</span><span>${v.type}</span>`;
-}
-function showBudgetResults(){
-  const budget=Number(document.getElementById("myBudget").value);
-  const type=document.getElementById("myType").value;
-  const output=document.getElementById("budgetOutput");
-  if(!budget||budget<=0){
-    output.innerHTML="<h3>اول بودجه رو وارد کن</h3><p>عدد بودجه باید بیشتر از صفر باشه.</p>";
-    return;
-  }
-  const options=[];
-  cars.forEach(car=>{
-    if(type&&car.type!==type)return;
-    years.forEach(year=>{
-      car.trims.forEach((_,i)=>{
-        const v=getVersion(car,year,i);
-        if(v.price<=budget)options.push(v);
-      });
-    });
-  });
-  options.sort((a,b)=>b.price-a.price);
-  const unique=[];
-  const seen=new Set();
-  for(const v of options){
-    const key=versionKey(v);
-    if(!seen.has(key)){seen.add(key);unique.push(v);}
-    if(unique.length>=8)break;
-  }
-  if(!unique.length){
-    output.innerHTML="<h3>گزینه‌ای پیدا نشد</h3><p>با این قیمت نمونه، گزینه‌ای در فهرست آزمایشی پیدا نکردیم. بودجه یا نوع خودرو رو تغییر بده.</p>";
-    return;
-  }
-  output.innerHTML=`
-    <h3>${formatNumber(unique.length)} پیشنهاد نمونه</h3>
-    <p>این گزینه‌ها بر اساس داده آزمایشی سایت و بودجه واردشده مرتب شده‌اند.</p>
-    <div class="budget-results">${unique.map(v=>`<button data-budget-car="${v.carId}" data-budget-year="${v.year}" data-budget-trim="${v.trimIndex}">${versionLabel(v)} · ${formatNumber(v.price)} میلیون</button>`).join("")}</div>
-    <p class="modal-text">این فهرست جایگزین بررسی قیمت روز و کارشناسی خودرو نیست.</p>`;
-}
-
-grid.addEventListener("click",event=>{
-  const detail=event.target.closest("[data-detail]");
-  const compare=event.target.closest("[data-compare]");
-  if(detail)openDetails(detail.dataset.detail);
-  if(compare){
-    const car=cars.find(c=>c.id===Number(compare.dataset.compare));
-    if(car)addCompare(defaultVersion(car));
-  }
+$("closeDetails").addEventListener("click",()=>$("details").close());
+["category","body","sort","sortBrand"].forEach(id=>$(id).addEventListener("change",filterCars));
+$("searchBtn").addEventListener("click",filterCars);
+$("search").addEventListener("keydown",e=>{if(e.key==="Enter")filterCars();});
+$("resetBtn").addEventListener("click",()=>{
+ $("search").value="";$("category").value="";$("body").value="";$("sort").value="default";$("sortBrand").value="";filterCars();
 });
-document.getElementById("compareList").addEventListener("click",event=>{
-  const btn=event.target.closest("[data-remove]");
-  if(btn){
-    compareItems.splice(Number(btn.dataset.remove),1);
-    renderCompare();
-  }
+$("moreBtn").addEventListener("click",()=>{visibleCount+=6;renderCars();});
+["cmp1","cmp2","cmp3"].forEach(id=>$(id).addEventListener("change",renderCompare));
+$("clearCompare").addEventListener("click",()=>{
+ compareIds=["","",""];
+ ["cmp1","cmp2","cmp3"].forEach(id=>$(id).value="");
+ renderCompare();
 });
-document.getElementById("budgetOutput").addEventListener("click",event=>{
-  const btn=event.target.closest("[data-budget-car]");
-  if(btn){
-    openDetails(btn.dataset.budgetCar);
-    document.getElementById("modalYear").value=btn.dataset.budgetYear;
-    document.getElementById("modalTrim").value=btn.dataset.budgetTrim;
-    updateModalPrice();
-  }
-});
-document.getElementById("modalYear").addEventListener("change",updateModalPrice);
-document.getElementById("modalTrim").addEventListener("change",updateModalPrice);
-document.getElementById("modalCompare").addEventListener("click",()=>{
-  const v=selectedModalVersion();
-  if(v){addCompare(v);closeDetails();document.getElementById("compare").scrollIntoView({behavior:"smooth"});}
-});
-document.getElementById("closeModal").addEventListener("click",closeDetails);
-document.getElementById("detailBackdrop").addEventListener("click",event=>{
-  if(event.target.id==="detailBackdrop")closeDetails();
-});
-document.addEventListener("keydown",event=>{
-  if(event.key==="Escape")closeDetails();
-});
-document.getElementById("clearCompare").addEventListener("click",()=>{
-  compareItems.length=0;renderCompare();
-});
-document.getElementById("findBudget").addEventListener("click",showBudgetResults);
-document.getElementById("resetFilters").addEventListener("click",()=>{
-  searchInput.value="";
-  brandFilter.value="";
-  typeFilter.value="";
-  budgetFilter.value="";
-  renderCars();
-});
-[searchInput,brandFilter,typeFilter,budgetFilter].forEach(el=>{
-  el.addEventListener(el.tagName==="INPUT"?"input":"change",renderCars);
-});
-
 renderCars();
-renderCompare();
 </script>
 </body>
 </html>
